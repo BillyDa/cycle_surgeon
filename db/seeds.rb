@@ -35,7 +35,7 @@ rob = User.create(
 # Test ticket
 
 tire = Ticket.create(
-  user_id: 0,
+  user_id: User.pluck(:id).sample,
   # Saving this fails because the useer must exist.
   repair: 1,
   description: 'popped tire',
