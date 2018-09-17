@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 get 'login' => 'user_sessions#new', :as => :login
 delete 'logout' => 'user_sessions#destroy', :as => :logout
 
-resources :user, only: [:new, :create]
+resources :user, only: [:new, :create, :show]
 # Cyclist.. if logged in
 # Go to tickets#new
 

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :password
       t.string :password_confirmation
+      t.boolean :surgeon, :default => false 
       t.timestamps
     end
   end

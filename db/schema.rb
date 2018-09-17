@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_17_190045) do
     t.string "email"
     t.string "password"
     t.string "password_confirmation"
+    t.boolean "surgeon", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

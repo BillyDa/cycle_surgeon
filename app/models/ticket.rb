@@ -1,6 +1,5 @@
 class Ticket < ApplicationRecord
 
-validates :
 
 belongs_to :user
 # Tickets belong to a user
