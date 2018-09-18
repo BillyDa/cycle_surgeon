@@ -16,14 +16,14 @@ class UserController < ApplicationController
 
    if @user.save
      session[:user_id] = @user.id
-     render 'user#show'
+     render '/user#show'
    else
-     render 'new'
+     render '/user#new'
      # Login failed, render new login page.
    end
  end
 
  def is_surgeon?
  end
- 
+
 end

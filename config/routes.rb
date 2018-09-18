@@ -7,7 +7,8 @@ delete 'logout' => 'user_sessions#destroy', :as => :logout
 
 resources :user, only: [:new, :create, :show]
 
-resources :users
+resources :users, only: [:create]
+# Without the create, the user/new page (to create an account fails to resolve)
 
 resources :tickets, only: [:new, :create, :show, :delete]
 
