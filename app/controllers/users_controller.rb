@@ -14,7 +14,7 @@ class UsersController < ApplicationController
    @user.password_confirmation = params[:user][:password_confirmation]
    # @user.role = params[:user][:surgeon]
 
-   if @user.save!
+   if @user.save
      session[:user_id] = @user.id
      redirect_to user_url(@user.id)
    else

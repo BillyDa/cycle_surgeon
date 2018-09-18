@@ -2,9 +2,8 @@ class User < ApplicationRecord
 
 has_secure_password
 
-  validates :password_digest, length: { minimum: 6 }
-  validates :password_digest, presence: true
-  validates :email, length: {minimum: 4}, uniqueness: true, presence: true
+  validates :password, length: { minimum: 6 }, presence: true
+  validates :email, length: {minimum: 4}, uniqueness: true, presence: true, on: :create
 
 has_many :tickets
 # Users can create many tickets
