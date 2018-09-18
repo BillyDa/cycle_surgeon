@@ -1,3 +1,15 @@
-<!-- The form to create a new account.
-Boolean to identify if the user is a cyclist or a surgeon.
-Determines the page they are redirected to afterward -->
+<%= form_tag user_sessions_path, :method => :post do %>
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password_digest %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Login" %>
+  </div>
+
+<% end %>
