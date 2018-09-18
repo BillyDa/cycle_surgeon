@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
  def new
    @user = User.new
  end
@@ -22,4 +22,8 @@ class UsersController < ApplicationController
      # Login failed, render new login page.
    end
  end
+
+ def is_surgeon?
+ end
+ 
 end

@@ -1,0 +1,46 @@
+<%= form_for @user do |f| %>
+ <% if @user.errors.any? %>
+   <div class="errors-block">
+       There are <%= pluralize(@user.errors.count, "error") %>.
+       <ul>
+         <% @user.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+   </div>
+
+<% end %>
+ <!-- This above blurb is checking for any errors in the validations, and then showing them on the form. -->
+
+ <div>
+   <%= f.label "Are you a surgeon?", :type => :image, :src => "http://www.brixtonblog.com/wp-content/uploads/2016/03/mechanic-1.jpg" %><br />
+   <%= f.check_box :surgeon, {}, true, false %>
+ </div>
+ <!-- Boolean to determine which user role they are  -->
+
+
+
+ <div>
+   <%= f.label :email %> <br />
+   <%= f.email_field :email %>
+ </div>
+ <!-- Getting the user's email -->
+
+ <div>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+ </div>
+ <!-- Getting the user's pw -->
+
+ <div>
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+ </div>
+  <!-- Getting the user's pw (confirmation) -->
+
+
+ <div>
+   <%= f.submit "Submit" %>
+ </div>
+
+<% end %>
