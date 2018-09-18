@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UserController < ApplicationController
  def new
    @user = User.new
  end
@@ -12,14 +12,14 @@ class UsersController < ApplicationController
    @user.email = params[:user][:email]
    @user.password = params[:user][:password]
    @user.password_confirmation = params[:user][:password_confirmation]
-   # @user.role = params[:user][:surgeon]
+   @user.role = params[:user][:surgeon]
 
    if @user.save
      session[:user_id] = @user.id
-     redirect_to user_url(@user.id)
+     render 'user#show'
    else
-     flash.now[:alert] = ['Failed to save account']
-     render :new
+     render 'new'
+     # Login failed, render new login page.
    end
  end
 

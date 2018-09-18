@@ -1,3 +1,16 @@
+<%= form_tag user_sessions_path do %>
+  <% if flash[:errors].any? %>
+  <div id=“error_explanation”>
+    <h2><%= pluralize(flash[:errors].count, "error") %> found:</h2>
+    <ul>
+      <% flash[:errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
+
 <%= form_tag user_sessions_path, :method => :post do %>
   <div class="field">
     <%= label_tag :email %><br />
@@ -5,11 +18,12 @@
   </div>
   <div class="field">
     <%= label_tag :password %><br />
-    <%= password_field_tag :password_digest %>
+    <%= password_field_tag :password %>
   </div>
 
   <div class="actions">
     <%= submit_tag "Login" %>
   </div>
+
 
 <% end %>

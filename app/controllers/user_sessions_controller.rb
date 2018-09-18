@@ -5,9 +5,10 @@ class UserSessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password_digest])
+    if user && user.authenticate(params[:password])
       redirect_to user_url(user.id)
     else
+      flash.now[:errors] = ['E-mail and Password do not match']
       render 'new'
     end
   end
