@@ -8,6 +8,7 @@ class UserSessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       redirect_to user_url(user.id)
     else
+      flash.now[:errors] = ['E-mail and Password do not match']
       render 'new'
     end
   end

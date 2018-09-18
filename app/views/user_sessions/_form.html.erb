@@ -1,4 +1,15 @@
-
+<%= form_tag user_sessions_path do %>
+  <% if flash[:errors].any? %>
+  <div id=“error_explanation”>
+    <h2><%= pluralize(flash[:errors].count, "error") %> found:</h2>
+    <ul>
+      <% flash[:errors].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
 
 <%= form_tag user_sessions_path, :method => :post do %>
   <div class="field">
@@ -13,5 +24,6 @@
   <div class="actions">
     <%= submit_tag "Login" %>
   </div>
+
 
 <% end %>
