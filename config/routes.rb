@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
 
-get 'login' => 'user_sessions#new', :as => :login
-delete 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'login' => 'user_sessions#new', :as => :login
 
-resources :user, only: [:new, :create, :show]
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
 
-resources :users
+  resources :user_sessions, only: [:create]
 
-resources :tickets, only: [:new, :create, :show, :delete]
+  resources :users, only: [:new, :create, :show]
+
+  resources :tickets, only: [:new, :create, :show, :delete]
 
 
 end
