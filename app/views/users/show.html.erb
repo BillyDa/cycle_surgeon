@@ -1,1 +1,7 @@
 <h1> Hello World</h1>
+
+<% if @user.surgeon == true %>
+  <%= link_to "Welcome Surgeon!", users_path %>
+<% else %>
+  <%= link_to "Welcome Cyclist!", users_path %>
+<% end %>
