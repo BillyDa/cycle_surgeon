@@ -1,12 +1,24 @@
+<% if User.find(@ticket.user_id).surgeon == false %>
 <h1>Your request has been submitted</h1>
+
+<div>
+  <h3>Type of repair</h3><%= @ticket.repair %>
+  <h3>Your address</h3><%= @ticket.cyclist_location %>
+  <h3>Request Status:</h3><%= @ticket.ticket_accepted %>
+  <p> helo </p>
+</div>
+
+<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+
+<% else %>
+<h1>Help Request <%= @ticket.id %>
 <div>
   <h3>Type of repair</h3><%= @ticket.repair %>
   <h3>Your address</h3><%= @ticket.cyclist_location %>
   <h3>Request Status:</h3><%= @ticket.ticket_accepted %>
 </div>
 
-<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-
-
-
 <!--This page will refresh once the ticket_accepted is updated  -->
+
+
+<% end %>

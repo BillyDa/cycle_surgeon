@@ -18,6 +18,12 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
+    @user = User.find(params[:id])
+  end
+
+  def index
+    @tickets = Ticket.all
+    @tickets = @tickets.order(:cyclist_location)
   end
 
   def new
