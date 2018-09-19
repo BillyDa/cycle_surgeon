@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   get 'index' => 'tickets#index', :as => :index
 
-  delete 'logout' => 'user_sessions#destroy', :as => :logout
+  # delete 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :user_sessions, only: [:create]
+  resources :user_sessions, only: [:create, :destroy]
 
   resources :users, only: [:new, :create, :show]
 

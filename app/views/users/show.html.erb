@@ -5,6 +5,7 @@
  <%= link_to 'See all current tickets', tickets_url%>
 <% else %>
  <%= link_to 'Welcome Cyclist!', user_url(@user.id) %><br />
- <%= link_to 'Submit a ticket', new_ticket_url %>
+ <%= link_to 'Submit a ticket', new_ticket_url %><br />
 
+<%= link_to 'Logout', login_url, method: 'delete' %>
 <% end %>
