@@ -1,4 +1,4 @@
-class TicketController < ApplicationController
+class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.find(params[:ticket_id])
@@ -13,6 +13,7 @@ class TicketController < ApplicationController
       flash.now[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
     else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
+    end
   end
 
   def show
