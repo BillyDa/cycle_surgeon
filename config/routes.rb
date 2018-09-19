@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :tickets, only: [:new, :index, :create, :show, :delete]
+  resources :tickets, only: [:new, :index, :create, :show, :destroy]
 
 
 end
