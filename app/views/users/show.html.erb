@@ -1,4 +1,4 @@
-<h1> Hello World</h1>
+<h1>Welcome!</h1>
 
 <% if @user.surgeon == true %>
  <%= link_to 'Welcome Surgeon!', user_url(@user.id) %><br />
@@ -6,6 +6,6 @@
 <% else %>
  <%= link_to 'Welcome Cyclist!', user_url(@user.id) %><br />
  <%= link_to 'Submit a ticket', new_ticket_url %><br />
+ <% end %>
 
 <%= link_to 'Logout', login_url, method: 'delete' %>
-<% end %>
