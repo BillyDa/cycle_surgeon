@@ -5,6 +5,8 @@
   <h3>Request Status:</h3><%= @ticket.ticket_accepted %>
 </div>
 
+<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+
 
 
 <!--This page will refresh once the ticket_accepted is updated  -->
