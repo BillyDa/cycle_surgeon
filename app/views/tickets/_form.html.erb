@@ -1,12 +1,45 @@
-<%= form_for(@ticket, html: {multipart: true}) do |f| %>
+<%= form_for @ticket do |f| %>
+
   <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <% f.label :user_id %>
+    <% f.hidden_field :user_id %>
+  </div>
+
+  <div>
+    <%= f.label :cyclist_location %>
+    <%= f.number_field :cyclist_location %>
+  </div>
+
+  <div>
+    <% f.label :ticket_id %>
+    <% f.hidden_field :ticket_id, :value => @ticket.id %>
+  </div>
+
+  <div>
+    <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
+      <%= f.label :hydraulic_disc %>
+      <%= f.radio_button :repair, 0 %><br />
+      <%= f.label :handle_bar %>
+      <%= f.radio_button :repair, 1 %><br />
+      <%= f.label :brake %>
+      <%= f.radio_button :repair, 2 %><br />
+      <%= f.label :saddle %>
+      <%= f.radio_button :repair, 3 %><br />
+      <%= f.label :lever %>
+      <%= f.radio_button :repair, 4 %><br />
+      <%= f.label :v_brake %>
+      <%= f.radio_button :repair, 5 %><br />
+      <%= f.label :flat_tire %>
+      <%= f.radio_button :repair, 6 %><br />
+      <%= f.label :tune_up %>
+      <%= f.radio_button :repair, 7 %><br />
+      <%= f.label :other %>
+      <%= f.radio_button :repair, 8 %><br />
   </div>
 
   <div>
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description %><br />
   </div>
 
 <!--

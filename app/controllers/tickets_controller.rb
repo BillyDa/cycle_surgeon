@@ -1,7 +1,6 @@
 class TicketsController < ApplicationController
 
   def create
-    @ticket = Ticket.find(params[:ticket_id])
     @ticket = Ticket.new
     @ticket.user_id = current_user.id
     @ticket.repair = params[:ticket][:repair]
@@ -11,12 +10,18 @@ class TicketsController < ApplicationController
 
     if @ticket.save
       flash.now[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
+      redirect_to ticket_url(@ticket.id)
     else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
     end
   end
 
   def show
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def new
+    @ticket = Ticket.new
   end
 
   def destroy
