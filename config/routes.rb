@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'user_sessions#new'
-  
+
   get 'login' => 'user_sessions#new', :as => :login
+
+  get 'index' => 'tickets#index', :as => :index
 
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :tickets, only: [:new, :create, :show, :delete]
+  resources :tickets, only: [:new, :index, :create, :show, :delete]
 
 
 end
