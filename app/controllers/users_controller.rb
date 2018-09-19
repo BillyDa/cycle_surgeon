@@ -12,7 +12,7 @@ class UsersController < ApplicationController
    @user.email = params[:user][:email]
    @user.password = params[:user][:password]
    @user.password_confirmation = params[:user][:password_confirmation]
-   # @user.role = params[:user][:surgeon]
+  @user.surgeon = params[:user][:surgeon]
 
    if @user.save
      session[:user_id] = @user.id
