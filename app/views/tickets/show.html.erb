@@ -19,7 +19,8 @@
   <%= f.label :accept_ticket? %>
   <%= f.check_box :ticket_accepted %>
 
-  <%= f.hidden_field :surgeon_id, value = current_user.id  %>
+
+  <%= f.hidden_field :surgeon_id, value: current_user  %>
 
   <%= f.submit %>
   <% end %>

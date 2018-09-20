@@ -4,6 +4,7 @@ class UsersController < ApplicationController
  end
 
  def show
+   @tickets = Ticket.all.where(user_id: current_user)
    @user = current_user
    if current_user.id == session[:user_id]
      render
