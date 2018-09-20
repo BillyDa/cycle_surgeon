@@ -21,13 +21,13 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @user = current_user
-    if current_user.surgeon == nil && current_user != @ticket.user_id
-      redirect_to login_path
-    else
-      render
-      @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-      @ticket.ticket_accepted = params[:ticket][:surgeon_id]
-    end
+    # if current_user.surgeon == nil || current_user.id != @ticket.user_id
+    #   redirect_to login_path
+    # else
+    #   render
+    #   @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
+    #   @ticket.ticket_accepted = params[:ticket][:surgeon_id]
+    # end
 
   end
 
@@ -61,6 +61,15 @@ class TicketsController < ApplicationController
     # else
     #   render
     # end
+  end
+
+  def accepted
+    @ticket = Ticket.find(params[:id])
+    if current_user == @ticket.user_id || current_user == @ticket.surgeon_id
+      render
+    else
+      redirect_to root_url
+    end
   end
 
   def destroy
