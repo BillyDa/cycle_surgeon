@@ -21,11 +21,18 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @user = User.find(params[:id])
+
   end
 
   def index
     @tickets = Ticket.where(ticket_accepted: false)
-    # @tickets = @tickets.order(:cyclist_location)
+    if current_user.surgeon == true
+      render
+    else
+      flash[:alert] = ["You do not have permission to view this page"]
+      puts 'A cyclist is trying to view the ticket index'
+      redirect_to root_url
+    end
   end
 
   def update
@@ -39,6 +46,13 @@ class TicketsController < ApplicationController
   end
 
   def new
+    if current_user.surgeon == true
+      flash[:alert] = ["You do not have permission to view this page"]
+      puts 'A surgeon is trying to view the ticket submit page'
+      redirect_to root_url
+    else
+      render
+    end
     @ticket = Ticket.new
   end
 

@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
  def show
    @user = User.find(params[:id])
+   if current_user.id == session[:user_id]
+     render
+   else
+     flash[:alert] = ["You do not have permission to view this page"]
+     redirect_to root_url
+   end
  end
 
  def create

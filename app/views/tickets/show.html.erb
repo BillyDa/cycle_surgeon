@@ -14,9 +14,10 @@
 
 <div>
 <%= form_for @ticket do |f| %>
-  <%= f.label :Accept_Ticket? %>
+  <%= f.label :accept_ticket? %>
   <%= f.check_box :ticket_accepted %>
 
+  <%= f.label :update %>
   <%= f.submit %>
   <% end %>
 </div>

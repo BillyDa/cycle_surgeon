@@ -15,7 +15,7 @@ tyler = User.create(
   email: 'tyler@email.com',
   password: '123456',
   password_confirmation: '123456',
-  surgeon: false
+  surgeon: nil
 )
 
 billy = User.create(
@@ -29,7 +29,7 @@ rob = User.create(
   email: 'rob@email.com',
   password: '123456',
   password_confirmation: '123456',
-  surgeon: false
+  surgeon: nil
 )
 
 # Test ticket
