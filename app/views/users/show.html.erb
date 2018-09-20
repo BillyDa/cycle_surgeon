@@ -1,6 +1,6 @@
 <h1>Your Dashboard</h1>
  <%= 'Hello'%>
- <%=@user.email%>  <br />
+ <%= current_user.email%>  <br />
 <% if @user.surgeon && @user.id == session[:user_id]%>
  <%= link_to 'See all active tickets', tickets_url%><br />
 

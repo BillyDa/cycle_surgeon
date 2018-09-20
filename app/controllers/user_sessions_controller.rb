@@ -2,7 +2,7 @@ class UserSessionsController < ApplicationController
 
   def new
     puts "................... #{session[:user_id]}"
-    if session[:user_id] == ""
+    if session[:user_id] == "" || session[:user_id] == nil
       puts 'hello world'
       render 'new'
       # If the user is not logged in the terminal will say hello world, and render the new page.
@@ -25,7 +25,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = ""
+    session[:user_id] = nil
     redirect_to root_url, notice: "Logged out successfully"
   end
 
