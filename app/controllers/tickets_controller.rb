@@ -21,12 +21,10 @@ class TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     @user = current_user
-    if current_user.surgeon == nil && current_user != @ticket.user_id
-      redirect_to login_path
-    else
-      render
-      @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-      @ticket.ticket_accepted = params[:ticket][:surgeon_id]
+    if current_user.surgeon == true
+      # render plain: 'hi'
+      @ticket.ticket_accepted = @ticket[:ticket_accepted]
+      @ticket.surgeon_id = @ticket[:surgeon_id]
     end
 
   end
@@ -47,6 +45,10 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted
       flash[:alert] = ["This request is no longer available"]
       redirect_to tickets_url
+    elsif
+      @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
+      @ticket.surgeon_id = params[:ticket][:surgeon_id]
+      redirect_to accepted_path
     else
       # do the update!
     end
@@ -61,6 +63,15 @@ class TicketsController < ApplicationController
     # else
     #   render
     # end
+  end
+
+  def accepted
+    @ticket = Ticket.find(params[:id])
+    if current_user == @ticket.user_id || current_user == @ticket.surgeon_id
+      render
+    else
+      redirect_to root_url
+    end
   end
 
   def destroy
