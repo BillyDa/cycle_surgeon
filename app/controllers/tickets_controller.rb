@@ -46,6 +46,7 @@ class TicketsController < ApplicationController
   end
 
   def new
+    @ticket = Ticket.new
     if current_user.surgeon == true
       flash[:alert] = ["You do not have permission to view this page"]
       puts 'A surgeon is trying to view the ticket submit page'
@@ -53,7 +54,6 @@ class TicketsController < ApplicationController
     else
       render
     end
-    @ticket = Ticket.new
   end
 
   def destroy
