@@ -1,24 +1,41 @@
-<% if User.find(@ticket.user_id).surgeon == false %>
+<% if !current_user %>
+<!-- If the current user is truthy -->
+<h1>Help Request #<%= @ticket.id %></h1>
+<div>
+  <h3>
+    Type of repair: <%= @ticket.repair %>
+  </h3>
+
+  <h3>
+    Cyclist address: <%= @ticket.cyclist_location %>
+  </h3>
+
+</div>
+
+<div>
+<%= form_for @ticket do |f| %>
+  <%= f.label :Accept_Ticket? %>
+  <%= f.check_box :ticket_accepted %>
+
+  <%= f.submit %>
+  <% end %>
+</div>
+
+<% else %>
+<!-- If current user is anything but a surgeon -->
 <h1>Your request has been submitted</h1>
 
 <div>
-  <h3>Type of repair</h3><%= @ticket.repair %>
-  <h3>Your address</h3><%= @ticket.cyclist_location %>
-  <h3>Request Status:</h3><%= @ticket.ticket_accepted %>
-  <p> helo </p>
+  <h3>
+    Type of repair <%= @ticket.repair %>
+  </h3>
+  <h3>
+    Your address <%= @ticket.cyclist_location %>
+  </h3>
 </div>
 
-<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-
-<% else %>
-<h1>Help Request <%= @ticket.id %>
 <div>
-  <h3>Type of repair</h3><%= @ticket.repair %>
-  <h3>Your address</h3><%= @ticket.cyclist_location %>
-  <h3>Request Status:</h3><%= @ticket.ticket_accepted %>
-</div>
-
-<!--This page will refresh once the ticket_accepted is updated  -->
-
-
+  <p>An email will be sent to <%= @user.email %> once a surgeon has taken on your request </p>
+<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
 <% end %>
+</div>

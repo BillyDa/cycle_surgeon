@@ -7,12 +7,14 @@ class TicketsController < ApplicationController
     @ticket.distance = params[:ticket][:distance]
     @ticket.cyclist_location = params[:ticket][:cyclist_location]
     @ticket.surgeon_location = params[:ticket][:surgeon_location]
-
+    @ticket.description = params[:ticket][:description]
+    @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
     if @ticket.save
-      flash.now[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
+      flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
     else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
+      render 'new'
     end
   end
 
@@ -22,8 +24,18 @@ class TicketsController < ApplicationController
   end
 
   def index
-    @tickets = Ticket.all
-    @tickets = @tickets.order(:cyclist_location)
+    @tickets = Ticket.where(ticket_accepted: false)
+    # @tickets = @tickets.order(:cyclist_location)
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+    if @ticket.ticket_accepted
+      flash[:alert] = ["This request is no longer available"]
+      redirect_to tickets_url
+    else
+      # do the update!
+    end
   end
 
   def new

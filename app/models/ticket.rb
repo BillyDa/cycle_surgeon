@@ -1,7 +1,11 @@
 class Ticket < ApplicationRecord
 
+validates :user_id, presence: true
+validates :description, presence: true
+validates :repair, presence: true
 
 belongs_to :user
+
 # Tickets belong to a user
 end
 #

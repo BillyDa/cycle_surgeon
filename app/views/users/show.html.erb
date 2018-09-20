@@ -1,6 +1,6 @@
 <h1>Welcome!</h1>
 
-<% if @user.surgeon == true %>
+<% if @user.surgeon %>
  <%= link_to 'Welcome Surgeon!', user_url(@user.id) %><br />
  <%= link_to 'See all current tickets', tickets_url%>
 <% else %>

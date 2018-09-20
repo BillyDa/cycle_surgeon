@@ -23,7 +23,4 @@ class UsersController < ApplicationController
    end
  end
 
- def is_surgeon?
- end
-
 end
