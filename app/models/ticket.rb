@@ -4,7 +4,7 @@ validates :user_id, presence: true
 validates :description, presence: true
 validates :repair, presence: true
 
-belongs_to :user
+has_many :users
 
 # Tickets belong to a user
 end

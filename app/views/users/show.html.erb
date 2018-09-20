@@ -1,11 +1,11 @@
-<h1>Welcome!</h1>
+<h1>Your Dashboard</h1>
+ <%= 'Hello'%>
+ <%=@user.email%>  <br />
+<% if @user.surgeon && @user.id == session[:user_id]%>
+ <%= link_to 'See all active tickets', tickets_url%><br />
 
-<% if @user.surgeon %>
- <%= link_to 'Welcome Surgeon!', user_url(@user.id) %><br />
- <%= link_to 'See all current tickets', tickets_url%>
-<% else %>
- <%= link_to 'Welcome Cyclist!', user_url(@user.id) %><br />
- <%= link_to 'Submit a ticket', new_ticket_url %><br />
+<% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
+<%= link_to 'Submit a ticket', new_ticket_url %><br />
+
+<%= link_to 'Logout', logout_url, method: 'delete' %>
  <% end %>
-
-<%= link_to 'Logout', login_url, method: 'delete' %>

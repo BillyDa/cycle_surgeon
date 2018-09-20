@@ -1,4 +1,16 @@
 <%= form_for @ticket do |f| %>
+<% if @ticket.errors.any? %>
+  <div class="errors-block">
+    There are
+    <%= pluralize(@ticket.errors.count, "error") %>.
+    <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
 
   <div>
     <% f.label :user_id %>
