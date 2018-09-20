@@ -1,4 +1,6 @@
-<% if !current_user %>
+<% if current_user.surgeon %>
+
+
 <!-- If the current user is truthy -->
 <h1>Help Request #<%= @ticket.id %></h1>
 <div>
@@ -17,7 +19,6 @@
   <%= f.label :accept_ticket? %>
   <%= f.check_box :ticket_accepted %>
 
-  <%= f.label :update %>
   <%= f.submit %>
   <% end %>
 </div>
