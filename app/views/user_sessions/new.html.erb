@@ -1,10 +1,37 @@
-<!-- The login page -->
-<h1>Splash Page</h1>
-<hr>
-<h2>Login</h2>
-<%= render 'form' %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cycle Surgeon Main Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/application.css">
+  </head>
+  <body>
+    <div id="login">
+      <!-- Main Page Logo -->
+      <div class="logo">
+        <%= image_tag("cyclesurgeon_logo.png") %>
+      </div>
 
-<br />
-<h2>Sign Up</h2>
-<%= link_to 'Get Started', new_user_path %>
-<!-- This routes to sign up page -->
+      <!-- Blurb describing site -->
+      <div class="blurb">
+        <h2>... So you can focus on the ride</h2>
+        <h3><span>An app that brings people together.</span><br>For everyone that needs help repairing and maintaining their bike and for those that want to use their bike maintance skills to help others.</h3>
+
+      </div>
+
+      <!-- Sign Up/Sign In Section -->
+      <div class="entrance">
+        <h2>Sign Up</h2>
+        <div class="signup">
+          <%= link_to 'Get Started', new_user_path %>
+        </div>
+        <br />
+        <h2>Sign In</h2>
+        <%= render 'form' %>
+        <!-- This routes to sign up page -->
+      </div>
+    </div>
+
+  </body>
+</html>
