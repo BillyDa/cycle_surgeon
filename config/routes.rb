@@ -12,7 +12,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
 
-  resources :tickets, only: [:new, :index, :create, :show, :destroy]
-
+  resources :tickets, except: [:edit]
 
 end

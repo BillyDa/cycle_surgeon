@@ -1,9 +1,9 @@
 <h1>Available Tickets</h1>
 
-<% @tickets.each do |ticket| %>
-    <%= 'Address: ' %><%= ticket.cyclist_location%><br />
-    <%= 'Repair Type: '%><%= ticket.repair%><br />
-    <%= 'Description: '%><%= ticket.description%><br />
-    <%= link_to 'Review Ticket', ticket_url(ticket.id)%><br /> 
+<% @tickets.each do |i| %>
+    <%= 'Address: ' %><%= i.cyclist_location%><br />
+    <%= 'Repair Type: '%><%= i.repair%><br />
+    <%= 'Description: '%><%= i.description%><br />
+    <%= link_to 'Review Ticket', ticket_url(i.id)%><br />
     <br />
  <% end %>
