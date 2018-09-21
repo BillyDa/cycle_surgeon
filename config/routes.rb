@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'index' => 'tickets#index', :as => :index
 
+  get 'about' => 'about#index', :as => :about
+
   # delete 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :user_sessions, only: [:create, :destroy]
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :tickets
     resources :accepted, only: [:new, :create, :show]
+
+  resource :about, only: [:about]
 
 
 end

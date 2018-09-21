@@ -25,7 +25,6 @@ class TicketsController < ApplicationController
     # Had to iterate through the active record, and access the users table
     @user = current_user
     if current_user.surgeon == true
-      # render plain: 'hi'
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
       @ticket.surgeon_id = @ticket[:surgeon_id]
     end
@@ -45,15 +44,14 @@ class TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
-    if @ticket.ticket_accepted
-      flash[:alert] = ["This request is no longer available"]
-      redirect_to tickets_url
-    elsif
+    if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = params[:ticket][:surgeon_id]
+      @ticket.save
       redirect_to accepted_path
     else
-      # do the update!
+      redirect_to tickets_url
+
     end
   end
 
