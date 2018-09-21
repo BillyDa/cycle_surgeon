@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2018_09_21_165220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tickets", force: :cascade do |t|
     t.integer "user_id"
     t.integer "repair"
