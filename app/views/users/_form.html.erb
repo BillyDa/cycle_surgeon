@@ -14,27 +14,33 @@
 <!-- This above blurb is checking for any errors in the validations, and then showing them on the form. -->
 
 <div>
-  <%= f.label "Are you a surgeon?", :surgeon %><br/>
+  <%= f.label :are_you_a_surgeon %><br/>
   <%= f.check_box :surgeon, {}, true, false %>
 </div>
 <!-- Boolean to determine which user role they are -->
 
 <div>
+  <%= f.label :username %>
+  <br/>
+  <%= f.text_field :username, placeholder: 'username' %>
+</div>
+
+<div>
   <%= f.label :email %>
   <br/>
-  <%= f.email_field :email %>
+  <%= f.email_field :email, placeholder: 'your@email.com' %>
 </div>
 <!-- Getting the user's email -->
 
 <div>
   <%= f.label :password %><br/>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, placeholder: 'minimum 6 char' %>
 </div>
 <!-- Getting the user's pw -->
 
 <div>
   <%= f.label :password_confirmation %><br/>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: 'minimum 6 char' %>
 </div>
 <!-- Getting the user's pw (confirmation) -->
 
