@@ -5,7 +5,7 @@
 <h1>Help Request #<%= @ticket.id %></h1>
 <div>
   <h3>
-    Cyclist: <%= @cyclist_username %> 
+    Cyclist: <%= @cyclist_username %>
   </h3>
   <h3>
     Type of repair: <%= @ticket.repair %>
@@ -46,4 +46,7 @@
   <p>An email will be sent to <%= @user.email %> once a surgeon has taken on your request </p>
 <%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
 <% end %>
+
+<%= link_to 'Return to your dashboard', user_path(current_user) %>
+
 </div>
