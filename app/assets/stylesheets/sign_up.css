@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+div input {
+  border-radius: 30px;
+}
+
+.button input {
+  border-radius: 30px;
+  color: white;
+  background-color: black;
+  margin-top: 10px;
+}
+
+.errors-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.button a {
+  margin-top: 150px;
+}
+
+.new_user_selector h2 {
+  text-align: center;
+  margin: 0;
+  display: block;
+  height: 100px;
+  margin-top: 130px;
+  font-size: 2rem;
+}
+
+.form {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  text-align: center;
+}
+
+.go_back {
+  grid-column-start: 2;
+  grid-row-start: 2;
+  text-align: center;
+  margin-top: 170px;
+}
+
+.go_back a {
+  color: black;
+  text-decoration: none;
+}
+
+.surgeon {
+  display: none;
+}
+
+.logo {
+  grid-column-start: 1;
+  grid-row-end: 1;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+.biker_selector {
+  grid-row-start: 1;
+}
+
+.biker_selector img {
+  max-width: 100%;
+  margin-left: 268px;
+  margin-top: 50px;
+}
+
+.surgeon_selector {
+  grid-row-start: 1;
+  grid-column-start: 2;
+}
+
+.surgeon_selector img {
+  max-width: 100%;
+  margin-left: 368px;
+  margin-top: 50px;
+}

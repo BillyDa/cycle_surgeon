@@ -7,14 +7,33 @@ Or easily create a new one -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Sign Up Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/sign_up.css">
   </head>
   <body>
-    <h1>Sign Up Page</h1>
-    <hr>
+    <div class="wrapper">
+      <div class="logo">
+        <%= image_tag("cyclesurgeon_logo.png", :alt => "A bicyclist in orage on their bike") %>
+      </div>
+      <div class="new_user_selector">
+        <h2>Are you a ...</h2>
+      </div>
+      <div class="biker_selector">
+        <a href="#"><%= image_tag("biker.jpg", :alt => "A bicyclist in orange on their bike") %></a>
+        <!-- Credit to Jack Alexander for the photo -->
+      </div>
+      <div class="surgeon_selector">
+        <a href="#"><%= image_tag("surgeon.jpg", :alt => "A man fixing a sprocket on a bike") %></a>
+        <!-- Credit to Igor Peftiev -->
+      </div>
+      <div class="form">
+        <%= render 'form' %>
+      </div>
+      <div class="go_back">
+        <%= link_to 'Back to Home', root_path %>
+      </div>
+    </div>
 
-    <%= render 'form' %>
-
-    <%= link_to 'Back to Home', root_path %>
   </body>
 </html>

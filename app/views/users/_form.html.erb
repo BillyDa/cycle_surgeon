@@ -13,7 +13,7 @@
 <% end %>
 <!-- This above blurb is checking for any errors in the validations, and then showing them on the form. -->
 
-<div>
+<div class="surgeon">
   <%= f.label "Are you a surgeon?", :surgeon %><br/>
   <%= f.check_box :surgeon, {}, true, false %>
 </div>
@@ -38,7 +38,7 @@
 </div>
 <!-- Getting the user's pw (confirmation) -->
 
-<div>
+<div class="button">
   <%= f.submit "Submit" %>
 </div>
 
