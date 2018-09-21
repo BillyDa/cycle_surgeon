@@ -15,6 +15,7 @@ class TicketsController < ApplicationController
     else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
       render 'new'
+      # comment
     end
   end
 
