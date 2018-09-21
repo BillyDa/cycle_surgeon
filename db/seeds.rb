@@ -20,6 +20,7 @@ cyc1 = User.create(
 )
 
 cyc2 = User.create(
+  username: 'cyc2',
   email: 'cyc2@email.com',
   password: 'abc123',
   password_confirmation: 'abc123',
@@ -27,6 +28,7 @@ cyc2 = User.create(
 )
 
 sur1 = User.create(
+  username: 'sur1',
   email: 'sur1@email.com',
   password: 'abc123',
   password_confirmation: 'abc123',
@@ -34,6 +36,7 @@ sur1 = User.create(
 )
 
 sur2 = User.create(
+  username: 'sur2',
   email: 'sur2@email.com',
   password: 'abc123',
   password_confirmation: 'abc123',
