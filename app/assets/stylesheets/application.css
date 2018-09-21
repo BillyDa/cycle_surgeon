@@ -56,7 +56,6 @@
    grid-column-start: 3;
    width: 100%;
    text-align: center;
-   margin-top: 100px auto 0 auto;
  }
 
  .blurb {
@@ -89,4 +88,8 @@
    color: white;
    background-color: black;
    margin-top: 10px;
+ }
+
+ #error_explanation ul {
+   list-style: none;
  }
