@@ -24,34 +24,31 @@
    font-family: 'Exo 2', sans-serif;
  }
 
-  #login {
+  .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 
-  #login::after {
-  content: "";
-  background: url(background.jpg);
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  max-width: 100%;
-  background-size: cover;
-}
+  .wrapper::after {
+    opacity: 0.5;
+  }
 
  .logo {
    grid-column-start: 2;
    grid-column-end: 4;
-   width: auto;
+   margin-top: 100px;
  }
 
  .logo img {
-   width: 100%;
+   max-width: 100%;
  }
 
  .entrance {
@@ -81,4 +78,15 @@
  .signup a {
    color: black;
    text-decoration: none;
+ }
+
+ .field input {
+   border-radius: 30px;
+ }
+
+ .actions input {
+   border-radius: 30px;
+   color: white;
+   background-color: black;
+   margin-top: 10px;
  }
