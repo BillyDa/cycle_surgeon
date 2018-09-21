@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_201822) do
+ActiveRecord::Schema.define(version: 2018_09_21_165220) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "tickets", force: :cascade do |t|
     t.integer "user_id"
@@ -32,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_201822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "username"
   end
 
 end
