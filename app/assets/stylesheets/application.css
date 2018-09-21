@@ -17,7 +17,7 @@
  *= require_tree .
  *= require_self
  */
-/* Styling for main page  */
+
  body {
    margin: 0;
    padding: 0;
@@ -52,14 +52,14 @@
  }
 
  .entrance {
-   grid-row-start: 1;
+   grid-row-start: 2;
    grid-column-start: 3;
    width: 100%;
    text-align: center;
  }
 
  .blurb {
-   grid-row-start: 1;
+   grid-row-start: 2;
    grid-column-start: 2;
    width: 100%;
  }
@@ -79,18 +79,17 @@
    text-decoration: none;
  }
 
- .field input, div input {
+ .field input {
    border-radius: 30px;
  }
 
- .actions input, .button input {
+ .actions input {
    border-radius: 30px;
    color: white;
    background-color: black;
    margin-top: 10px;
  }
 
- #error_explanation ul, .errors-block ul {
+ #error_explanation ul {
    list-style: none;
-   padding: 0;
  }
