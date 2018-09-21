@@ -34,7 +34,7 @@ div input {
 }
 
 .button a {
-  margin-top: 150px;
+  margin-top: 170px;
 }
 
 .new_user_selector h2 {
@@ -46,6 +46,7 @@ div input {
   font-size: 2rem;
 }
 
+
 .form {
   grid-column-start: 2;
   grid-row-start: 2;
@@ -56,7 +57,7 @@ div input {
   grid-column-start: 2;
   grid-row-start: 2;
   text-align: center;
-  margin-top: 170px;
+  margin-top: 215px;
 }
 
 .go_back a {
@@ -68,12 +69,12 @@ div input {
   display: none;
 }
 
-.logo {
+.new_logo {
   grid-column-start: 1;
   grid-row-end: 1;
 }
 
-.logo img {
+.new_logo img {
   max-width: 100%;
 }
 
