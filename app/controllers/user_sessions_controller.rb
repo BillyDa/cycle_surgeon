@@ -14,12 +14,12 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
+    user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to user_url(user.id)
     else
-      flash.now[:errors] = ['E-mail and Password do not match']
+      flash.now[:errors] = ['Username and Password do not match']
       render 'new'
     end
   end
