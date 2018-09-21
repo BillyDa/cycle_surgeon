@@ -11,35 +11,56 @@ User.destroy_all
 
 # Just a few test users
 
-tyler = User.create(
-  email: 'tyler@email.com',
-  password: '123456',
-  password_confirmation: '123456',
+cyc1 = User.create(
+  username: 'cyc1',
+  email: 'cyc1@email.com',
+  password: 'abc123',
+  password_confirmation: 'abc123',
   surgeon: nil
 )
 
-billy = User.create(
-  email: 'billy@email.com',
-  password: '123456',
-  password_confirmation: '123456',
+cyc2 = User.create(
+  email: 'cyc2@email.com',
+  password: 'abc123',
+  password_confirmation: 'abc123',
+  surgeon: nil
+)
+
+sur1 = User.create(
+  email: 'sur1@email.com',
+  password: 'abc123',
+  password_confirmation: 'abc123',
   surgeon: true
 )
 
-rob = User.create(
-  email: 'rob@email.com',
-  password: '123456',
-  password_confirmation: '123456',
-  surgeon: nil
+sur2 = User.create(
+  email: 'sur2@email.com',
+  password: 'abc123',
+  password_confirmation: 'abc123',
+  surgeon: true
 )
-
 # Test ticket
 
-tire = Ticket.create(
-  user_id: User.pluck(:id).sample,
-  # Saving this fails because the useer must exist.
+tic1 = Ticket.create(
+  user_id: 0,
   repair: 1,
   description: 'popped tire',
   cyclist_location: 2,
-  surgeon_location: 3,
-  distance: 1
+  ticket_accepted: nil
+)
+
+tic2 = Ticket.create(
+  user_id: 0,
+  repair: 2,
+  description: 'second ticket for user 0',
+  cyclist_location: 6,
+  ticket_accepted: nil
+)
+
+tic3 = Ticket.create(
+  user_id: 1,
+  repair: 1,
+  description: 'popped tire',
+  cyclist_location: 5,
+  ticket_accepted: nil
 )
