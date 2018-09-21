@@ -37,6 +37,10 @@ div input {
   margin-top: 170px;
 }
 
+.new_user_selector {
+  grid-column-start: 2;
+}
+
 .new_user_selector h2 {
   text-align: center;
   margin: 0;

@@ -44,6 +44,7 @@
  .logo {
    grid-column-start: 2;
    grid-column-end: 4;
+   grid-start: 1;
    margin-top: 100px;
  }
 
