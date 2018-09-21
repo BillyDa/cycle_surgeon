@@ -45,7 +45,7 @@ sur2 = User.create(
 # Test ticket
 
 tic1 = Ticket.create(
-  user_id: 0,
+  user_id: cyc1.id,
   repair: 1,
   description: 'popped tire',
   cyclist_location: 2,
@@ -53,15 +53,15 @@ tic1 = Ticket.create(
 )
 
 tic2 = Ticket.create(
-  user_id: 0,
+  user_id: cyc2.id,
   repair: 2,
-  description: 'second ticket for user 0',
+  description: 'second ticket for cyc1 user',
   cyclist_location: 6,
   ticket_accepted: nil
 )
 
 tic3 = Ticket.create(
-  user_id: 1,
+  user_id: cyc2.id,
   repair: 1,
   description: 'popped tire',
   cyclist_location: 5,

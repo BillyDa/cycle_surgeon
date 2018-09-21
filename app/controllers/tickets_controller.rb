@@ -21,8 +21,9 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.find(params[:id])
+    @cyclist_username = User.find(@ticket.user_id).username
+    # Had to iterate through the active record, and access the users table
     @user = current_user
-    @ticket.username = User.find(params[:ticket][:user_id])
     if current_user.surgeon == true
       # render plain: 'hi'
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
