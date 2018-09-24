@@ -27,11 +27,13 @@ Or easily create a new one -->
         <a href="#"><%= image_tag("surgeon.jpg", :alt => "A man fixing a sprocket on a bike") %></a>
         <!-- Credit to Igor Peftiev -->
       </div>
-      <div class="form">
-        <%= render 'form' %>
-      </div>
-      <div class="go_back">
-        <%= link_to 'Back to Home', root_path %>
+      <div class="form_wrapper">
+        <div class="form">
+          <%= render 'form' %>
+        </div>
+        <div class="go_back">
+          <%= link_to 'Back to Home', root_path %>
+        </div>
       </div>
     </div>
 
