@@ -11,16 +11,18 @@
 navigator.geolocation.getCurrentPosition(function(positionSuccess){
   var lon = positionSuccess.coords.longitude;
   var lat = positionSuccess.coords.latitude;
-  console.log(lon)
-  console.log(lat)
-  $.ajax({
+
+  // lookup input[type=hidden name=user_lat]
+  // set the value to the var lat
+
+  {
     type: "POST",
     url: "/controller/tickets"
     data: { user_latitude: lat, user_longitude: lon}
-  })
+  });
   }
   ,function (error) {
-  console.log(error)
+  alert('An error has occurred, unable to save location')
 })
 
 //

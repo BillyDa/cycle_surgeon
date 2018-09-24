@@ -15,20 +15,19 @@ ActiveRecord::Schema.define(version: 2018_09_21_165220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "tickets", force: :cascade do |t|
     t.integer "user_id"
     t.integer "repair"
     t.text "description"
-    t.integer "cyclist_location"
-    t.integer "surgeon_location"
     t.integer "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "ticket_accepted", default: false
     t.integer "surgeon_id"
+    t.float "user_lat"
+    t.float "user_lon"
+    t.float "surgeon_lat"
+    t.float "surgeon_lon"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
