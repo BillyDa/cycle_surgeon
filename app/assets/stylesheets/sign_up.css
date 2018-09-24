@@ -28,6 +28,11 @@ div input {
   margin-top: 10px;
 }
 
+.errors-block {
+  grid-row-start: 2;
+  grid-column-start: 2;
+}
+
 .errors-block ul {
   list-style: none;
   padding: 0;
@@ -51,9 +56,8 @@ div input {
 
 .form_wrapper {
   grid-column-start: 2;
-  grid-row-start: 1;
   text-align: center;
-  margin-top: 60%
+  margin-top: 10%;
 }
 
 .go_back a {
@@ -76,21 +80,21 @@ div input {
 
 .biker_selector {
   grid-row-start: 1;
+  margin-left: 20%;
 }
 
 .biker_selector img {
   max-width: 100%;
-  margin-left: 20%;
   margin-top: 5%;
 }
 
 .surgeon_selector {
   grid-row-start: 1;
-  grid-column-start: 2;
+  grid-column-start: 3;
+  margin-right: 20%;
 }
 
 .surgeon_selector img {
   max-width: 100%;
-  margin-left: 80%;
   margin-top: 5%;
 }
