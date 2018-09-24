@@ -5,8 +5,10 @@ class TicketsController < ApplicationController
     @ticket.user_id = current_user.id
     @ticket.repair = params[:ticket][:repair]
     @ticket.distance = params[:ticket][:distance]
-    @ticket.cyclist_location = params[:ticket][:cyclist_location]
-    @ticket.surgeon_location = params[:ticket][:surgeon_location]
+    @ticket.user_lat = params[:ticket][:user_lat]
+    @ticket.user_lon = params[:ticket][:user_lon]
+    @ticket.surgeon_lat = params[:ticket][:surgeon_lat]
+    @ticket.surgeon_lat = params[:ticket][:surgeon_lon]
     @ticket.description = params[:ticket][:description]
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
     if @ticket.save
@@ -47,6 +49,8 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = params[:ticket][:surgeon_id]
+      @ticket.surgeon_lat = params[:ticket][:surgeon_lat]
+      @ticket.surgeon_lat = params[:ticket][:surgeon_lon]
       @ticket.save
       redirect_to accepted_path
     else
