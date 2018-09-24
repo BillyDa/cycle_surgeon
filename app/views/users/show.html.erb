@@ -1,21 +1,30 @@
-<h1>Your Dashboard</h1>
- <%= 'Hello'%>
- <%= current_user.username%>  <br />
-<% if @user.surgeon && @user.id == session[:user_id]%>
- <%= link_to 'See all active tickets', tickets_url%><br />
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Your Dashboard</h1>
+     <%= 'Hello'%>
+     <%= current_user.username%>  <br />
+    <% if @user.surgeon && @user.id == session[:user_id]%>
+     <%= link_to 'See all active tickets', tickets_url%><br />
 
-<% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-<%= link_to 'Submit a ticket', new_ticket_url %><br />
+    <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
+    <%= link_to 'Submit a ticket', new_ticket_url %><br />
 
-  <% @tickets.each do |my_ticket|%>
-    <%= "Date created: #{my_ticket.created_at}"%><br />
-    <%= "Repair Type: #{my_ticket.repair}"%><br />
-      <% if my_ticket.ticket_accepted == nil%>
-        <%= 'Surgeon enroute: Not accepted yet' %><br />
-      <% else %>
-        <%= "Surgeon enroute: #{my_ticket.ticket_accepted}" %><br />
+      <% @tickets.each do |my_ticket|%>
+        <%= "Date created: #{my_ticket.created_at}"%><br />
+        <%= "Repair Type: #{my_ticket.repair}"%><br />
+          <% if my_ticket.ticket_accepted == nil%>
+            <%= 'Surgeon enroute: Not accepted yet' %><br />
+          <% else %>
+            <%= "Surgeon enroute: #{my_ticket.ticket_accepted}" %><br />
+          <% end %>
+        <%= link_to 'Check Ticket', ticket_url(my_ticket.id)%><br />
       <% end %>
-    <%= link_to 'Check Ticket', ticket_url(my_ticket.id)%><br />
-  <% end %>
-<% end %>
-<%= link_to 'Logout', logout_path, method: 'delete' %>
+    <% end %>
+    <%= link_to 'Logout', logout_path, method: 'delete' %>
+  </body>
+</html>
