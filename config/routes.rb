@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#index', :as => :about
 
+  delete 'delete' => 'tickets#destroy', :as => :delete
+
   # delete 'logout' => 'user_sessions#destroy', :as => :logout
 
   resources :user_sessions, only: [:create, :destroy]
