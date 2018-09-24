@@ -18,14 +18,16 @@
   </div>
 
   <div>
-    <%= f.label :cyclist_location %>
-    <%= f.number_field :cyclist_location %>
+    <h1>This is where the user location stuff would occur</h1>
   </div>
 
   <div>
     <% f.label :ticket_id %>
     <% f.hidden_field :ticket_id, :value => @ticket.id %>
   </div>
+
+  <%= f.hidden_field :user_lat %>
+  <%= f.hidden_field :user_lon %>
 
   <div>
     <%= f.label :repair_type %> <%='. Please choose the most applicable option' %>
