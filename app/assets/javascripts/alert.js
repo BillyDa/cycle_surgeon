@@ -11,19 +11,34 @@
 navigator.geolocation.getCurrentPosition(function(positionSuccess){
   var lon = positionSuccess.coords.longitude;
   var lat = positionSuccess.coords.latitude;
+  console.log(lat)
+  console.log(lon)
+
+  $.ajax({
+    url : "tickets/new",
+    type : "post"
+    data : ""
+
+  })
 
   // lookup input[type=hidden name=user_lat]
   // set the value to the var lat
 
-  {
-    type: "POST",
-    url: "/controller/tickets"
-    data: { user_latitude: lat, user_longitude: lon}
-  });
+    function setUserLat() {
+  // Get the value from the select tag
+    var selectValue = $('select#user_lat').val();
+  // Set the hidden tag's value to the select tag value we got in the last line
+    $('input[type=hidden]#user_lat').val(selectValue);
+    alert(lon)
+};
+
+  function setUserLon(){
+    var selectValue = $('select#user_lon').val();
+    $('input[type=hidden]#user_lat').val(selectValue);
+    alert(lat)
   }
-  ,function (error) {
-  alert('An error has occurred, unable to save location')
-})
+
+  });
 
 //
 //
