@@ -6,25 +6,50 @@
   </head>
   <body>
     <h1>Your Dashboard</h1>
-     <%= 'Hello'%>
-     <%= current_user.username%>  <br />
+    <%= 'Hello'%>
+    <%= current_user.username%>  <br />
+
     <% if @user.surgeon && @user.id == session[:user_id]%>
-     <%= link_to 'See all active tickets', tickets_url%><br />
+      
+    <%= link_to 'See all active tickets', tickets_url%><br />
 
     <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-    <%= link_to 'Submit a ticket', new_ticket_url %><br />
-
-      <% @tickets.each do |my_ticket|%>
-        <%= "Date created: #{my_ticket.created_at}"%><br />
-        <%= "Repair Type: #{my_ticket.repair}"%><br />
-          <% if my_ticket.ticket_accepted == nil%>
-            <%= 'Surgeon enroute: Not accepted yet' %><br />
-          <% else %>
-            <%= "Surgeon enroute: #{my_ticket.ticket_accepted}" %><br />
-          <% end %>
-        <%= link_to 'Check Ticket', ticket_url(my_ticket.id)%><br />
-      <% end %>
+      <%= link_to 'Submit a ticket', new_ticket_url %><br />
     <% end %>
-    <%= link_to 'Logout', logout_path, method: 'delete' %>
+
+
+
+    <% if @user.surgeon == nil && @user.id == session[:user_id]  %>
+    <% if @tickets == nil %>
+      <% else %>
+      <h2>Surgery in Progress</h2>
+        <% @tickets.each do |ticket|%>
+          <% if ticket.ticket_accepted == true %>
+            <%= "Date created: #{ticket.created_at}"%><br />
+            <%= "Repair Type: #{ticket.repair_string}"%><br />
+            <%= link_to 'Examination room', ticket_url(ticket.id)%><br />
+            <%= "Your surgeon is en route!" %><br />
+          <% end %>
+        <% end %>
+        <% end %>
+
+        <% if @tickets == nil %>
+        <% else %>
+      <h2>Scheduled Surgeries</h2>
+        <% @tickets.each do |pending| %>
+          <% if !pending.ticket_accepted %>
+          <%= "Date created: #{pending.created_at}" %><br />
+          <%= "Repair Type: #{pending.repair_string}" %><br />
+          <%= link_to 'Examination room', ticket_url(pending.id) %><br />
+          <%= "Awaiting surgeon" %>
+          <% end %>
+        <% end %>
+        <% end %>
+
+        <% else %>
+        <% end %>
+
+
+    <p><%= link_to 'Logout', logout_path, method: 'delete' %><p>
   </body>
 </html>

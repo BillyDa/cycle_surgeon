@@ -6,6 +6,7 @@ class UsersController < ApplicationController
  def show
    @tickets = Ticket.all.where(user_id: current_user)
    @user = current_user
+   # @user_accepted = @tickets.ticket_accepted
    if current_user.id == session[:user_id]
      render
    else
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
    @user.password = params[:user][:password]
    @user.password_confirmation = params[:user][:password_confirmation]
    @user.surgeon = params[:user][:surgeon]
+   @user_surgeon_tick = Ticket.all 
 
    if @user.save
      session[:user_id] = @user.id
