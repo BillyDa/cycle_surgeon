@@ -7,7 +7,7 @@ body {
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
   background-size: cover;
   position: absolute;
@@ -45,22 +45,15 @@ div input {
   text-align: center;
   margin: 0;
   display: block;
-  height: 100px;
-  margin-top: 130px;
+  margin-top: 80px;
   font-size: 2rem;
 }
 
-.form {
+.form_wrapper {
   grid-column-start: 2;
-  grid-row-start: 2;
+  grid-row-start: 1;
   text-align: center;
-}
-
-.go_back {
-  grid-column-start: 2;
-  grid-row-start: 2;
-  text-align: center;
-  margin-top: 215px;
+  margin-top: 60%
 }
 
 .go_back a {
@@ -87,8 +80,8 @@ div input {
 
 .biker_selector img {
   max-width: 100%;
-  margin-left: 268px;
-  margin-top: 50px;
+  margin-left: 20%;
+  margin-top: 5%;
 }
 
 .surgeon_selector {
@@ -98,6 +91,6 @@ div input {
 
 .surgeon_selector img {
   max-width: 100%;
-  margin-left: 368px;
-  margin-top: 50px;
+  margin-left: 80%;
+  margin-top: 5%;
 }
