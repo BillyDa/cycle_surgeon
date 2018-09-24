@@ -1,6 +1,6 @@
 <h1>Surgery in progress</h1>
 
-
+<p><%= @ticket_repair_string %></p>
 <%= link_to 'Successfuly surgery!', root_path, method: :delete %><br / >
 <%= link_to 'Cancel surgery', root_path, method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br />
 <%= link_to 'Review my dashboard', user_path(current_user) %>

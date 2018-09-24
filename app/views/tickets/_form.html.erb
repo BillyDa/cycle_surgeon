@@ -33,7 +33,7 @@
     <%= f.label :repair_type %> <%='. Please choose the most applicable option' %>
     <% Ticket.repair_types.each do |repair_code, repair_string| %>
       <p>
-        <%= f.label repair_string %>
+      <%= f.label repair_string %>
       <%= f.radio_button :repair, repair_code %>
     </p>
       <% end %>
