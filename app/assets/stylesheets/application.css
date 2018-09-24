@@ -37,10 +37,6 @@
     right: 0;
   }
 
-  .wrapper::after {
-    opacity: 0.5;
-  }
-
  .logo {
    grid-column-start: 2;
    grid-column-end: 4;
