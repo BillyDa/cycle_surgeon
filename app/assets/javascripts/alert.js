@@ -14,7 +14,7 @@ navigator.geolocation.getCurrentPosition(function(positionSuccess){
 
   // lookup input[type=hidden name=user_lat]
   // set the value to the var lat
-
+ 
   {
     type: "POST",
     url: "/controller/tickets"
