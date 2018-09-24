@@ -45,7 +45,7 @@
    grid-column-start: 2;
    grid-column-end: 4;
    grid-start: 1;
-   margin-top: 100px;
+   margin-top: 10%;
  }
 
  .logo img {
@@ -88,7 +88,7 @@
    border-radius: 30px;
    color: white;
    background-color: black;
-   margin-top: 10px;
+   margin-top: 5%;
  }
 
  #error_explanation ul {
