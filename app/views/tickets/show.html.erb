@@ -18,35 +18,38 @@
 </div>
 
 <div>
-<%= form_for @ticket do |f| %>
-  <%= f.label :accept_ticket? %>
-  <%= f.check_box :ticket_accepted %>
+  <%= form_for @ticket do |f| %>
+    <%= f.label :accept_ticket? %>
+    <%= f.check_box :ticket_accepted %>
 
+    <%= f.hidden_field :surgeon_id, value: current_user  %>
 
-  <%= f.hidden_field :surgeon_id, value: current_user  %>
-
-  <%= f.submit %>
+    <%= f.submit %>
   <% end %>
 </div>
 
 <% else %>
 <!-- If current user is anything but a surgeon -->
-<h1>Your request has been submitted</h1>
+  <% if @ticket.ticket_accepted %>
+    <h1>Your surgeon is on the way!</h1>
+    <p>An email has been sent to <%= @user.email %></p>
+  <% else %>
+    <h1>Your request is awaiting approval</h1>
+    <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
+  <% end %>
+  <div>
+    <h3>
+      Type of repair: <%= @ticket.repair_string %>
+    </h3>
+    <h3>
+      Your address: <%= @ticket.cyclist_location %>
+    </h3>
+  </div>
 
-<div>
-  <h3>
-    Type of repair <%= @ticket.repair_string %>
-  </h3>
-  <h3>
-    Your address <%= @ticket.cyclist_location %>
-  </h3>
-</div>
-
-<div>
-  <p>An email will be sent to <%= @user.email %> once a surgeon has taken on your request </p>
-<%= link_to 'Remove ticket', user_path(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+  <div>
+    <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
 <% end %>
 
-<%= link_to 'Return to your dashboard', user_path(current_user) %>
+    <%= link_to 'Return to your dashboard', user_path(current_user) %>
 
 </div>

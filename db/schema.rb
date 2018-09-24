@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_09_24_155908) do
   enable_extension "plpgsql"
 
   create_table "tickets", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.integer "repair"
     t.text "description"
     t.integer "cyclist_location"

@@ -82,7 +82,7 @@ class TicketsController < ApplicationController
   def destroy
     Ticket.find(params[:id]).destroy
     flash[:success] = "Ticket has been deleted"
-    redirect_to user_url(user.id)
+    redirect_to root_url
   end
 
 end
