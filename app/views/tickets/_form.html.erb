@@ -26,9 +26,12 @@
     <% f.hidden_field :ticket_id, :value => @ticket.id %>
   </div>
 
+  <div=id="user_lat">
   <%= f.hidden_field :user_lat %>
+  </div>
+  <div=id="user_lon">
   <%= f.hidden_field :user_lon %>
-
+</div>
   <div>
     <%= f.label :repair_type %> <%='. Please choose the most applicable option' %>
     <% Ticket.repair_types.each do |repair_code, repair_string| %>
