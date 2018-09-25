@@ -18,7 +18,7 @@ class AcceptedController < ApplicationController
   end
 
   def update
-    @ticket = Ticket.find(params[:id])
+    @ticket = Ticket.all.where(active: false)
   end
 
   def destroy
