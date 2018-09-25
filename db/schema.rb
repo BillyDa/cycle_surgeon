@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_191241) do
+ActiveRecord::Schema.define(version: 2018_09_25_205151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 2018_09_25_191241) do
     t.float "surgeon_lat"
     t.float "surgeon_lon"
     t.boolean "active", default: true
+    t.float "user_latitude"
+    t.float "user_longitude"
+    t.text "user_address"
+    t.string "user_street"
+    t.string "user_city"
+    t.string "user_province"
+    t.float "surgeon_latitude"
+    t.float "surgeon_longitude"
+    t.text "surgeon_address"
+    t.string "surgeon_street"
+    t.string "surgeon_city"
+    t.string "surgeon_province"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
