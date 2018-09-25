@@ -4,7 +4,21 @@ validates :user_id, presence: true
 validates :description, presence: true
 validates :repair, presence: true
 
+geocoded_by :user_address
+  after_validation :geocode
+
+  # geocoded_by :surgeon_address
+  #   after_validation :geocode
+
 has_many :users
+
+def get_user_address
+  [user_street, user_city, user_province].join(', ')
+end
+
+def surgeon_address
+  [surgeon_street, surgeon_city, surgeon_province].join(', ')
+end
 
 def self.repair_types
     return {
