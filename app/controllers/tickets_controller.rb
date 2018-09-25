@@ -29,7 +29,10 @@ class TicketsController < ApplicationController
     if current_user.surgeon == true
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
       @ticket.surgeon_id = @ticket[:surgeon_id]
+      @ticket.active = @ticket[:active]
     end
+
+
 
   end
 
@@ -54,6 +57,8 @@ class TicketsController < ApplicationController
       @ticket.save
       redirect_to accepted_path
     else
+      @ticket.active = false
+      @ticket.save
       redirect_to tickets_url
 
     end

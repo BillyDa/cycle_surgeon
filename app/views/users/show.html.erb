@@ -26,7 +26,7 @@
    <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
      <h2>Surgery in Progress</h2>
        <% @ticket_in_progress_cyc.each do |ticket|%>
-         <% if ticket.ticket_accepted == true %>
+         <% if ticket.ticket_accepted == true && ticket.active == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
            <%= "Repair Type: #{ticket.repair_string}"%><br />
            <%= link_to "Examination room", ticket_url(ticket.id)%><br />
@@ -40,7 +40,7 @@
    <% if @user.surgeon == true && @user.id == session[:user_id]%>
      <h2>Surgery in Progress</h2>
        <% @ticket_in_progress.each do |ticket|%>
-         <% if ticket.ticket_accepted == true %>
+         <% if ticket.ticket_accepted == true && ticket.active == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
            <%= "Repair Type: #{ticket.repair_string}"%><br />
            <%= link_to "Examination room", accepted_url(ticket.id)%><br />
@@ -50,7 +50,7 @@
        <% end %>
       <% end %>
 
-      <% if !@user.surgeon %>
+      <% if !@user.surgeon%>
 
     <h2>Scheduled Surgeries</h2>
       <% @user_tickets.each do |pending| %>
