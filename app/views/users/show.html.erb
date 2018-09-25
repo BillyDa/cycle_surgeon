@@ -11,8 +11,7 @@
 
    <% if @user.surgeon && @user.id == session[:user_id]%>
 
-
-   <%= link_to 'See all active tickets', tickets_url%><br />
+    <%= link_to 'See all active tickets', tickets_url%><br />
 
    <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
      <%= link_to 'Submit a ticket', new_ticket_url %><br />
@@ -22,9 +21,9 @@
 
    <%# if @user.surgeon == nil && @user.id == session[:user_id]  %>
    <% if @surgeon_tickets == nil %>
-     <% else %>
+   <% else %>
      <h2>Surgery in Progress</h2>
-       <% @surgeon_tickets.each do |ticket|%>
+       <% @ticket_in_progress.each do |ticket|%>
          <% if ticket.ticket_accepted == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
            <%= "Repair Type: #{ticket.repair_string}"%><br />
@@ -32,7 +31,7 @@
            <%= "Your surgeon is en route!" %><br />
          <% end %>
        <% end %>
-       <% end %>
+      <% end %>
 
        <% if @user_tickets == nil %>
        <% else %>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
    @user = current_user
    # @user_accepted = @tickets.ticket_accepted
    @user_tickets = Ticket.all.where(ticket_accepted: nil, user_id: current_user.id)
+   @ticket_in_progress = Ticket.all.where(ticket_accepted: true, user_id: current_user.id)
    @surgeon_tickets = Ticket.all.where(surgeon_id: current_user.id)
    if current_user.id == session[:user_id]
      render
