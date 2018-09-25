@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
 
   resources :tickets
-    resources :accepted, only: [:new, :create, :show]
+    resources :accepted
 
   resource :about, only: [:about]
 
