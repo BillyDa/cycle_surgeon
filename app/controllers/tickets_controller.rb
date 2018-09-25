@@ -48,7 +48,7 @@ class TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-      @ticket.surgeon_id = params[:ticket][:surgeon_id]
+      @ticket.surgeon_id = current_user.id
       @ticket.surgeon_lat = params[:ticket][:surgeon_lat]
       @ticket.surgeon_lat = params[:ticket][:surgeon_lon]
       @ticket.save
