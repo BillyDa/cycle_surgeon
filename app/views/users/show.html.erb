@@ -10,9 +10,7 @@
    <%= current_user.username%>  <br />
 
    <% if @user.surgeon && @user.id == session[:user_id]%>
-   <% @ticket.ticket_accepted.each do |tick| %>
-     <%= tick.@ticket.surgeon_id %>
-     <% end %>
+
 
    <%= link_to 'See all active tickets', tickets_url%><br />
 
@@ -22,11 +20,11 @@
 
 
 
-   <% if @user.surgeon == nil && @user.id == session[:user_id]  %>
-   <% if @tickets == nil %>
+   <%# if @user.surgeon == nil && @user.id == session[:user_id]  %>
+   <% if @surgeon_tickets == nil %>
      <% else %>
      <h2>Surgery in Progress</h2>
-       <% @tickets.each do |ticket|%>
+       <% @surgeon_tickets.each do |ticket|%>
          <% if ticket.ticket_accepted == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
            <%= "Repair Type: #{ticket.repair_string}"%><br />
@@ -36,21 +34,19 @@
        <% end %>
        <% end %>
 
-       <% if @tickets == nil %>
+       <% if @user_tickets == nil %>
        <% else %>
      <h2>Scheduled Surgeries</h2>
-       <% @tickets.each do |pending| %>
-         <% if !pending.ticket_accepted %>
+       <% @user_tickets.each do |pending| %>
          <%= "Date created: #{pending.created_at}" %><br />
          <%= "Repair Type: #{pending.repair_string}" %><br />
          <%= link_to "Examination room", ticket_url(pending.id) %><br />
          <%= "Awaiting surgeon" %>
-         <% end %>
        <% end %>
        <% end %>
 
-       <% else %>
-       <% end %>
+       <%# else %>
+       <%# end %>
 
 
    <p><%= link_to "Logout", logout_path, method: 'delete' %><p>
