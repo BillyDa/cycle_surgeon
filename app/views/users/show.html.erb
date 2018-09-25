@@ -9,8 +9,8 @@
    <%= 'Hello'%>
    <%= current_user.username%>  <br />
 
-   <% if @user.surgeon && @user.id == session[:user_id]%>
 
+   <% if @user.surgeon && @user.id == session[:user_id]%>
     <%= link_to 'See all active tickets', tickets_url%><br />
 
    <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
@@ -20,10 +20,12 @@
 
 
    <%# if @user.surgeon == nil && @user.id == session[:user_id]  %>
-   <% if @surgeon_tickets == nil %>
-   <% else %>
+   <%# if @surgeon_tickets == nil %>
+   <%# else %>
+
+   <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
      <h2>Surgery in Progress</h2>
-       <% @ticket_in_progress.each do |ticket|%>
+       <% @ticket_in_progress_cyc.each do |ticket|%>
          <% if ticket.ticket_accepted == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
            <%= "Repair Type: #{ticket.repair_string}"%><br />
@@ -33,16 +35,31 @@
        <% end %>
       <% end %>
 
-       <% if @user_tickets == nil %>
-       <% else %>
-     <h2>Scheduled Surgeries</h2>
-       <% @user_tickets.each do |pending| %>
-         <%= "Date created: #{pending.created_at}" %><br />
-         <%= "Repair Type: #{pending.repair_string}" %><br />
-         <%= link_to "Examination room", ticket_url(pending.id) %><br />
-         <%= "Awaiting surgeon" %>
+
+
+   <% if @user.surgeon == true && @user.id == session[:user_id]%>
+     <h2>Surgery in Progress</h2>
+       <% @ticket_in_progress.each do |ticket|%>
+         <% if ticket.ticket_accepted == true %>
+           <%= "Date created: #{ticket.created_at}"%><br />
+           <%= "Repair Type: #{ticket.repair_string}"%><br />
+           <%= link_to "Examination room", accepted_url(ticket.id)%><br />
+
+
+         <% end %>
        <% end %>
-       <% end %>
+      <% end %>
+
+      <% if !@user.surgeon %>
+
+    <h2>Scheduled Surgeries</h2>
+      <% @user_tickets.each do |pending| %>
+        <%= "Date created: #{pending.created_at}" %><br />
+        <%= "Repair Type: #{pending.repair_string}" %><br />
+        <%= link_to "Examination room", ticket_url(pending.id) %><br />
+        <%= "Awaiting surgeon" %>
+      <% end %>
+      <% end %>
 
        <%# else %>
        <%# end %>

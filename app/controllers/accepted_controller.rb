@@ -8,4 +8,20 @@ class AcceptedController < ApplicationController
     @user_surgeon_tick = Ticket.all
 
   end
+
+  def new
+
+  end
+
+  def create
+
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+  end
+
+  def destroy
+    @ticket = Ticket.find(params[:id])
+  end
 end
