@@ -8,6 +8,7 @@ Or easily create a new one -->
   <head>
     <meta charset="utf-8">
     <title>Sign Up Page</title>
+    <script src="../../assets/sign_up.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700" rel="stylesheet">
     <link rel="stylesheet" href="../../assets/sign_up.css">
   </head>
@@ -20,11 +21,11 @@ Or easily create a new one -->
         <h2>Are you a ...</h2>
       </div>
       <div class="biker_selector">
-        <a href="#"><%= image_tag("biker.jpg", :alt => "A bicyclist in orange on their bike") %></a>
+        <%= image_tag("biker.jpg", :alt => "A bicyclist in orange on their bike", :id => "cycle_image") %>
         <!-- Credit to Jack Alexander for the photo -->
       </div>
       <div class="surgeon_selector">
-        <a href="#"><%= image_tag("surgeon.jpg", :alt => "A man fixing a sprocket on a bike") %></a>
+        <%= image_tag("surgeon.jpg", :alt => "A man fixing a sprocket on a bike", :id => "surgeon_image") %>
         <!-- Credit to Igor Peftiev for the photo-->
       </div>
       <div class="form_wrapper">
