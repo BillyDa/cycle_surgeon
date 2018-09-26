@@ -17,11 +17,10 @@ class TicketsController < ApplicationController
     # @ticket.user_longitude = params[:ticket][:user_longitude]
     # @ticket.surgeon_latitude = params[:ticket][:surgeon_latitude]
     # @ticket.surgeon_longitude = params[:ticket][:surgeon_longitude]
-
     if @ticket.save
       flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
-    else
+    # else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
       render 'new'
       # comment more commments
