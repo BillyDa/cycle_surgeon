@@ -35,6 +35,10 @@
     <p>An email has been sent to <%= @user.email %></p>
   <% else %>
     <h1>Your request is awaiting approval</h1>
+
+    <!-- <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@ticket.user_latitude},#{@ticket.user_longitude}&markers=#{@ticket.user_latitude},#{@ticket.user_longitude}&zoom=12&size=640x400&key=AIzaSyD6fAhsexLj7RaDca8XXu7Q-ud4ydfcKbQ" %> -->
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@ticket.user_latitude},#{@ticket.user_longitude}&markers=#{@ticket.user_latitude},#{@ticket.user_longitude}&zoom=12&size=640x400&key=#{ENV['GEO_KEY2']}" %>
+
     <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
   <% end %>
   <div>
