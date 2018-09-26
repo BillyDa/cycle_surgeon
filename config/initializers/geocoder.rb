@@ -19,6 +19,6 @@ Geocoder.configure(
   # Calculation options
   # units: :mi,                 # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
-api_key: "#{ENV['AIzaSyB_GvW8lHUNEjBJGLBlKH23SIFlkRd_9yc']}"
+api_key: "#{ENV['GEO_KEY3']}"
 )
 # this is where we will put our EMV api key
