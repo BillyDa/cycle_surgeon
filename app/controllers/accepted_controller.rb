@@ -9,12 +9,6 @@ class AcceptedController < ApplicationController
 
     gmaps = GoogleMapsService::Client.new
 
-    routes = gmaps.directions(
-      @ticket.user_address,
-      @ticket.surgeon_address,
-      mode: 'walking',
-      alternatives: false)
-
   end
 
   def update
