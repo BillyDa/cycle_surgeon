@@ -1,7 +1,10 @@
 <h1>Surgery in progress</h1>
-
-
-
 <%= image_tag(
-"http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}&size=700x800&zoom=15&markers=color:blue%7C#{@ticket.surgeon_latitude},"" #{@ticket.surgeon_longitude}""&markers=#{@ticket.user_address}")
+"http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}&size=700x800&zoom=15&markers=color:blue%7C#{@ticket.surgeon_latitude},"" #{@ticket.surgeon_longitude}""&markers=#{@ticket.user_address}&path=color:black|weight:5|#{@ticket.surgeon_latitude},#{@ticket.surgeon_longitude}|#{@ticket.user_latitude},#{@ticket.user_longitude}")
 %>
+
+
+<p><%= @ticket_repair_string %></p>
+<%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %><br / >
+<%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br />
+<%= link_to 'Review my dashboard', user_path(current_user) %>
