@@ -25,7 +25,6 @@ class AcceptedController < ApplicationController
     @ticket = Ticket.find(params[:id])
   end
 
-
   def user_address
 
   end
