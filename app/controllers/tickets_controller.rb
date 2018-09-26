@@ -9,9 +9,14 @@ class TicketsController < ApplicationController
     @ticket.user_street = params[:ticket][:user_street]
     @ticket.user_city = params[:ticket][:user_city]
     @ticket.user_province = params[:ticket][:user_province]
-    @ticket.surgeon_street = params[:ticket][:surgeon_street]
-    @ticket.surgeon_city = params[:ticket][:surgeon_city]
-    @ticket.surgeon_province = params[:ticket][:surgeon_province]
+    
+    # @ticket.surgeon_street = params[:ticket][:surgeon_street]
+    # @ticket.surgeon_city = params[:ticket][:surgeon_city]
+    # @ticket.surgeon_province = params[:ticket][:surgeon_province]
+    # @ticket.user_latitude = params[:ticket][:user_latitude]
+    # @ticket.user_longitude = params[:ticket][:user_longitude]
+    # @ticket.surgeon_latitude = params[:ticket][:surgeon_latitude]
+    # @ticket.surgeon_longitude = params[:ticket][:surgeon_longitude]
 
     if @ticket.save
       flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]

@@ -4,21 +4,34 @@ validates :user_id, presence: true
 validates :description, presence: true
 validates :repair, presence: true
 
-geocoded_by :user_address
-  after_validation :geocode
+
 
   # geocoded_by :surgeon_address
-  #   after_validation :geocode
+    after_validation :geocode_user
+
+    after_validation :save_full_user_address
 
 has_many :users
 
-def get_user_address
+def save_full_user_address
+  self.user_address = full_user_address
+end
+
+def geocode_user
+  coords = Geocoder.search(full_user_address).first.coordinates
+  self.user_latitude = coords[0].to_f
+  self.user_longitude = coords[1].to_f
+
+# binding.pry
+end
+
+def full_user_address
   [user_street, user_city, user_province].join(', ')
 end
 
-def surgeon_address
-  [surgeon_street, surgeon_city, surgeon_province].join(', ')
-end
+# def surgeon_address
+#   [surgeon_street, surgeon_city, surgeon_province].join(', ')
+# end
 
 def self.repair_types
     return {
