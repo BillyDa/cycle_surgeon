@@ -7,13 +7,13 @@ class AcceptedController < ApplicationController
     @ticket_repair_string = Ticket.repair_types[@ticket.id]
     @user_surgeon_tick = Ticket.all
 
-  end
+    gmaps = GoogleMapsService::Client.new
 
-  def new
-
-  end
-
-  def create
+    routes = gmaps.directions(
+      @ticket.user_address,
+      @ticket.surgeon_address,
+      mode: 'walking',
+      alternatives: false)
 
   end
 
@@ -23,5 +23,14 @@ class AcceptedController < ApplicationController
 
   def destroy
     @ticket = Ticket.find(params[:id])
+  end
+
+
+  def user_address
+
+  end
+
+  def surgeon_address
+
   end
 end
