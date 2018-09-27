@@ -4,11 +4,9 @@
 <p>Just click on "Review Ticket" to see additional details and take on the request!</p>
 
 <% @tickets.each do |i| %>
-   <%= 'Cyclist Address: '%><%= i.address_user%><br />
-   <%= 'Repair Type: '%><%= i.repair_string%><br />
-   <%= 'Description: '%><%= i.description%><br />
-   <%= link_to 'Review Ticket', ticket_url(i.id)%><br />
-   <br />
+   <div><%= 'Repair Type: '%><%= i.repair_string%></div>
+   <div><%= 'Description: '%><%= i.description%></div>
+   <div><%= link_to 'Review Ticket', ticket_url(i.id)%></div>
 <% end %>
 
 <%= link_to 'Return to your dashboard', user_path(current_user) %>

@@ -6,14 +6,17 @@ class TicketsController < ApplicationController
     @ticket.repair = params[:ticket][:repair]
     @ticket.description = params[:ticket][:description]
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-    @ticket.user_address = params[:ticket][:user_address]
+    @ticket.street = params[:ticket][:street]
+    @ticket.city = params[:ticket][:city]
+    @ticket.province = params[:ticket][:province]
+    @ticket.country = params[:ticket][:country]
 
-    # binding.pry
-    if @ticket.save
+    if @ticket.save!
       flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
     else
       flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
+      puts "didn't work"
       render 'new'
       # comment more commments
     end
@@ -50,11 +53,6 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
-      @ticket.surgeon_address = params[:ticket][:surgeon_address]
-
-
-
-
       @ticket.save
       redirect_to accepted_path
     else
@@ -76,14 +74,6 @@ class TicketsController < ApplicationController
     # end
   end
 
-  def accepted
-    @ticket = Ticket.find(params[:id])
-    if current_user == @ticket.user_id || current_user == @ticket.surgeon_id
-      render
-    else
-      redirect_to root_url
-    end
-  end
 
   def destroy
     Ticket.find(params[:id]).destroy

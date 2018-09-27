@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_192814) do
+ActiveRecord::Schema.define(version: 2018_09_27_212624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,22 +41,18 @@ ActiveRecord::Schema.define(version: 2018_09_27_192814) do
     t.bigint "user_id"
     t.integer "repair"
     t.text "description"
-    t.integer "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "ticket_accepted", default: false
     t.integer "surgeon_id"
     t.boolean "active", default: true
-    t.float "user_latitude"
-    t.float "user_longitude"
-    t.text "user_address"
-    t.string "user_street"
-    t.string "user_city"
-    t.string "user_province"
-    t.text "surgeon_address"
-    t.string "surgeon_street"
-    t.string "surgeon_city"
-    t.string "surgeon_province"
+    t.string "street"
+    t.string "city"
+    t.string "province"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
+    t.text "address"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
