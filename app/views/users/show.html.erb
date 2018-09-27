@@ -26,13 +26,6 @@
      </div>
 
 
-     <%# if @user.surgeon == nil && @user.id == session[:user_id]  %>
-     <%# if @surgeon_tickets == nil %>
-     <%# else %>
-
-
-
-
     <div id="surgery_in_progress">
       <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
         <h2>Surgery in Progress</h2>

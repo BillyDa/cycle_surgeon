@@ -1,9 +1,17 @@
+<h1>Surgery in progress</h1>
+<%= image_tag(
+  "http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}
+&size=700x800&zoom=15&markers=color:blue%7C#{@user.latitude},"" #{@user.longitude}""&markers=#{@ticket.user_address}")%>
+
+<%= image_tag(
+  "http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}
+&size=700x800&zoom=15&markers=color:blue%7C#{@user.latitude},"" #{@user.longitude}""&markers=#{@ticket.latitude},#{@ticket.longitude}")%>
+
 <h1>Operating Table</h1>
   <%= image_tag(
   "http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}
   &size=700x800&zoom=15&markers=color:blue%7C#{@user.latitude},"" #{@user.longitude}""&markers=#{@ticket.user_address}")
   %>
-
 
 <h3>Surgeon Location</h3>
 <p><%= "Surgeon Starting Address: #{@current_user.address}" %></p>
@@ -14,9 +22,6 @@
 <p><%= "Cyclist Latitude: #{@ticket.longitude}" %></p>
 <p><%= "Cyclist Longitude: #{@ticket.latitude}" %></p>
 
-<p><%= @ticket_repair_string %></p>
-
 <h3>Ticket Status</h3>
 <%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %><br / >
 <%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br />
-
