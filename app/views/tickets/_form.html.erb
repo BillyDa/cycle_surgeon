@@ -12,21 +12,15 @@
           <li><%= msg %></li>
         <% end %>
       </ul>
-      <% end %>
+
     </div>
+  <% end %>
 
     <div>
       <% f.label :user_id %>
       <% f.hidden_field :user_id %>
     </div>
 
-
-    <div>
-      <%= form_for @ticket do |f| %>
-      <div>
-        <%= f.label :street %>
-        <%= f.text_field :street, placeholder: '220 King Street West' %>
-      </div>
 
       <div>
         <%= f.label :city %>

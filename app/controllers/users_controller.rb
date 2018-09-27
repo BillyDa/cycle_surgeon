@@ -34,7 +34,6 @@ class UsersController < ApplicationController
     @user.surgeon = params[:user][:surgeon]
     @user.address = params[:user][:address]
 
-
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_url(@user.id)

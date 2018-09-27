@@ -19,6 +19,7 @@ geocoded_by :user_address
   end
 
   def geocode_user
+
     coords = Geocoder.search([street, city, province, country].to_s).first.coordinates
     self.latitude = coords[0].to_f
     self.longitude = coords[1].to_f
@@ -26,6 +27,7 @@ geocoded_by :user_address
 
 
 
-has_many :tickets
+
+  has_many :tickets
 # Users can create many tickets
 end

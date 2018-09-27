@@ -11,12 +11,13 @@ class TicketsController < ApplicationController
     @ticket.province = params[:ticket][:province]
     @ticket.country = params[:ticket][:country]
 
-    if @ticket.save!
-      flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
+
+    # binding.pry
+    if @ticket.save
+      flash[:alert] = ["Request submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
     else
-      flash.now[:alert] = ["Your ticket was not submitted successfully. Please review your information."]
-      puts "didn't work"
+      flash.now[:alert] = ["Your request was not submitted successfully. Please review your information."]
       render 'new'
       # comment more commments
     end
@@ -32,8 +33,6 @@ class TicketsController < ApplicationController
       @ticket.surgeon_id = @ticket[:surgeon_id]
       @ticket.active = @ticket[:active]
     end
-
-
 
   end
 
@@ -53,13 +52,15 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
+
+      @ticket.surgeon_address = params[:ticket][:surgeon_address]
+
       @ticket.save
       redirect_to accepted_path
     else
       @ticket.active = false
       @ticket.save
       redirect_to tickets_url
-
     end
   end
 
@@ -74,10 +75,9 @@ class TicketsController < ApplicationController
     # end
   end
 
-
   def destroy
     Ticket.find(params[:id]).destroy
-    flash[:success] = "Ticket has been deleted"
+    flash[:success] = "Request has been deleted"
     redirect_to root_url
   end
 
