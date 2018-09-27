@@ -1,18 +1,17 @@
 <%= form_for @ticket do |f| %>
-<% if @ticket.errors.any? %>
-  <div class="errors-block">
-    There are
-    <%= pluralize(@ticket.errors.count, "error") %>.
-    <ul>
-      <% @ticket.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
-  </div>
+  <% if @ticket.errors.any? %>
+    <div class="errors-block">
+      There are
+      <%= pluralize(@ticket.errors.count, "error") %>.
+      <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <p><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
-
 
   <div>
     <% f.label :user_id %>
@@ -29,11 +28,11 @@
     <% f.hidden_field :ticket_id, :value => @ticket.id %>
   </div>
 
-  <div=id="user_lat">
-  <%= f.hidden_field :user_lat %>
+  <div=id="user_latitude">
+    <%= f.hidden_field :user_latitude %>
   </div>
-  <div=id="user_lon">
-  <%= f.hidden_field :user_lon %>
+  <div=id="user_lonitude">
+    <%= f.hidden_field :user_longitude %>
   </div>
   <div id="radio_tag">
     <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />

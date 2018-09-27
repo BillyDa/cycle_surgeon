@@ -19,12 +19,12 @@ geocoded_by :address_user
     [address]
   end
 
-def geocode_user
-  coords = Geocoder.search(address).first.coordinates
-  self.latitude = cords[0].to_f
-  self.longitude = cords[1].to_f
-end
+  def geocode_user
+    coords = Geocoder.search(address).first.coordinates
+    self.latitude = cords[0].to_f
+    self.longitude = cords[1].to_f
+  end
 
-has_many :tickets
+  has_many :tickets
 # Users can create many tickets
 end
