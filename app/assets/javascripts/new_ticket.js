@@ -10,7 +10,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
   }
  });
-
-// function myFunction() {
-//     document.querySelectorAll(".button_image").style.cssText = 'border: 1px solid black';
-// }

@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+}
+
+ .wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
+   background-size: cover;
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+ }
+
+.links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-start: 3;
+}
+.links > p {
+  text-decoration: none;
+  display: inline-block;
+  float: left;
+  color: black;
+  grid-column-start: 2;
+  grid-row-start: 1;
+}
+
+.links > p > a {
+  text-decoration: none;
+  color: black;
+}
+
+.links > a {
+  margin-top: 16px;
+  text-decoration: none;
+  color: black;
+}
+
+#user_name {
+  grid-row-start: 3;
+}
+
+#surgery_in_progress {
+  grid-row-start: 4;
+}
+
+#sched_surgery {
+  grid-row-start: 5;
+}
