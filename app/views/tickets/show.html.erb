@@ -2,31 +2,40 @@
 
 
 <!-- If the current user is truthy -->
-<h1>Help Request #<%= @ticket.id %></h1>
-<div>
-  <h3>
-    Cyclist: <%= @cyclist_username %>
-  </h3>
-  <h3>
-    Type of repair: <%= @ticket.repair_string %>
-  </h3>
+  <h1>Help Request #<%= @ticket.id %></h1>
+    <div>
+      <h3>
+        Cyclist: <%= @cyclist_username %>
+      </h3>
+      <h3>
+        Type of repair: <%= @ticket.repair_string %>
+      </h3>
 
-  <h3>
-    Cyclist address: <%= @ticket.cyclist_location %>
-  </h3>
+      <h3>
+        Cyclist address: <%= @ticket.user_address%>
+      </h3>
+    </div>
 
-</div>
+  <div>
+    <%= form_for @ticket do |f| %>
+      <%= f.label :accept_ticket? %>
+      <%= f.check_box :ticket_accepted %>
 
-<div>
-  <%= form_for @ticket do |f| %>
-    <%= f.label :accept_ticket? %>
-    <%= f.check_box :ticket_accepted %>
+      <%= f.label :surgeon_street %>
+      <%= f.text_field :surgeon_street %>
 
-    <%= f.hidden_field :surgeon_id, value: current_user  %>
+      <%= f.label :surgeon_city %>
+      <%= f.text_field :surgeon_city %>
 
-    <%= f.submit %>
-  <% end %>
-</div>
+      <%= f.label :surgeon_province %>
+      <%= f.text_field :surgeon_province %>
+
+
+      <%= f.hidden_field :surgeon_id, value: current_user  %>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
 
 <% else %>
 <!-- If current user is anything but a surgeon -->
@@ -35,19 +44,22 @@
     <p>An email has been sent to <%= @user.email %></p>
   <% else %>
     <h1>Your request is awaiting approval</h1>
+
+    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@ticket.user_latitude},#{@ticket.user_longitude}&markers=#{@ticket.user_latitude},#{@ticket.user_longitude}&zoom=12&size=640x400&key=#{ENV['GEO_KEY3']}" %>
+
     <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
   <% end %>
-  <div>
-    <h3>
-      Type of repair: <%= @ticket.repair_string %>
-    </h3>
-    <h3>
-      Your address: <%= @ticket.cyclist_location %>
-    </h3>
-  </div>
+    <div>
+      <h3>
+        Type of repair: <%= @ticket.repair_string %>
+      </h3>
+      <h3>
+        Your address: <%= @ticket.cyclist_location %>
+      </h3>
+    </div>
 
-  <div>
-    <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+    <div>
+      <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
 <% end %>
 
     <%= link_to 'Return to your dashboard', user_path(current_user) %>

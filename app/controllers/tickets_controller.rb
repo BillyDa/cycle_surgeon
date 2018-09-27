@@ -4,13 +4,20 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new
     @ticket.user_id = current_user.id
     @ticket.repair = params[:ticket][:repair]
-    @ticket.distance = params[:ticket][:distance]
-    @ticket.user_lat = params[:ticket][:user_lat]
-    @ticket.user_lon = params[:ticket][:user_lon]
-    @ticket.surgeon_lat = params[:ticket][:surgeon_lat]
-    @ticket.surgeon_lat = params[:ticket][:surgeon_lon]
     @ticket.description = params[:ticket][:description]
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
+    @ticket.user_street = params[:ticket][:user_street]
+    @ticket.user_city = params[:ticket][:user_city]
+    @ticket.user_province = params[:ticket][:user_province]
+
+    # @ticket.surgeon_street = params[:ticket][:surgeon_street]
+    # @ticket.surgeon_city = params[:ticket][:surgeon_city]
+    # @ticket.surgeon_province = params[:ticket][:surgeon_province]
+    # @ticket.user_latitude = params[:ticket][:user_latitude]
+    # @ticket.user_longitude = params[:ticket][:user_longitude]
+    # @ticket.surgeon_latitude = params[:ticket][:surgeon_latitude]
+    # @ticket.surgeon_longitude = params[:ticket][:surgeon_longitude]
+
     if @ticket.save
       flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
@@ -29,7 +36,10 @@ class TicketsController < ApplicationController
     if current_user.surgeon == true
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
       @ticket.surgeon_id = @ticket[:surgeon_id]
+      @ticket.active = @ticket[:active]
     end
+
+
 
   end
 
@@ -49,11 +59,16 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
-      @ticket.surgeon_lat = params[:ticket][:surgeon_lat]
-      @ticket.surgeon_lat = params[:ticket][:surgeon_lon]
+      @ticket.surgeon_street = params[:ticket][:surgeon_street]
+      @ticket.surgeon_city = params[:ticket][:surgeon_city]
+      @ticket.surgeon_province = params[:ticket][:surgeon_province]
+
+
       @ticket.save
       redirect_to accepted_path
     else
+      @ticket.active = false
+      @ticket.save
       redirect_to tickets_url
 
     end

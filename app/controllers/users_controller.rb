@@ -5,21 +5,14 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @ticket = Ticket.find(params[:id])
-    # @ticket_repair_string = Ticket.repair_types[@ticket.id]
-
-    # @user_accepted = @tickets.ticket_id
-   # @user_accepted = @tickets.ticket_accepted
-   # @surgeon_username = User.find(@ticket.surgeon_id).username
     @user_tickets = Ticket.all.where(ticket_accepted: nil, user_id: current_user.id)
 
     if @user.surgeon == true
-      @ticket_in_progress = Ticket.all.where(ticket_accepted: true, surgeon_id: current_user.id)
+      @ticket_in_progress = Ticket.all.where(ticket_accepted: true, surgeon_id: current_user.id, active: true)
 
     elsif @user.surgeon == nil || @user.surgeon == false
-      @ticket_in_progress_cyc = Ticket.all.where(ticket_accepted: true, user_id: current_user.id)
+      @ticket_in_progress_cyc = Ticket.all.where(ticket_accepted: true, user_id: current_user.id, active: true)
 
-      # @surgeon_tickets = Ticket.all.where(surgeon_id: current_user.id)
     end
 
     if current_user.id == session[:user_id]

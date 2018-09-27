@@ -10,14 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_24_155908) do
+ActiveRecord::Schema.define(version: 2018_09_26_183505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accepteds", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tickets", force: :cascade do |t|
-
     t.integer "user_id"
     t.integer "repair"
     t.text "description"
@@ -32,6 +35,19 @@ ActiveRecord::Schema.define(version: 2018_09_24_155908) do
     t.float "user_lon"
     t.float "surgeon_lat"
     t.float "surgeon_lon"
+    t.boolean "active", default: true
+    t.float "user_latitude"
+    t.float "user_longitude"
+    t.text "user_address"
+    t.string "user_street"
+    t.string "user_city"
+    t.string "user_province"
+    t.float "surgeon_latitude"
+    t.float "surgeon_longitude"
+    t.text "surgeon_address"
+    t.string "surgeon_street"
+    t.string "surgeon_city"
+    t.string "surgeon_province"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 

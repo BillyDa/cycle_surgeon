@@ -1,5 +1,5 @@
 require_relative 'boot'
-
+require 'google_maps_service'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -16,4 +16,15 @@ module CycleSurgeon
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
   end
+
+  # Setup global parameters
+GoogleMapsService.configure do |config|
+  config.key = ENV['GEO_KEY3']
+  config.retry_timeout = 20
+  config.queries_per_second = 10
+end
+
+# Initialize client using global parameters
+# gmaps = GoogleMapsService::Client.new
+
 end
