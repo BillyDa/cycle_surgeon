@@ -2,12 +2,19 @@
 <html lang=“en” dir=“ltr”>
  <head>
    <meta charset=“utf-8”>
-   <title></title>
+   <title>User Dashboard</title>
+   <link rel="stylesheet" href="../../assets/profile.css">
  </head>
  <body>
-   <h1>Your Dashboard</h1>
-   <%= 'Hello'%>
-   <%= current_user.username%>  <br />
+   <div class="wrapper">
+     <div class="links">
+       <% if @user.surgeon && @user.id == session[:user_id]%>
+         <%= link_to 'See All Active Tickets', tickets_url%><br />
+       <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
+         <%= link_to 'Submit a Ticket', new_ticket_url %><br />
+       <% end %>
+      <p><%= link_to "Logout", user_session_path, method: 'delete' %><p>
+     </div>
 
    <div class="cyclist">
      <% if @user.surgeon && @user.id == session[:user_id]%>
@@ -34,7 +41,41 @@
         <% end %>
       <% end %>
     </div>
+   
+     <h1>Your Dashboard</h1>
+     <div id="user_name">
+       <%= 'Hello'%>
+       <%= current_user.username%>  <br />
+     </div>
 
+
+     <%# if @user.surgeon == nil && @user.id == session[:user_id]  %>
+     <%# if @surgeon_tickets == nil %>
+     <%# else %>
+
+
+
+
+    <div id="surgery_in_progress">
+      <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
+        <h2>Surgery in Progress</h2>
+          <% @ticket_in_progress_cyc.each do |ticket|%>
+            <% if ticket.ticket_accepted == true %>
+              <%= "Date created: #{ticket.created_at}"%><br />
+              <%= "Repair Type: #{ticket.repair_string}"%><br />
+              <%= link_to "Examination room", ticket_url(ticket.id)%><br />
+              <%= "Your surgeon is en route!" %><br />
+            <% end %>
+          <% end %>
+         <% end %>
+
+      <% if @user.surgeon == true && @user.id == session[:user_id]%>
+        <h2>Surgery in Progress</h2>
+          <% @ticket_in_progress.each do |ticket|%>
+            <% if ticket.ticket_accepted == true %>
+              <%= "Date created: #{ticket.created_at}"%><br />
+              <%= "Repair Type: #{ticket.repair_string}"%><br />
+              <%= link_to "Examination room", accepted_url(ticket.id)%><br />
 
 
     <% if @user.surgeon == true && @user.id == session[:user_id]%>
@@ -43,9 +84,28 @@
           <%= f.label :address %>
           <%= f.text_field :address %>
 
+   <% if @user.surgeon == true && @user.id == session[:user_id]%>
+   <div>
+     <%= form_for @user do |f| %>
+       <%= f.label :street %>
+       <%= f.text_field :street, placeholder: '220 King Street West' %>
+       <%= f.label :city %>
+       <%= f.text_field :city, placeholder: 'Toronto' %>
+       <%= f.label :province %>
+       <%= f.text_field :province, placeholder: 'Ontario' %>
+       <%= f.label :country %>
+       <%= f.text_field :country, placeholder: 'Canada' %>
+
+
+       <%= f.submit %>
+     <% end %>
+   </div>
+
+
           <%= f.submit %>
         <% end %>
       </div>
+
 
     <h2>Surgery in Progress</h2>
       <% @ticket_in_progress.each do |ticket|%>
@@ -60,6 +120,18 @@
 
     <% if !@user.surgeon%>
 
+
+
+            <% end %>
+          <% end %>
+         <% end %>
+
+    </div>
+    <div id="sched_surgery">
+      <% if !@user.surgeon %>
+      <% end %>
+
+
     <h2>Scheduled Surgeries</h2>
       <% @user_tickets.each do |pending| %>
         <%= "Date created: #{pending.created_at}" %><br />
@@ -68,8 +140,18 @@
         <%= "Awaiting surgeon response" %>
       <% end %>
 
+
     <% end %>
 
     <p><%= link_to "Logout", logout_path, method: 'delete' %><p>
+
+       <%# else %>
+       <%# end %>
+    </div>
+
+
+   </div>
+
+
  </body>
 </html>

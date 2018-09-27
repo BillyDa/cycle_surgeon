@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Available Tickets</title>
+    <link rel="stylesheet" href="../../assets/tickets_html.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <p>
+        <%= link_to 'Return to your dashboard', user_path(current_user) %>
+      </p>
+      <h1>Available Tickets</h1>
+      <div class="ticket">
+        <% @tickets.each do |i| %>
+           <%= 'Address: ' %><%= i.cyclist_location%><br />
+           <%= 'Repair Type: '%><%= i.repair_string%><br />
+           <%= 'Description: '%><%= i.description%><br />
+           <%= link_to 'Review Ticket', ticket_url(i.id)%><br />
+           <br />
+        <% end %>
+      </div>
+
 
 <h1>Available Tickets</h1>
 
@@ -10,3 +33,8 @@
 <% end %>
 
 <%= link_to 'Return to your dashboard', user_path(current_user) %>
+=======
+    </div>
+  </body>
+</html>
+

@@ -1,3 +1,7 @@
+<div class="dashboard">
+    <p><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
+</div>
+
 <%= form_for @ticket do |f| %>
   <% if @ticket.errors.any? %>
     <div class="errors-block">
@@ -8,85 +12,74 @@
           <li><%= msg %></li>
         <% end %>
       </ul>
+
     </div>
   <% end %>
 
-  <p><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
+    <div>
+      <% f.label :user_id %>
+      <% f.hidden_field :user_id %>
+    </div>
 
-  <div>
-    <% f.label :user_id %>
-    <% f.hidden_field :user_id %>
-  </div>
 
-  <div>
-    <%= f.label :user_address %>
-    <%= f.text_field :user_address, placeholder: "220 King Street West, Toronto, ON" %>
-  </div>
-
-  <div>
-    <% f.label :ticket_id %>
-    <% f.hidden_field :ticket_id, :value => @ticket.id %>
-  </div>
-
-  <div=id="user_latitude">
-    <%= f.hidden_field :user_latitude %>
-  </div>
-  <div=id="user_lonitude">
-    <%= f.hidden_field :user_longitude %>
-  </div>
-  <div id="radio_tag">
-    <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
-      <%= f.label :hydraulic_disc %>
-      <%= f.radio_button :repair, 0 %><br />
-      <%= f.label :handle_bar %>
-      <%= f.radio_button :repair, 1 %><br />
-      <%= f.label :brake %>
-      <%= f.radio_button :repair, 2 %><br />
-      <%= f.label :saddle %>
-      <%= f.radio_button :repair, 3 %><br />
-      <%= f.label :lever %>
-      <%= f.radio_button :repair, 4 %><br />
-      <%= f.label :v_brake %>
-      <%= f.radio_button :repair, 5 %><br />
-      <%= f.label :flat_tire %>
-      <%= f.radio_button :repair, 6 %><br />
-      <%= f.label :tune_up %>
-      <%= f.radio_button :repair, 7 %><br />
-      <%= f.label :other %>
-      <%= f.radio_button :repair, 8 %><br />
-  </div>
-
-  <div id="radio_images">
-    <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
-      <div class="button_image">
-        <%= b.label { image_tag(b.text+'.png') } %>
-        <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
+      <div>
+        <%= f.label :city %>
+        <%= f.text_field :city, placeholder: 'Toronto' %>
       </div>
-    <% end %>
+
+      <div>
+        <%= f.label :province %>
+        <%= f.text_field :province, placeholder: 'Ontario' %>
+
+        <%= f.label :country %>
+        <%= f.text_field :country, placeholder: 'Canada' %>
+      <% end %>
+    </div>
+    <div>
+      <% f.label :ticket_id %>
+      <% f.hidden_field :ticket_id, :value => @ticket.id %>
+    </div>
+
+    <div id="radio_tag">
+      <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
+        <%= f.label :hydraulic_disc %>
+        <%= f.radio_button :repair, 0 %><br />
+        <%= f.label :handle_bar %>
+        <%= f.radio_button :repair, 1 %><br />
+        <%= f.label :brake %>
+        <%= f.radio_button :repair, 2 %><br />
+        <%= f.label :saddle %>
+        <%= f.radio_button :repair, 3 %><br />
+        <%= f.label :lever %>
+        <%= f.radio_button :repair, 4 %><br />
+        <%= f.label :v_brake %>
+        <%= f.radio_button :repair, 5 %><br />
+        <%= f.label :flat_tire %>
+        <%= f.radio_button :repair, 6 %><br />
+        <%= f.label :tune_up %>
+        <%= f.radio_button :repair, 7 %><br />
+        <%= f.label :other %>
+        <%= f.radio_button :repair, 8 %><br />
+    </div>
+
+    <div id="radio_images">
+      <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
+        <div class="button_image">
+          <%= b.label { image_tag(b.text+'.png') } %>
+          <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
+    </div>
+
+<div>
+      <%= f.submit "Submit" %>
+    </div>
+  <div class="submit">
+    <%= f.submit %>
   </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
-  </div>
-
-<!--
-
-  <div>
-    <%#= f.label :cyclist_location %>
-    <%#= f.text_field :cyclist_location %>
-  </div>
-
-  <div>
-    <%#= f.label :surgeon_location %>
-    <%#= f.text_field :surgeon_location %>
-  </div>
-
-  <div>
-    <%#= f.label :distance %>
-    <%#= f.text_field :distance %>
-  </div>
--->
-
-  <%= f.submit %>
 <% end %>

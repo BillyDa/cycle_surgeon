@@ -45,8 +45,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.address = params[:user][:address]
-    @user.save
+    @user.street = params[:user][:street]
+    @user.city = params[:user][:city]
+    @user.province = params[:user][:province]
+    @user.country = params[:user][:country]
+    @user.save!
     redirect_to user_url(@user.id)
   end
 

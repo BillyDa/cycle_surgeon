@@ -15,7 +15,6 @@ Rails.application.configure do
 
   config.serve_static_assets = false
   # config.assets.js_compressor = :uglifier
-  config.assets.compile = false
   config.assets.digest = true
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?

@@ -1,25 +1,24 @@
 class Ticket < ApplicationRecord
 
-  validates :user_id, presence: true
-  validates :description, presence: true
-  validates :repair, presence: true
+validates :user_id, presence: true
 
-  geocoded_by :user_address
-  # geocoded_by :surgeon_address
-  # after_validation :geocode_surgeon
+geocoded_by :user_address
   after_validation :geocode_user
 
-  def geocode_user
-    coords = Geocoder.search(user_address).first.coordinates
-    self.user_latitude = coords[0].to_f
-    self.user_longitude = coords[1].to_f
+  def save_full_user_address
+    self.address = full_user_address
   end
 
-  # def geocode_surgeon
-  #   coords = Geocoder.search(surgeon_address).first.coordinates
-  #   self.surgeon_latitude = coords[0].to_f
-  #   self.surgeon_longitude = coords[1].to_f
-  # end
+  def user_address
+      [street, city, province, country].compact.join(', ')
+  end
+
+  def geocode_user
+    coords = Geocoder.search([street, city, province, country].to_s).first.coordinates
+    self.latitude = coords[0].to_f
+    self.longitude = coords[1].to_f
+  end
+
 
 
   def self.repair_types

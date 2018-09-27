@@ -6,7 +6,11 @@ class TicketsController < ApplicationController
     @ticket.repair = params[:ticket][:repair]
     @ticket.description = params[:ticket][:description]
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-    @ticket.user_address = params[:ticket][:user_address]
+    @ticket.street = params[:ticket][:street]
+    @ticket.city = params[:ticket][:city]
+    @ticket.province = params[:ticket][:province]
+    @ticket.country = params[:ticket][:country]
+
 
     # binding.pry
     if @ticket.save
@@ -48,6 +52,7 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
+
       @ticket.surgeon_address = params[:ticket][:surgeon_address]
 
       @ticket.save
