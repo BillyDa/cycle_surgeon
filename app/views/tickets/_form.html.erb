@@ -20,9 +20,12 @@
   </div>
 
   <div>
+    <h3>This is where the user location stuff would occur</h3>
+
     <%= f.label :user_street %>
     <%= f.text_field :user_street, placeholder: "220 King Street West" %>
-  </div>
+  </div>git push --set-upstream origin radiobutton
+
 
   <div>
     <%= f.label :user_city %>
@@ -32,6 +35,7 @@
   <div>
     <%= f.label :user_province %>
     <%= f.text_field :user_province, placeholder: "ON" %>
+
   </div>
 
   <div>
@@ -39,16 +43,41 @@
     <% f.hidden_field :ticket_id, :value => @ticket.id %>
   </div>
 
+  <div=id="user_lat">
+  <%= f.hidden_field :user_lat %>
+  </div>
+  <div=id="user_lon">
+  <%= f.hidden_field :user_lon %>
+  </div>
+  <div id="radio_tag">
+    <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
+      <%= f.label :hydraulic_disc %>
+      <%= f.radio_button :repair, 0 %><br />
+      <%= f.label :handle_bar %>
+      <%= f.radio_button :repair, 1 %><br />
+      <%= f.label :brake %>
+      <%= f.radio_button :repair, 2 %><br />
+      <%= f.label :saddle %>
+      <%= f.radio_button :repair, 3 %><br />
+      <%= f.label :lever %>
+      <%= f.radio_button :repair, 4 %><br />
+      <%= f.label :v_brake %>
+      <%= f.radio_button :repair, 5 %><br />
+      <%= f.label :flat_tire %>
+      <%= f.radio_button :repair, 6 %><br />
+      <%= f.label :tune_up %>
+      <%= f.radio_button :repair, 7 %><br />
+      <%= f.label :other %>
+      <%= f.radio_button :repair, 8 %><br />
+  </div>
 
-</div>
-  <div>
-    <%= f.label :repair_type %> <%='. Please choose the most applicable option' %>
-    <% Ticket.repair_types.each do |repair_code, repair_string| %>
-      <p>
-      <%= f.label repair_string %>
-      <%= f.radio_button :repair, repair_code %>
-    </p>
-      <% end %>
+  <div id="radio_images">
+    <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
+      <div class="button_image">
+        <%= b.label { image_tag(b.text+'.png') } %>
+        <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
+      </div>
+    <% end %>
   </div>
 
   <div>
