@@ -7,6 +7,9 @@
   </head>
   <body>
     <div class="wrapper">
+      <p>
+        <%= link_to 'Return to your dashboard', user_path(current_user) %>
+      </p>
       <h1>Available Tickets</h1>
       <div class="ticket">
         <% @tickets.each do |i| %>
@@ -18,9 +21,7 @@
         <% end %>
       </div>
 
-      <p>
-        <%= link_to 'Return to your dashboard', user_path(current_user) %>
-      </p>
+
 
     </div>
 
