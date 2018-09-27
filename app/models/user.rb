@@ -26,6 +26,7 @@ geocoded_by :user_address
 
 
 
-has_many :tickets
+
+  has_many :tickets
 # Users can create many tickets
 end

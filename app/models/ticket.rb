@@ -20,7 +20,8 @@ geocoded_by :user_address
   end
 
 
-def self.repair_types
+
+  def self.repair_types
     return {
       0 => "Hydraulic Disc",
       1 => "Handle Bar",
@@ -32,33 +33,33 @@ def self.repair_types
       7 => "Tune Up",
       8 => "Other"
     }
-end
-
-def repair_string
-  case repair
-  when 0
-    return "Hydraulic Disc"
-  when 1
-    return "Handle Bar"
-  when 2
-    return "Brake"
-  when 3
-    return "Saddle"
-  when 4
-    return "Lever"
-  when 5
-    return "V Brake"
-  when 6
-    return "Flat Tire"
-  when 7
-    return "Tune Up"
-  when 8
-    return "Other"
   end
+
+  def repair_string
+    case repair
+    when 0
+      return "Hydraulic Disc"
+    when 1
+      return "Handle Bar"
+    when 2
+      return "Brake"
+    when 3
+      return "Saddle"
+    when 4
+      return "Lever"
+    when 5
+      return "V Brake"
+    when 6
+      return "Flat Tire"
+    when 7
+      return "Tune Up"
+    when 8
+      return "Other"
+    end
+  end
+  # Tickets belong to a user
 end
-# Tickets belong to a user
-end
-#
+  #
 # created by a cyclist
 # accepted by a surgeon (to be completed)
 # contains issue type
