@@ -50,35 +50,55 @@
     </div>
 
     <div id="radio_tag">
-      <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
-        <%= f.label :hydraulic_disc %>
-        <%= f.radio_button :repair, 0 %><br />
-        <%= f.label :handle_bar %>
-        <%= f.radio_button :repair, 1 %><br />
-        <%= f.label :brake %>
-        <%= f.radio_button :repair, 2 %><br />
-        <%= f.label :saddle %>
-        <%= f.radio_button :repair, 3 %><br />
-        <%= f.label :lever %>
-        <%= f.radio_button :repair, 4 %><br />
-        <%= f.label :v_brake %>
-        <%= f.radio_button :repair, 5 %><br />
-        <%= f.label :flat_tire %>
-        <%= f.radio_button :repair, 6 %><br />
-        <%= f.label :tune_up %>
-        <%= f.radio_button :repair, 7 %><br />
-        <%= f.label :other %>
-        <%= f.radio_button :repair, 8 %><br />
-    </div>
+       <%= f.label :repair_type %> <%='. Please choose the most applicable option' %><br />
+         <%= f.label :hydraulic_disc %>
+         <%= f.radio_button :repair, 0 %>
+         <div class="buttons">
+           <%= image_tag('hydraulic_disc.png') %><br />
+         </div>
+         <%= f.label :handle_bar %>
+         <%= f.radio_button :repair, 1 %>
+         <div class="buttons">
+           <%= image_tag('handle_bar.png') %><br />
+         </div>
+         <%= f.label :brake %>
+         <%= f.radio_button :repair, 2 %>
+         <div class="buttons">
+           <%= image_tag('brake.png') %><br />
+         </div>
+         <%= f.label :saddle %>
+         <%= f.radio_button :repair, 3 %>
+         <div class="buttons">
+           <%= image_tag('saddle.png') %><br />
+         </div><br />
+         <%= f.label :lever %>
+         <%= f.radio_button :repair, 4 %>
+         <div class="buttons">
+           <%= image_tag('lever.png') %><br />
+         </div>
+         <%= f.label :v_brake %>
+         <%= f.radio_button :repair, 5 %>
+         <div class="buttons">
+           <%= image_tag('v_brake.png') %><br />
+         </div>
+         <%= f.label :flat_tire %>
+         <%= f.radio_button :repair, 6 %>
+         <div class="buttons">
+           <%= image_tag('flat_tire.png') %><br />
+         </div>
+         <%= f.label :tune_up %>
+         <%= f.radio_button :repair, 7 %>
+         <div class="buttons">
+           <%= image_tag('tune_up.png') %><br />
+         </div>
+         <%= f.label :other %>
+         <%= f.radio_button :repair, 8 %>
+         <div class="buttons">
+           <%= image_tag('other.png') %><br />
+         </div>
+     </div>
 
-    <div id="radio_images">
-      <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
-        <div class="button_image">
-          <%= b.label { image_tag(b.text+'.png') } %>
-          <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
-        </div>
-      <% end %>
-    </div>
+
     <div>
       <%= f.label :description %>
       <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
