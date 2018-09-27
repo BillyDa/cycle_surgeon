@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Exo 2', sans-serif;
+}
+
+ .wrapper {
+   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
+   background-size: cover;
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+ }
+
+
+.ticket > a, p > a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+  text-align: right;
+  margin-right: 50px;
+}
