@@ -97,8 +97,9 @@
    margin-top: 5%;
  }
 
- #error_explanation ul {
+ ul {
    list-style: none;
+   padding: 0;
  }
 
  h2 {

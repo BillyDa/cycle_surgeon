@@ -2,6 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Exo 2', sans-serif;
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 #radio_tag, #radio_images > label > input {
@@ -15,6 +22,7 @@ body {
   margin: 0 auto;
   width: 50%;
   height: 50%;
+  background-color: lightgrey;
 }
 
 .button_image {
@@ -22,6 +30,7 @@ body {
   height: 150px;
   width: 150px;
   margin: 0 auto;
+  border: 1px black solid;
 }
 
 .button_image > label > img {
@@ -29,4 +38,21 @@ body {
   width: 100px;
 }
 
-input[type="radio"]:checked+label { border: 1px black solid; }
+.submit, .description {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.dashboard {
+  text-align: right;
+  margin-right: 50px;
+}
+
+.dashboard > p > a {
+  color: white;
+  text-decoration: none;
+}
