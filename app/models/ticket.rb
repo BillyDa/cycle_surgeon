@@ -2,14 +2,14 @@ class Ticket < ApplicationRecord
 
 validates :user_id, presence: true
 
-geocoded_by :user_address
+geocoded_by :address
   after_validation :geocode_user
 
   def save_full_user_address
     self.address = full_user_address
   end
 
-  def user_address
+  def address
       [street, city, state, country].compact.join(', ')
   end
 
