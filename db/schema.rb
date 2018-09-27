@@ -20,25 +20,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_192814) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "places", force: :cascade do |t|
-    t.string "title"
-    t.bigint "user_id"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "ip"
-    t.string "street"
-    t.string "city"
-    t.string "postal_code"
-    t.string "province"
-    t.text "full_address"
-    t.index ["user_id"], name: "index_places_on_user_id"
-  end
-
   create_table "tickets", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.integer "repair"
     t.text "description"
     t.integer "distance"
