@@ -86,7 +86,7 @@ div input {
 .biker_selector img {
   max-width: 100%;
   margin-top: 5%;
-  border: 5px solid transparent;
+  border: 3px solid transparent;
 }
 
 .surgeon_selector {
@@ -98,5 +98,5 @@ div input {
 .surgeon_selector img {
   max-width: 100%;
   margin-top: 5%;
-  border: 5px solid transparent;
+  border: 3px solid transparent;
 }
