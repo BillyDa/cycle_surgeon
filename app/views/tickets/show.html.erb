@@ -11,7 +11,6 @@
       <p class= "dashboard">
         <%= link_to 'Return to your dashboard', user_path(current_user) %>
       </p>
-        <!-- If the current user is truthy -->
         <h1>Help Request #<%= @ticket.id %></h1>
         <div class= "ticket">
           <h3>
@@ -20,7 +19,7 @@
           <h3>
             Type of repair: <%= @ticket.repair_string %>
           </h3>
-          
+
   <div>
     <%= form_for @ticket do |f| %>
       <%= f.label :accept_ticket? %>
@@ -34,7 +33,6 @@
 
 
 <% else %>
-<!-- If current user is anything but a surgeon -->
   <% if @ticket.ticket_accepted %>
     <h1>Your surgeon is on the way!</h1>
     <p>An email has been sent to <%= @user.email %></p>
@@ -50,7 +48,7 @@
         Type of repair: <%= @ticket.repair_string %>
       </h3>
       <h3>
-        Your address: <%#= @ticket.cyclist_location %>
+        Your address: <%= @ticket.address %>
       </h3>
     </div>
 
@@ -61,7 +59,6 @@
         </div>
 
         <% else %>
-        <!-- If current user is anything but a surgeon -->
           <% if @ticket.ticket_accepted %>
             <h1>Your surgeon is on the way!</h1>
             <p>An email has been sent to <%= @user.email %></p>
@@ -74,7 +71,7 @@
               Type of repair: <%= @ticket.repair_string %>
             </h3>
             <h3>
-              Your address: <%= @ticket.cyclist_location %>
+              Your address: <%= @ticket.address %>
             </h3>
           </div>
 
@@ -83,6 +80,5 @@
         <% end %>
       </div>
     </div>
-
   </body>
 </html>

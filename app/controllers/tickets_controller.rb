@@ -8,7 +8,7 @@ class TicketsController < ApplicationController
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
     @ticket.street = params[:ticket][:street]
     @ticket.city = params[:ticket][:city]
-    @ticket.province = params[:ticket][:province]
+    @ticket.state = params[:ticket][:state]
     @ticket.country = params[:ticket][:country]
 
     if @ticket.save!

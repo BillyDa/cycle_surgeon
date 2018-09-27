@@ -10,11 +10,11 @@ geocoded_by :user_address
   end
 
   def user_address
-      [street, city, province, country].compact.join(', ')
+      [street, city, state, country].compact.join(', ')
   end
 
   def geocode_user
-    coords = Geocoder.search([street, city, province, country].to_s).first.coordinates
+    coords = Geocoder.search([street, city, state, country].to_s).first.coordinates
     self.latitude = coords[0].to_f
     self.longitude = coords[1].to_f
   end
