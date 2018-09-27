@@ -24,8 +24,9 @@
     <div>
       <%= form_for @ticket do |f| %>
       <div>
-        <%= f.label :street %>
+        <p><%= f.label :street %>
         <%= f.text_field :street, placeholder: '220 King Street West' %>
+        "Some streets return as an error, sorry!"</p>
       </div>
 
       <div>
@@ -34,9 +35,11 @@
       </div>
 
       <div>
-        <%= f.label :province %>
-        <%= f.text_field :province, placeholder: 'Ontario' %>
+        <%= f.label :state %>
+        <%= f.text_field :state, placeholder: 'Ontario' %>
+      </div>
 
+      <div>
         <%= f.label :country %>
         <%= f.text_field :country, placeholder: 'Canada' %>
       <% end %>
@@ -81,11 +84,9 @@
       <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
     </div>
 
-<div>
-      <%= f.submit "Submit" %>
+
+    <div class="submit">
+      <%= f.submit %>
     </div>
-  <div class="submit">
-    <%= f.submit %>
-  </div>
 
 <% end %>
