@@ -21,16 +21,12 @@
       <%= f.label :accept_ticket? %>
       <%= f.check_box :ticket_accepted %>
 
-      <%= f.label :surgeon_address %>
-      <%= f.text_field :surgeon_address %>
-
-
-
       <%= f.hidden_field :surgeon_id, value: current_user  %>
 
       <%= f.submit %>
     <% end %>
   </div>
+
 
 <% else %>
 <!-- If current user is anything but a surgeon -->
@@ -49,7 +45,7 @@
         Type of repair: <%= @ticket.repair_string %>
       </h3>
       <h3>
-        Your address: <%= @ticket.cyclist_location %>
+        Your address: <%#= @ticket.cyclist_location %>
       </h3>
     </div>
 

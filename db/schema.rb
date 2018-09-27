@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_183505) do
+ActiveRecord::Schema.define(version: 2018_09_27_013651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,17 +24,11 @@ ActiveRecord::Schema.define(version: 2018_09_26_183505) do
     t.integer "user_id"
     t.integer "repair"
     t.text "description"
-    t.integer "cyclist_location"
-    t.integer "surgeon_location"
     t.integer "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "ticket_accepted", default: false
     t.integer "surgeon_id"
-    t.float "user_lat"
-    t.float "user_lon"
-    t.float "surgeon_lat"
-    t.float "surgeon_lon"
     t.boolean "active", default: true
     t.float "user_latitude"
     t.float "user_longitude"
@@ -42,8 +36,6 @@ ActiveRecord::Schema.define(version: 2018_09_26_183505) do
     t.string "user_street"
     t.string "user_city"
     t.string "user_province"
-    t.float "surgeon_latitude"
-    t.float "surgeon_longitude"
     t.text "surgeon_address"
     t.string "surgeon_street"
     t.string "surgeon_city"
@@ -58,6 +50,9 @@ ActiveRecord::Schema.define(version: 2018_09_26_183505) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "username"
+    t.text "address"
+    t.float "longitude"
+    t.float "latitude"
   end
 
 end
