@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.street = params[:user][:street]
     @user.city = params[:user][:city]
-    @user.province = params[:user][:province]
+    @user.state = params[:user][:state]
     @user.country = params[:user][:country]
     @user.save!
     redirect_to user_url(@user.id)
