@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
     if @user.surgeon == true
       @ticket_in_progress = Ticket.all.where(ticket_accepted: true, surgeon_id: current_user.id, active: true)
+      # @user.surgeon_id = current_user.id
+      # @user.address = params[:user][:address]
 
     elsif @user.surgeon == nil || @user.surgeon == false
       @ticket_in_progress_cyc = Ticket.all.where(ticket_accepted: true, user_id: current_user.id, active: true)
@@ -30,6 +32,8 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     @user.surgeon = params[:user][:surgeon]
+    @user.address = params[:user][:address]
+
 
     if @user.save
       session[:user_id] = @user.id
@@ -38,6 +42,13 @@ class UsersController < ApplicationController
       flash.now[:alert] = ['Failed to save account']
       render :new
     end
+  end
+
+  def update
+    @user = current_user
+    @user.address = params[:user][:address]
+    @user.save
+    redirect_to user_url(@user.id)
   end
 
 end

@@ -6,18 +6,9 @@ class TicketsController < ApplicationController
     @ticket.repair = params[:ticket][:repair]
     @ticket.description = params[:ticket][:description]
     @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
-    @ticket.user_street = params[:ticket][:user_street]
-    @ticket.user_city = params[:ticket][:user_city]
-    @ticket.user_province = params[:ticket][:user_province]
+    @ticket.user_address = params[:ticket][:user_address]
 
-    # @ticket.surgeon_street = params[:ticket][:surgeon_street]
-    # @ticket.surgeon_city = params[:ticket][:surgeon_city]
-    # @ticket.surgeon_province = params[:ticket][:surgeon_province]
-    # @ticket.user_latitude = params[:ticket][:user_latitude]
-    # @ticket.user_longitude = params[:ticket][:user_longitude]
-    # @ticket.surgeon_latitude = params[:ticket][:surgeon_latitude]
-    # @ticket.surgeon_longitude = params[:ticket][:surgeon_longitude]
-
+    # binding.pry
     if @ticket.save
       flash[:alert] = ["Ticket submitted successfully. A Surgeon is on the way!"]
       redirect_to ticket_url(@ticket.id)
@@ -59,9 +50,9 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
-      @ticket.surgeon_street = params[:ticket][:surgeon_street]
-      @ticket.surgeon_city = params[:ticket][:surgeon_city]
-      @ticket.surgeon_province = params[:ticket][:surgeon_province]
+      @ticket.surgeon_address = params[:ticket][:surgeon_address]
+
+
 
 
       @ticket.save

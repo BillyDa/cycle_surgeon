@@ -38,7 +38,15 @@
 
 
    <% if @user.surgeon == true && @user.id == session[:user_id]%>
-     <h2>Surgery in Progress</h2>
+   <div>
+     <%= form_for @user do |f| %>
+       <%= f.label :address %>
+       <%= f.text_field :address %>
+
+       <%= f.submit %>
+     <% end %>
+   </div>
+    <h2>Surgery in Progress</h2>
        <% @ticket_in_progress.each do |ticket|%>
          <% if ticket.ticket_accepted == true && ticket.active == true %>
            <%= "Date created: #{ticket.created_at}"%><br />
