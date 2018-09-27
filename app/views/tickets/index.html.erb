@@ -1,8 +1,10 @@
-
 <h1>Available Tickets</h1>
 
+<p>Below is a list of available operations. Please feel free to review the list below.</p>
+<p>Just click on "Review Ticket" to see additional details and take on the request!</p>
+
 <% @tickets.each do |i| %>
-   <%= 'Address: ' %><%#= i.cyclist_location%><br />
+   <%= 'Cyclist Address: '%><%= i.address_user%><br />
    <%= 'Repair Type: '%><%= i.repair_string%><br />
    <%= 'Description: '%><%= i.description%><br />
    <%= link_to 'Review Ticket', ticket_url(i.id)%><br />

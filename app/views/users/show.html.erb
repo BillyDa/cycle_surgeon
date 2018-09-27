@@ -40,12 +40,20 @@
    <% if @user.surgeon == true && @user.id == session[:user_id]%>
    <div>
      <%= form_for @user do |f| %>
-       <%= f.label :address %>
-       <%= f.text_field :address %>
+       <%= f.label :street %>
+       <%= f.text_field :street, placeholder: '220 King Street West' %>
+       <%= f.label :city %>
+       <%= f.text_field :city, placeholder: 'Toronto' %>
+       <%= f.label :province %>
+       <%= f.text_field :province, placeholder: 'Ontario' %>
+       <%= f.label :country %>
+       <%= f.text_field :country, placeholder: 'Canada' %>
+
 
        <%= f.submit %>
      <% end %>
    </div>
+
     <h2>Surgery in Progress</h2>
        <% @ticket_in_progress.each do |ticket|%>
          <% if ticket.ticket_accepted == true && ticket.active == true %>
