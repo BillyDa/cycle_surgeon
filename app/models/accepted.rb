@@ -1,0 +1,5 @@
+class Accepted < ApplicationRecord
+
+
+
+end

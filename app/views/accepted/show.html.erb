@@ -1,4 +1,15 @@
 <h1>Surgery in progress</h1>
+<%= image_tag(
+"http://maps.googleapis.com/maps/api/staticmap?key=#{ENV['GEO_KEY3']}
+&size=700x800&zoom=15&markers=color:blue%7C#{@user.latitude},"" #{@user.longitude}""&markers=#{@ticket.user_address}")
+%>
+
+<p><%= "user address = #{@user.address}" %></p>
+<p><%= "user longitude = #{@user.longitude}" %>
+<p><%= "user latitude = #{@user.latitude}" %></p>
+<p><%= "ticket address =#{@ticket.user_address}" %></p>
+<p><%= "ticket latitude = #{@ticket.user_latitude}" %></p>
+<p><%= "ticket longitude =#{@ticket.user_longitude}" %></p>
 
 <p><%= @ticket_repair_string %></p>
 <%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %><br / >

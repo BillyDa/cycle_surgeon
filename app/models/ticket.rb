@@ -4,7 +4,23 @@ validates :user_id, presence: true
 validates :description, presence: true
 validates :repair, presence: true
 
-has_many :users
+geocoded_by :user_address
+# geocoded_by :surgeon_address
+# after_validation :geocode_surgeon
+after_validation :geocode_user
+
+def geocode_user
+ coords = Geocoder.search(user_address).first.coordinates
+ self.user_latitude = coords[0].to_f
+ self.user_longitude = coords[1].to_f
+end
+
+# def geocode_surgeon
+#   coords = Geocoder.search(surgeon_address).first.coordinates
+#   self.surgeon_latitude = coords[0].to_f
+#   self.surgeon_longitude = coords[1].to_f
+# end
+
 
 def self.repair_types
     return {
