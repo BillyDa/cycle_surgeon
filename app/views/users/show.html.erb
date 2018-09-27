@@ -9,9 +9,9 @@
    <div class="wrapper">
      <div class="links">
        <% if @user.surgeon && @user.id == session[:user_id]%>
-         <%= link_to 'See all active tickets', tickets_url%><br />
+         <%= link_to 'See All Active Tickets', tickets_url%><br />
        <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-         <%= link_to 'Submit a ticket', new_ticket_url %><br />
+         <%= link_to 'Submit a Ticket', new_ticket_url %><br />
        <% end %>
       <p><%= link_to "Logout", logout_path, method: 'delete' %><p>
      </div>
