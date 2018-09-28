@@ -1,84 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>icket Request Page</title>
-    <link rel="stylesheet" href="../../assets/ticket_request.css">
-  </head>
-  <body>
-    <div class="wrapper">
-      <% if current_user.surgeon %>
-      <p class= "dashboard">
-        <%= link_to 'Return to your dashboard', user_path(current_user) %>
-      </p>
-        <h1>Help Request #<%= @ticket.id %></h1>
-        <div class= "ticket">
-          <h3>
-            Cyclist: <%= @cyclist_username %>
-          </h3>
-          <h3>
-            Type of repair: <%= @ticket.repair_string %>
-          </h3>
+ <html lang=“en” dir=“ltr”>
+   <head>
+     <meta charset=“utf-8”>
+     <title>icket Request Page</title>
+     <link rel="stylesheet" href="../../assets/ticket_request.css">
+   </head>
+   <body>
+     <div class="wrapper">
+       <% if current_user.surgeon %>
+         <p class="dashboard">
+           <%= link_to 'Return to your dashboard', user_path(current_user) %>
+         </p>
 
-  <div>
-    <%= form_for @ticket do |f| %>
-      <%= f.label :accept_ticket? %>
-      <%= f.check_box :ticket_accepted %>
+         <h1>Help Request #<%= @ticket.id %></h1>
+         <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
+         <div class= "ticket">
+           <h3>
+             Cyclist: <%= @cyclist_username %>
+           </h3>
+           <h3>
+             Address: <%= @ticket.address %> 
+             <h3>
+           <h3>
+             Type of repair: <%= @ticket.repair_string %>
+           </h3>
 
-      <%= f.hidden_field :surgeon_id, value: current_user  %>
+         <div>
+           <%= form_for @ticket do |f| %>
+             <%= f.label :accept_ticket? %>
+             <%= f.check_box :ticket_accepted %>
 
-      <%= f.submit %>
-    <% end %>
-  </div>
+             <%= f.hidden_field :surgeon_id, value: current_user  %>
+
+             <%= f.submit %>
+           <% end %>
+         </div>
 
 
-<% else %>
-  <% if @ticket.ticket_accepted %>
-    <h1>Your surgeon is on the way!</h1>
-    <p>An email has been sent to <%= @user.email %></p>
-  <% else %>
-    <h1>Your request is awaiting approval</h1>
+       <% else %>
 
-    <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@ticket.latitude},#{@ticket.longitude}&markers=#{@ticket.latitude},#{@ticket.longitude}&zoom=12&size=640x400&key=#{ENV['GEO_KEY3']}" %>
+          <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
-    <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
-  <% end %>
-    <div>
-      <h3>
-        Type of repair: <%= @ticket.repair_string %>
-      </h3>
-      <h3>
-        Your address: <%= @ticket.address %>
-      </h3>
-    </div>
+         <% if @ticket.ticket_accepted %>
+           <h1>Your surgeon is on the way!</h1>
+           <p>An email has been sent to <%= @user.email %></p>
+         <% else %>
+           <h1>Your request is awaiting approval</h1>
+           <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
+         <% end %>
+         <div>
+           <h3>
+             Type of repair: <%= @ticket.repair_string %>
+           </h3>
+           <h3>
+             Your address: <%= @ticket.address %>
+           </h3>
+         </div>
 
-            <%= f.hidden_field :surgeon_id, value: current_user  %>
-
-            <%= f.submit %>
-          <% end %>
-        </div>
-
-        <% else %>
-          <% if @ticket.ticket_accepted %>
-            <h1>Your surgeon is on the way!</h1>
-            <p>An email has been sent to <%= @user.email %></p>
-          <% else %>
-            <h1>Your request is awaiting approval</h1>
-            <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
-          <% end %>
-          <div>
-            <h3>
-              Type of repair: <%= @ticket.repair_string %>
-            </h3>
-            <h3>
-              Your address: <%= @ticket.address %>
-            </h3>
-          </div>
-
-          <div>
-            <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-        <% end %>
-      </div>
-    </div>
-  </body>
+         <div>
+           <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+       <% end %>
+     </div>
+   </div>
+ </body>
 </html>
