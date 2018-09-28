@@ -29,18 +29,17 @@
       <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
         <h2>Surgery in Progress</h2>
           <% @ticket_in_progress_cyc.each do |ticket|%>
-            <% if ticket.ticket_accepted == true %>
+            <% if ticket.ticket_accepted == false || ticket.ticket_accepted == nil %>
               <%= "Date created: #{ticket.created_at}"%><br />
               <%= "Repair Type: #{ticket.repair_string}"%><br />
               <%= link_to "Examination room", ticket_url(ticket.id)%><br />
               <%= "Your surgeon is en route!" %><br />
             <% end %>
           <% end %>
-
          <% end %>
 
       <% if @user.surgeon == true && @user.id == session[:user_id]%>
-
+      <p>Provide your location, so we can pair you with nearby cyclist in need!</p>
          <% if @user.surgeon == true && @user.id == session[:user_id]%>
          <div id="user_name">
            <%= form_for @user do |f| %>
