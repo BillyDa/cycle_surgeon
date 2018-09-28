@@ -5,9 +5,6 @@ body {
 }
 
  .wrapper {
-   /* display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
    background-size: cover;
    position: absolute;
@@ -37,6 +34,7 @@ body {
   margin-top: 16px;
   text-decoration: none;
   color: black;
+  padding-right: 25px;
 }
 
 #user_name {
