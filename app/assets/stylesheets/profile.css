@@ -62,17 +62,19 @@ h1, h2, .map {
   text-align: center;
   border: 3px green solid;
   width: 60%;
+  height: 80%;
   margin: 0 auto
 }
 
 .surgeon_location > h3, .surgeon_location > p, .cycle_location > h3, .cycle_location > p {
   display: inline-block;
-}
+} 
 
 .cycle_location {
   text-align: center;
   border: 3px red solid;
   width: 60%;
+  height: 80%;
   margin: 0 auto
 }
 
@@ -94,5 +96,5 @@ h1, h2, .map {
 }
 
 .surgeon_location > p, .cycle_location > p, .surgeon_location > h3, .cycle_location > h3 {
-  margin-top: 0;
+  margin: 0 0 10px 0;
 }
