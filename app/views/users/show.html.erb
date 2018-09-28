@@ -9,11 +9,10 @@
    <div class="wrapper">
      <div class="links">
        <% if @user.surgeon && @user.id == session[:user_id]%>
-         <%= link_to 'See All Active Tickets', tickets_url%><br />
+        <p><%= link_to 'See All Active Tickets', tickets_url%></p> <p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-         <%= link_to 'Submit a Ticket', new_ticket_url %><br />
+         <%= link_to 'Submit a Ticket', new_ticket_url %><p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% end %>
-      <p><%= link_to "Logout", user_session_path, method: 'delete' %><p>
      </div>
 
      <h1>Your Dashboard</h1>
