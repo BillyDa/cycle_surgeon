@@ -1,6 +1,7 @@
 class AcceptedController < ApplicationController
 
   def show
+    if current_user.surgeon && current_user.id == session[:user_id]
     @ticket = Ticket.find(params[:id])
     @user = current_user
     # @ticket.ticket.repair_types = Ticket.find(params[:id])
@@ -8,7 +9,9 @@ class AcceptedController < ApplicationController
     @user_surgeon_tick = Ticket.all
 
     gmaps = GoogleMapsService::Client.new
-
+      else
+        redirect_to user_url(@user.id)
+      end
   end
 
   def update
