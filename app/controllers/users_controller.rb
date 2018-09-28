@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       # @user.address = params[:user][:address]
 
     elsif @user.surgeon == nil || @user.surgeon == false
-      @ticket_in_progress_cyc = Ticket.all.where(ticket_accepted: true, user_id: current_user.id, active: true)
+      @ticket_in_progress_cyc = Ticket.all.where(user_id: current_user.id)
 
     end
 

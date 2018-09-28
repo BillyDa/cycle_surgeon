@@ -29,7 +29,7 @@
       <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
         <h2>Surgery in Progress</h2>
           <% @ticket_in_progress_cyc.each do |ticket|%>
-            <% if ticket.ticket_accepted == true %>
+            <% if ticket.ticket_accepted == false || ticket.ticket_accepted == nil %>
               <%= "Date created: #{ticket.created_at}"%><br />
               <%= "Repair Type: #{ticket.repair_string}"%><br />
               <%= link_to "Examination room", ticket_url(ticket.id)%><br />
@@ -37,51 +37,9 @@
             <% end %>
           <% end %>
 
-         <% end %>
+    <div id="sched_surgery">
 
-      <% if @user.surgeon == true && @user.id == session[:user_id]%>
 
-         <% if @user.surgeon == true && @user.id == session[:user_id]%>
-         <div id="user_name">
-           <%= form_for @user do |f| %>
-             <p>
-             <%= f.label :street %>
-             <%= f.text_field :street, placeholder: '220 King Street West' %>
-           </p>
-             <p><%= f.label :city %>
-             <%= f.text_field :city, placeholder: 'Toronto' %>
-           </p>
-           <p>
-             <%= f.label :state %>
-             <%= f.text_field :state, placeholder: 'Ontario' %>
-           </p>
-           <p>
-             <%= f.label :country %>
-             <%= f.text_field :country, placeholder: 'Canada' %>
-           </p>
-
-             <%= f.submit "Update Your Location" %>
-           <% end %>
-         </div>
-
-         <h2>Surgery in Progress</h2>
-           <% @ticket_in_progress.each do |ticket|%>
-             <% if ticket.ticket_accepted == true %>
-               <%= "Date created: #{ticket.created_at}"%><br />
-               <%= "Repair Type: #{ticket.repair_string}"%><br />
-               <div class="exam_room">
-                 <%= link_to "Examination room", accepted_url(ticket.id)%><br />
-               </div>
-
-            <% end %>
-          <% end %>
-         <% end %>
-
-          <div id="sched_surgery">
-            <% if !@user.surgeon %>
-            <% end %>
-
-          <h2>Scheduled Surgeries</h2>
             <% @user_tickets.each do |pending| %>
               <%= "Date created: #{pending.created_at}" %><br />
               <%= "Repair Type: #{pending.repair_string}" %><br />
@@ -91,8 +49,41 @@
               <%= "Awaiting surgeon" %>
             <% end %>
       <% end %>
-          </div>
+    </div>
 
+      <% if @user.surgeon == true && @user.id == session[:user_id]%>
+        <p>Provide your location, so we can pair you with nearby cyclist in need!</p>
+            <div id="user_name">
+              <%= form_for @user do |f| %>
+              <p>
+                <%= f.label :street %>
+                <%= f.text_field :street, placeholder: '220 King Street West' %>
+              </p>
+              <p>
+                <%= f.label :city %>
+                <%= f.text_field :city, placeholder: 'Toronto' %>
+              </p>
+              <p>
+                <%= f.label :state %>
+                <%= f.text_field :state, placeholder: 'Ontario' %>
+              </p>
+              <p>
+                <%= f.label :country %>
+                <%= f.text_field :country, placeholder: 'Canada' %>
+              </p>
 
+                <p><%= f.submit "Update Your Location" %></p>
+              <% end %>
+            </div>
+
+         <h2>Surgery in Progress</h2>
+           <% @ticket_in_progress.each do |ticket|%>
+             <% if ticket.ticket_accepted == true %>
+               <%= "Date created: #{ticket.created_at}"%><br />
+               <%= "Repair Type: #{ticket.repair_string}"%><br />
+               <%= link_to "Examination room", accepted_url(ticket.id)%><br />
+             <% end %>
+           <% end %>
+        <% end %>
  </body>
 </html>
