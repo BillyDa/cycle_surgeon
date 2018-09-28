@@ -1,18 +1,30 @@
-<h1>Surgery in progress</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Accepted TIcket</title>
+    <link rel="stylesheet" href="../../assets/accepted.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="nav">
+        <%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %>       <%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br / >
+      </div>
+      <div class="inside_wrapper">
+        <h1>Surgery in progress</h1>
 
-<h1>Operating Table</h1>
-  <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
+        <h1>Operating Table</h1>
+          <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
-<h3>Surgeon Location</h3>
-<p><%= "Surgeon Starting Address: #{@current_user.address}" %></p>
-<p><%= "Surgeon Starting Longitude: #{@current_user.longitude}" %></p>
-<p><%= "Surgeon Starting Latitude: #{@current_user.latitude}" %></p>
-<h3>Cyclist Location</h3>
-<p><%= "Cyclist Address: #{@ticket.address}" %></p>
-<p><%= "Cyclist Latitude: #{@ticket.longitude}" %></p>
-<p><%= "Cyclist Longitude: #{@ticket.latitude}" %></p>
-
-<h3>Ticket Status</h3>
-<%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %><br / >
-<%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br />
- 
+        <h3>Surgeon Location</h3>
+        <p><%= "Surgeon Starting Address: #{@current_user.address}" %></p>
+        <p><%= "Surgeon Starting Longitude: #{@current_user.longitude}" %></p>
+        <p><%= "Surgeon Starting Latitude: #{@current_user.latitude}" %></p>
+        <h3>Cyclist Location</h3>
+        <p><%= "Cyclist Address: #{@ticket.address}" %></p>
+        <p><%= "Cyclist Latitude: #{@ticket.longitude}" %></p>
+        <p><%= "Cyclist Longitude: #{@ticket.latitude}" %></p>
+      </div>
+    </div>
+  </body>
+</html>

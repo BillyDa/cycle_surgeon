@@ -69,8 +69,9 @@
              <% if ticket.ticket_accepted == true %>
                <%= "Date created: #{ticket.created_at}"%><br />
                <%= "Repair Type: #{ticket.repair_string}"%><br />
-               <%= link_to "Examination room", accepted_url(ticket.id)%><br />
-
+               <div class="exam_room">
+                 <%= link_to "Examination room", accepted_url(ticket.id)%><br />
+               </div>
 
             <% end %>
           <% end %>
@@ -84,7 +85,9 @@
             <% @user_tickets.each do |pending| %>
               <%= "Date created: #{pending.created_at}" %><br />
               <%= "Repair Type: #{pending.repair_string}" %><br />
-              <%= link_to "Examination room", ticket_url(pending.id) %><br />
+              <div class="exam_room">
+                <%= link_to "Examination room", ticket_url(pending.id) %><br />
+              </div>    
               <%= "Awaiting surgeon" %>
             <% end %>
       <% end %>

@@ -14,17 +14,21 @@ body {
    right: 0;
  }
 
- a {
+ .nav > a {
    text-decoration: none;
    color: black;
-   text-align: right;
+   padding-right: 15px;
  }
 
- .inside_wrapper {
-   text-align: center;
- }
+.nav {
+  text-align: right;
+  margin-top: 15px;
+}
 
- .dashboard {
-   text-align: right;
-   margin: 20px 20px 0 0;
- }
+.inside_wrapper {
+  text-align: center;
+}
+
+.inside_wrapper > p {
+  margin: 0;
+}
