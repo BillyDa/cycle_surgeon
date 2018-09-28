@@ -92,3 +92,7 @@ h1, h2, .map {
 .complete > a, .cancel> a {
   text-decoration: none;
 }
+
+.surgeon_location > p, .cycle_location > p, .surgeon_location > h3, .cycle_location > h3 {
+  margin-top: 0;
+}

@@ -23,12 +23,15 @@
       </div>
       <div class="ticket_wrapper">
         <div class="surgeon_location">
+          <p>Username: <%= current_user.username %></p><br />
           <h3>Surgeon Location</h3><br />
           <p><%= "Surgeon Starting Address: #{@current_user.address}" %></p><br />
           <p><%= "Surgeon Starting Longitude: #{@current_user.longitude}" %></p><br />
           <p><%= "Surgeon Starting Latitude: #{@current_user.latitude}" %></p><br />
         </div>
         <div class="cycle_location">
+          <p>Username: <%= @cyclist_username %></p><br />
+          <p>E-mail: <%= @cyclist_email%></p><br />
           <h3>Cyclist Location</h3><br />
           <p><%= "Cyclist Address: #{@ticket.address}" %></p><br />
           <p><%= "Cyclist Latitude: #{@ticket.longitude}" %></p><br />
@@ -46,4 +49,3 @@
     <% end %>
   </body>
 </html>
-
