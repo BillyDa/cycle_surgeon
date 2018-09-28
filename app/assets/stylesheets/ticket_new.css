@@ -11,9 +11,10 @@ body {
   right: 0;
 }
 
-#radio_tag, #radio_images > label > input {
-  display: none;
-}
+.buttons > img {
+  height: 100px;
+  width: 100px;
+} 
 
 #radio_images {
   display: grid;
