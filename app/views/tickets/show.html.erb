@@ -2,7 +2,7 @@
  <html lang=“en” dir=“ltr”>
    <head>
      <meta charset=“utf-8”>
-     <title>icket Request Page</title>
+     <title>Ticket Request Page</title>
      <link rel="stylesheet" href="../../assets/ticket_request.css">
    </head>
    <body>
@@ -19,7 +19,7 @@
              Cyclist: <%= @cyclist_username %>
            </h3>
            <h3>
-             Address: <%= @ticket.address %> 
+             Address: <%= @ticket.address %>
              <h3>
            <h3>
              Type of repair: <%= @ticket.repair_string %>
@@ -38,7 +38,9 @@
 
 
        <% else %>
-
+       <p class="dashboard">
+         <%= link_to 'Return to your dashboard', user_path(current_user) %>
+       </p>
           <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
          <% if @ticket.ticket_accepted %>

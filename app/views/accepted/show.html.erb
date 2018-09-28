@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang=“en” dir=“ltr”>
+ <head>
+   <meta charset=“utf-8”>
+   <title>User Dashboard</title>
+   <link rel="stylesheet" href="../../assets/profile.css">
+ </head>
+ <body>
+   <div class="wrapper">
+     <div class="links">
+       <% if @user.surgeon && @user.id == session[:user_id]%>
+         <%= link_to 'See All Active Tickets', tickets_url%><br />
+       <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
+         <%= link_to 'Submit a Ticket', new_ticket_url %><br />
+       <% end %>
+      <p><%= link_to "Logout", user_session_path, method: 'delete' %><p>
+     </div>
+
 <h1>Surgery in progress</h1>
 
 <h1>Operating Table</h1>
@@ -15,4 +33,6 @@
 <h3>Ticket Status</h3>
 <%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %><br / >
 <%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %><br />
- 
+
+  </body>
+</html>
