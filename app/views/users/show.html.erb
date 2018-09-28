@@ -18,23 +18,35 @@
      <h1>Your Dashboard</h1>
      <div id="user_name">
        <p>
-       <%= 'Hello'%>
-       <%= current_user.username%>
-      </p>
+         <%= 'Hello'%>
+         <%= current_user.username%>
+       </p>
      </div>
 
 
     <div id="surgery_in_progress">
       <% if @user.surgeon == false || @user.surgeon == nil && @user.id == session[:user_id]%>
         <h2>Surgery in Progress</h2>
+          <% @ticket_in_progress_cyc.each do |ticket| %>
+            <% if ticket.ticket_accepted %>
+              <%= "Date created: #{ticket.created_at}" %><br />
+              <%= "Repair type: #{ticket.repair_string}" %><br />
+              <%= link_to "Examination room", ticket_url(ticket.id) %><br />
+              <%= "Your surgeon is en route!" %>
+            <% end %>
+          <% end %>
+
+        <h2>Awaiting Surgeon</h2>
           <% @ticket_in_progress_cyc.each do |ticket|%>
             <% if ticket.ticket_accepted == false || ticket.ticket_accepted == nil %>
               <%= "Date created: #{ticket.created_at}"%><br />
               <%= "Repair Type: #{ticket.repair_string}"%><br />
               <%= link_to "Examination room", ticket_url(ticket.id)%><br />
-              <%= "Your surgeon is en route!" %><br />
+              <%= "Awaiting surgeon response..." %><br />
             <% end %>
           <% end %>
+
+
 
     <div id="sched_surgery">
 
