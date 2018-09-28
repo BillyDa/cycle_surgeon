@@ -5,9 +5,9 @@ body {
 }
 
  .wrapper {
-   display: grid;
+   /* display: grid;
    grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr 1fr 1fr 1fr; */
    background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
    background-size: cover;
    position: absolute;
@@ -17,24 +17,20 @@ body {
    right: 0;
  }
 
-.links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-start: 3;
-}
 .links > p {
-  text-decoration: none;
   display: inline-block;
-  float: left;
-  color: black;
-  grid-column-start: 2;
-  grid-row-start: 1;
+  padding-right: 25px;
 }
 
 .links > p > a {
   text-decoration: none;
   color: black;
+  text-align: right;
+}
+
+.links {
+  text-align: right;
+  margin-right: 20px;
 }
 
 .links > a {
