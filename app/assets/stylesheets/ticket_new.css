@@ -11,10 +11,9 @@ body {
   right: 0;
 }
 
-.buttons > img {
-  height: 100px;
-  width: 100px;
-} 
+#radio_tag, #radio_images > label > input {
+  display: none;
+}
 
 #radio_images {
   display: grid;
@@ -56,4 +55,31 @@ h1 {
 .dashboard > p > a {
   color: white;
   text-decoration: none;
+}
+
+#radio_tag {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 0 auto;
+  background-color: rgba(211,211,211, 0.5);
+  width: 80%;
+}
+
+#radio_tag > div > .buttons > img {
+  height: 100px;
+  width: 100px;
+}
+
+#radio_tag > div {
+  text-align: center;
+}
+
+#title {
+  height: 50px;
+  color: white;
+}
+
+.s {
+  text-align: center;
 }

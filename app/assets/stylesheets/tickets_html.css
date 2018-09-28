@@ -20,7 +20,23 @@ body {
   color: black;
 }
 
-p {
+.link_back {
   text-align: right;
   margin-right: 50px;
+}
+
+.available_tickets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+}
+
+.left {
+  grid-column-start: 1;
+  text-align: center;
+}
+
+.right {
+  grid-column-start: 2;
+  text-align: center;
 }

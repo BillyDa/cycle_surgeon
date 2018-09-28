@@ -39,11 +39,13 @@
 
     <div id="sched_surgery">
 
-        <h2>Scheduled Surgeries</h2>
+
             <% @user_tickets.each do |pending| %>
               <%= "Date created: #{pending.created_at}" %><br />
               <%= "Repair Type: #{pending.repair_string}" %><br />
-              <%= link_to "Examination room", ticket_url(pending.id) %><br />
+              <div class="exam_room">
+                <%= link_to "Examination room", ticket_url(pending.id) %><br />
+              </div>    
               <%= "Awaiting surgeon" %>
             <% end %>
       <% end %>

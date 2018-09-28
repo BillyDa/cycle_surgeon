@@ -47,6 +47,11 @@ body {
   grid-row-start: 3;
 }
 
+.exam_room > a {
+  color: black;
+  text-decoration: none;
+}
+
 #surgery_in_progress {
   grid-row-start: 4;
 }

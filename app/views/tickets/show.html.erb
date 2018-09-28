@@ -11,57 +11,64 @@
          <p class="dashboard">
            <%= link_to 'Return to your dashboard', user_path(current_user) %>
          </p>
-
-         <h1>Help Request #<%= @ticket.id %></h1>
-         <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
-         <div class= "ticket">
-           <h3>
-             Cyclist: <%= @cyclist_username %>
-           </h3>
-           <h3>
-             Address: <%= @ticket.address %>
+         <div class="inside_wrapper">
+           <h1>Help Request #<%= @ticket.id %></h1>
+           <div class="map">
+             <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
+           </div>
+           <div class= "ticket">
              <h3>
-           <h3>
-             Type of repair: <%= @ticket.repair_string %>
-           </h3>
+               Cyclist: <%= @cyclist_username %>
+             </h3>
+             <h3>
+               Address: <%= @ticket.address %>
+               </h3>
 
-         <div>
-           <%= form_for @ticket do |f| %>
-             <%= f.label :accept_ticket? %>
-             <%= f.check_box :ticket_accepted %>
+             <h3>
+               Type of repair: <%= @ticket.repair_string %>
+             </h3>
 
-             <%= f.hidden_field :surgeon_id, value: current_user  %>
+           <div>
+             <%= form_for @ticket do |f| %>
+               <%= f.label :accept_ticket? %>
+               <%= f.check_box :ticket_accepted %>
 
-             <%= f.submit %>
-           <% end %>
+               <%= f.hidden_field :surgeon_id, value: current_user  %>
+
+               <%= f.submit %>
+             <% end %>
+           </div>
          </div>
+
 
 
        <% else %>
-       <p class="dashboard">
-         <%= link_to 'Return to your dashboard', user_path(current_user) %>
-       </p>
-          <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
-         <% if @ticket.ticket_accepted %>
-           <h1>Your surgeon is on the way!</h1>
-           <p>An email has been sent to <%= @user.email %></p>
-         <% else %>
-           <h1>Your request is awaiting approval</h1>
-           <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
-         <% end %>
-         <div>
-           <h3>
-             Type of repair: <%= @ticket.repair_string %>
-           </h3>
-           <h3>
-             Your address: <%= @ticket.address %>
-           </h3>
+         <div class="dashboard">
+            <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
          </div>
+          <div class="inside_wrapper">
+            <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
-         <div>
-           <%= link_to 'Remove ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-       <% end %>
+           <% if @ticket.ticket_accepted %>
+             <h1>Your surgeon is on the way!</h1>
+             <p>An email has been sent to <%= @user.email %></p>
+           <% else %>
+             <h1>Your request is awaiting approval</h1>
+             <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p>
+           <% end %>
+           <div>
+             <h3>
+               Type of repair: <%= @ticket.repair_string %>
+             </h3>
+             <h3>
+               Your address: <%= @ticket.address %>
+             </h3>
+           </div>
+
+
+         <% end %>
+
      </div>
    </div>
  </body>
