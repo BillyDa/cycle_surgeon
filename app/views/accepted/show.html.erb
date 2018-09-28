@@ -1,7 +1,7 @@
 <h1>Surgery in progress</h1>
 
 <h1>Operating Table</h1>
-  <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=12&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
+  <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
 
 <h3>Surgeon Location</h3>
 <p><%= "Surgeon Starting Address: #{@current_user.address}" %></p>
