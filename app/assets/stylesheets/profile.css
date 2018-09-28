@@ -46,10 +46,49 @@ body {
   text-decoration: none;
 }
 
-#surgery_in_progress {
-  grid-row-start: 4;
+h1, h2, .map {
+  text-align: center;
+  margin: 0;
 }
 
-#sched_surgery {
-  grid-row-start: 5;
+.ticket_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 1fr;
+  grid-auto-rows: 100px;
+}
+
+.surgeon_location {
+  text-align: center;
+  border: 3px green solid;
+  width: 60%;
+  margin: 0 auto
+}
+
+.surgeon_location > h3, .surgeon_location > p, .cycle_location > h3, .cycle_location > p {
+  display: inline-block;
+}
+
+.cycle_location {
+  text-align: center;
+  border: 3px red solid;
+  width: 60%;
+  margin: 0 auto
+}
+
+.complete {
+  text-align: right;
+  margin-right: 25px;
+}
+
+.cancel {
+  margin-left: 25px;
+}
+
+.cancel, .complete {
+  height:25px;
+}
+
+.complete > a, .cancel> a {
+  text-decoration: none;
 }
