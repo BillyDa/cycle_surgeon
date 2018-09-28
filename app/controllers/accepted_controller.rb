@@ -1,6 +1,7 @@
 class AcceptedController < ApplicationController
 
   def show
+    if current_user.surgeon
     @ticket = Ticket.find(params[:id])
     @user = current_user
     # @ticket.ticket.repair_types = Ticket.find(params[:id])
@@ -10,7 +11,10 @@ class AcceptedController < ApplicationController
     @cyclist_email = User.find(@ticket.user_id).email
 
     gmaps = GoogleMapsService::Client.new
-
+      else
+        flash[:notice] = "Only surgeons in the OR!"
+        redirect_to user_url(@user.id)
+      end
   end
 
   def update

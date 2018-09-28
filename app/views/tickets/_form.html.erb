@@ -20,6 +20,25 @@
       <% f.hidden_field :user_id %>
     </div>
 
+    <p>Provide your location, so we can pair you with nearby surgeon!</p>
+        <div id="user_name">
+          <p>
+            <%= f.label :street %>
+            <%= f.text_field :street, placeholder: '220 King Street West' %>
+          </p>
+          <p>
+            <%= f.label :city %>
+            <%= f.text_field :city, placeholder: 'Toronto' %>
+          </p>
+          <p>
+            <%= f.label :state %>
+            <%= f.text_field :state, placeholder: 'Ontario' %>
+          </p>
+          <p>
+            <%= f.label :country %>
+            <%= f.text_field :country, placeholder: 'Canada' %>
+          </p>
+        </div>
 
 
     <div id="title">
