@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
     elsif @user.surgeon == nil || @user.surgeon == false
       @ticket_in_progress_cyc = Ticket.all.where(user_id: current_user.id)
-
     end
 
     if current_user.id == session[:user_id]
