@@ -8,7 +8,8 @@ has_secure_password
   #
 
 geocoded_by :address
-  after_validation :geocode_user
+  after_validation :geocode
+
 
   def save_full_user_address
     self.address = full_user_address
@@ -18,7 +19,7 @@ geocoded_by :address
       [street, city, state, country].compact.join(', ')
   end
 
-  def geocode_user
+  def geocode
     coords = Geocoder.search([street, city, state, country].to_s).first.coordinates
     self.latitude = coords[0].to_f
     self.longitude = coords[1].to_f

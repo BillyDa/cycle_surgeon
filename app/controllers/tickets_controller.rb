@@ -52,9 +52,6 @@ class TicketsController < ApplicationController
     if @ticket.ticket_accepted == nil
       @ticket.ticket_accepted = params[:ticket][:ticket_accepted]
       @ticket.surgeon_id = current_user.id
-
-      @ticket.surgeon_address = params[:ticket][:surgeon_address]
-
       @ticket.save
       redirect_to accepted_path
     else
