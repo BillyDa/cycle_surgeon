@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @ticket = Ticket.find(params[:id])
     @user_tickets = Ticket.all.where(ticket_accepted: nil, user_id: current_user.id)
 
     if @user.surgeon == true

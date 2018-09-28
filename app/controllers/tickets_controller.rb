@@ -33,6 +33,7 @@ class TicketsController < ApplicationController
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
       @ticket.surgeon_id = @ticket[:surgeon_id]
       @ticket.active = @ticket[:active]
+      @ticket_in_progress = Ticket.where(@ticket[:surgeon_id == @current_user.id])
 
     end
 
