@@ -21,8 +21,7 @@
        <p>
        <%= 'Hello'%>
        <%= current_user.username%>
-     </p>
-
+      </p>
      </div>
 
 
@@ -77,23 +76,20 @@
           <% end %>
          <% end %>
 
-    </div>
-    <div id="sched_surgery">
-      <% if !@user.surgeon %>
-      <% end %>
+          <div id="sched_surgery">
+            <% if !@user.surgeon %>
+            <% end %>
 
-    <h2>Scheduled Surgeries</h2>
-      <% @user_tickets.each do |pending| %>
-        <%= "Date created: #{pending.created_at}" %><br />
-        <%= "Repair Type: #{pending.repair_string}" %><br />
-        <%= link_to "Examination room", ticket_url(pending.id) %><br />
-        <%= "Awaiting surgeon" %>
+          <h2>Scheduled Surgeries</h2>
+            <% @user_tickets.each do |pending| %>
+              <%= "Date created: #{pending.created_at}" %><br />
+              <%= "Repair Type: #{pending.repair_string}" %><br />
+              <%= link_to "Examination room", ticket_url(pending.id) %><br />
+              <%= "Awaiting surgeon" %>
+            <% end %>
       <% end %>
-      <% end %>
-    </div>
+          </div>
 
-
-   </div>
 
  </body>
 </html>
