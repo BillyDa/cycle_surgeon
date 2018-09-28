@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("turbolinks:load", function(event) {
   document.getElementById("surgeon_image").onclick = function()
   {
     var checkbox = document.getElementById("user_surgeon");
