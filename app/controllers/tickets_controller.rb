@@ -29,6 +29,7 @@ class TicketsController < ApplicationController
     # Had to iterate through the active record, and access the users table
     @user = current_user
     if current_user.surgeon == true
+      @ticket = Ticket.find(params[:id])
       @ticket.ticket_accepted = @ticket[:ticket_accepted]
       @ticket.surgeon_id = @ticket[:surgeon_id]
       @ticket.active = @ticket[:active]
