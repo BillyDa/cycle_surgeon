@@ -68,7 +68,7 @@
 
 
          <% end %>
-         <%= link_to 'Cancel Ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
+         <%= link_to 'Cancel Ticket', users_path(@user_id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
 
 
      </div>
