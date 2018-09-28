@@ -35,6 +35,8 @@
               <%= "Your surgeon is en route!" %>
             <% end %>
           <% end %>
+    </div>
+      <div class="awaiting_surgery">
 
         <h2>Awaiting Surgeon</h2>
           <% @ticket_in_progress_cyc.each do |ticket|%>
@@ -45,6 +47,7 @@
               <%= "Awaiting surgeon response..." %><br />
             <% end %>
           <% end %>
+      </div>
 
 
 
