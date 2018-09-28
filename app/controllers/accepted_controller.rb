@@ -6,6 +6,8 @@ class AcceptedController < ApplicationController
     # @ticket.ticket.repair_types = Ticket.find(params[:id])
     @ticket_repair_string = Ticket.repair_types[@ticket.id]
     @user_surgeon_tick = Ticket.all
+    @cyclist_username = User.find(@ticket.user_id).username
+    @cyclist_email = User.find(@ticket.user_id).email
 
     gmaps = GoogleMapsService::Client.new
 
