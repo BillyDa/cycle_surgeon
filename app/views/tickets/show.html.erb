@@ -55,6 +55,13 @@
              <!-- <p>An email has been sent to <%= @user.email %></p> -->
            <% else %>
              <h1>Your request is awaiting a surgeon</h1>
+              <div class="clock">
+                <div class="clock-face">
+                  <div class="hand hour-hand"></div>
+                  <div class="hand min-hand"></div>
+                  <div class="hand second-hand"></div>
+                </div>
+              </div>
              <!-- <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p> -->
            <% end %>
            <div>
