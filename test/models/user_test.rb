@@ -47,6 +47,8 @@ class UserTest < ActiveSupport::TestCase
     refute @user.save
   end
 
+  
+
   test "username is unique" do
     @user.password = "abc123"
     @user.email = "r@r.com"
