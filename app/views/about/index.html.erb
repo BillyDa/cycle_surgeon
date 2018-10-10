@@ -1,8 +1,19 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <!-- Necessary to grab the icons for the contact buttons -->
+<div class="nav">
+  <div class="logo">
+    <img src="../assets/cyclesurgeon_logo.png" width:50px height: 50px>
+  </div>
+  <div class="nav-generic">
+    <ul>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'About', about_url %></li>
+    </ul>
+  </div>
+</div>
 <div class="page">
 <div class="vid">
-<iframe width="720" height="480" src="https://www.youtube.com/embed/B2EbPJCgdHI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="650" height="480" src="https://www.youtube.com/embed/B2EbPJCgdHI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 <h3><a href="https://github.com/BillyDa/cycle_surgeon">Checkout the repo</a></h3>
 
@@ -82,6 +93,8 @@
     text-align: center;
     margin-left: 10rem;
     margin-right: 10rem;
+    box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+
   }
 
   p {
@@ -97,9 +110,54 @@
     display: inline-block;
   }
 
-  img {
+  #ty > img {
     width: 250px;
     border-radius: 50%;
+  }
+
+  #bill > img {
+    width: 250px;
+    border-radius: 50%;
+  }
+
+
+  #rob > img {
+    width: 250px;
+    border-radius: 50%;
+  }
+
+  .nav, .logo {
+    height: 100px;
+    background-color: grey;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logo > img {
+    width: 250px;
+    height: 90px;
+    margin-bottom: 5px;
+    padding-left: 50px;
+  }
+
+  .nav-generic > ul > li > a{
+    color: white;
+    list-style-type: none;
+    font-size: 30px;
+    text-decoration: none;
+    padding-left: 20px;
+  }
+
+.nav-generic > ul > li > a:hover{
+  color: black;
+}
+  .nav-generic > ul{
+    display: flex;
+    padding-top: 15px;
+    padding-left: 450px;
+
   }
 
 </style>
