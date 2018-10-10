@@ -6,6 +6,11 @@ class UserTest < ActiveSupport::TestCase
   # end
   def setup
     @user = User.create
+    @user2 = User.create
+    @user2.username = 'bobby'
+    @user2.password = 'abc123'
+    @user2.email = 'r@r.com'
+    @user2.save
     # @user.email = 'lol@lol.com'
     # @user.username = 'bikes'
   end
@@ -47,12 +52,12 @@ class UserTest < ActiveSupport::TestCase
     refute @user.save
   end
 
-  
+
 
   test "username is unique" do
     @user.password = "abc123"
     @user.email = "r@r.com"
-    @user.username = "sur1"
+    @user.username = "bobby"
     refute @user.save
 
   end
