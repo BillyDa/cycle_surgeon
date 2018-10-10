@@ -23,11 +23,11 @@
     <p>Provide your location, so we can pair you with nearby surgeon!</p>
         <div id="user_name">
           <p>
-            <%= f.label :street %>
+            <span class="required">*</span><%= f.label :street %>
             <%= f.text_field :street, placeholder: '220 King Street West' %>
           </p>
           <p>
-            <%= f.label :city %>
+            <span class="required">*</span><%= f.label :city %> 
             <%= f.text_field :city, placeholder: 'Toronto' %>
           </p>
           <p>
@@ -38,6 +38,7 @@
             <%= f.label :country %>
             <%= f.text_field :country, placeholder: 'Canada' %>
           </p>
+          <p>* indicates required field</p>
         </div>
 
 
@@ -128,3 +129,10 @@
   </div>
 
 <% end %>
+
+<style>
+.required {
+  font-size: 12px;
+  color:
+}
+</style>
