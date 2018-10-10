@@ -66,6 +66,10 @@
     </div>
 
       <% if @user.surgeon == true && @user.id == session[:user_id]%>
+        <%# if flash.now[:notice] %>
+          <%#= flash.now[:notice] %>
+        <%# end %>
+
         <p>Provide your location, so we can pair you with nearby cyclist in need!</p>
             <div id="user_name">
               <%= form_for @user do |f| %>
@@ -88,7 +92,7 @@
 
                 <p><%= f.submit "Update Your Location" %></p>
               <% end %>
-            </div> 
+            </div>
 
          <h2>Surgery in Progress</h2>
            <% @user_tickets.each do |ticket|%>

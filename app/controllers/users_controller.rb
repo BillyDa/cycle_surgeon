@@ -48,8 +48,16 @@ class UsersController < ApplicationController
     @user.city = params[:user][:city]
     @user.state = params[:user][:state]
     @user.country = params[:user][:country]
-    @user.save!
-    redirect_to user_url(@user.id)
+    if
+      @user.save!
+      flash.now[:notice] = "Your location has been updated"
+      redirect_to user_url(@user.id)
+    elsif
+      coordinates = nil
+      puts "else"
+      flash[:notice] = "Please confirm that the city and street you entered are correct"
+      redirect_to user_url(@user.id)
+    end
   end
 
 end
