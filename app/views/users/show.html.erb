@@ -7,6 +7,7 @@
  </head>
  <body>
    <div class="wrapper">
+     <div class="content">
      <div class="links">
        <% if @user.surgeon && @user.id == session[:user_id]%>
         <p><%= link_to 'See All Active Tickets', tickets_url%></p> <p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
@@ -103,5 +104,6 @@
              <% end %>
            <% end %>
         <% end %>
+      </div>
  </body>
 </html>
