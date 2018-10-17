@@ -14,12 +14,6 @@ body {
    right: 0;
  }
 
- .content {
-   width: 80%;
-   margin: 50px auto 0;
-   box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
- }
-
 .links > p {
   display: inline-block;
   padding-right: 25px;
@@ -116,4 +110,10 @@ h1, h2, .map {
 .button:hover {
   background-color: white;
   border: 3px solid green;
+}
+
+.content {
+  width: 80%;
+  margin: 50px auto 0;
+  box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
 }
