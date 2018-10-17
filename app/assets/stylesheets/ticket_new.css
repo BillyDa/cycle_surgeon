@@ -2,6 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Exo 2', sans-serif;
+}
+
+.wrapper {
   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
   background-size: cover;
   position: absolute;
@@ -82,4 +85,9 @@ h1 {
 
 .s {
   text-align: center;
+}
+
+.required {
+  font-size: 12px;
+  color:
 }
