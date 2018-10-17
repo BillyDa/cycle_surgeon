@@ -10,7 +10,7 @@
     <div class="wrapper">
       <div class="links">
         <% if @user.surgeon && @user.id == session[:user_id]%>
-        <p><%= link_to 'See All Active Tickets', tickets_url%></p><p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br/>
+        <p class="button"><%= link_to 'See All Active Tickets', tickets_url%></p><p class="button"><%= link_to "Logout", user_session_path, method: 'delete' %></p><br/>
       </div>
 
       <h1>Surgery in progress</h1>
@@ -19,8 +19,12 @@
 
       <div class="map">
         <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude},
-        #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
+        #{@ticket.longitude}""&markers=color:green%7Clabel:S%7C""#{@user.latitude},#{@user.longitude}&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
+        <div>
+          <p class="button"><%= link_to 'Get Directions', @google_map %></p>
+        </div>
       </div>
+
       <div class="ticket_wrapper">
         <div class="surgeon_location">
           <p>Username: <%= current_user.username %></p><br />
@@ -38,10 +42,10 @@
           <p><%= "Cyclist Longitude: #{@ticket.latitude}" %></p><br />
         </div>
         <div class="complete">
-          <%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %>
+          <p class="button"><%= link_to 'Surgery complete!', ticket_path, method: :patch, data: { confirm: "Congratulations, your surgery was a smashing success!"} %></p>
         </div>
         <div class="cancel">
-          <%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %>
+          <p class="button"><%= link_to 'Cancel surgery', ticket_path(@ticket.id), method: :delete, data: { confirm: "Are you sure you want to cancel your surgery?"} %></p>
         </div>
 
       </div>

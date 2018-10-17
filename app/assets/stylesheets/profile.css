@@ -68,7 +68,7 @@ h1, h2, .map {
 
 .surgeon_location > h3, .surgeon_location > p, .cycle_location > h3, .cycle_location > p {
   display: inline-block;
-} 
+}
 
 .cycle_location {
   text-align: center;
@@ -97,4 +97,21 @@ h1, h2, .map {
 
 .surgeon_location > p, .cycle_location > p, .surgeon_location > h3, .cycle_location > h3 {
   margin: 0 0 10px 0;
+}
+
+.button {
+  border: 3px black solid;
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+
+.button:hover {
+  color: white;
+  border: 3px solid green;
 }
