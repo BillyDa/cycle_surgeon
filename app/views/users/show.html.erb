@@ -32,8 +32,8 @@
             <% if ticket.ticket_accepted %>
               <%= "Date created: #{ticket.created_at}" %><br />
               <%= "Repair type: #{ticket.repair_string}" %><br />
-              <p class="button"><%= link_to "Examination room", ticket_url(ticket.id) %></p><br />
-              <%= "Your surgeon is en route!" %>
+              <p class="button"><%= link_to "Examination room", ticket_url(ticket.id) %></p>
+              <%= "Your surgeon is en route!" %><br />
             <% end %>
           <% end %>
     </div><br /><br /><br /><br />
