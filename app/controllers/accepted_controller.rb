@@ -9,6 +9,8 @@ class AcceptedController < ApplicationController
     @user_surgeon_tick = Ticket.all
     @cyclist_username = User.find(@ticket.user_id).username
     @cyclist_email = User.find(@ticket.user_id).email
+    @google_map = 'https://www.google.ca/maps/place/' + @ticket.street + '/@' + @ticket.latitude.to_s
+',' + @ticket.longitude.to_s + ',17z'
 
     gmaps = GoogleMapsService::Client.new
       else
