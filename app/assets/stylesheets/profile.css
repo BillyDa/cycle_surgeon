@@ -68,7 +68,7 @@ h1, h2, .map {
 
 .surgeon_location > h3, .surgeon_location > p, .cycle_location > h3, .cycle_location > p {
   display: inline-block;
-} 
+}
 
 .cycle_location {
   text-align: center;
@@ -87,14 +87,33 @@ h1, h2, .map {
   margin-left: 25px;
 }
 
-.cancel, .complete {
-  height:25px;
-}
-
 .complete > a, .cancel> a {
   text-decoration: none;
 }
 
 .surgeon_location > p, .cycle_location > p, .surgeon_location > h3, .cycle_location > h3 {
   margin: 0 0 10px 0;
+}
+
+.button {
+  border: 3px black solid;
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+
+.button:hover {
+  background-color: white;
+  border: 3px solid green;
+}
+
+.content {
+  width: 80%;
+  margin: 50px auto 0;
+  box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
 }
