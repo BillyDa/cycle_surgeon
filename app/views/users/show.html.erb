@@ -10,9 +10,9 @@
      <div class="content">
      <div class="links">
        <% if @user.surgeon && @user.id == session[:user_id]%>
-        <p class="button"><%= link_to 'See All Active Tickets', tickets_url%></p> <p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
+        <p class="button"><%= link_to 'See All Active Tickets', tickets_url%></p> <p class="button"><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-         <%= link_to 'Submit a Ticket', new_ticket_url %><p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
+         <p class="button"><%= link_to 'Submit a Ticket', new_ticket_url %><p class="button"><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% end %>
      </div>
 
@@ -32,7 +32,7 @@
             <% if ticket.ticket_accepted %>
               <%= "Date created: #{ticket.created_at}" %><br />
               <%= "Repair type: #{ticket.repair_string}" %><br />
-              <%= link_to "Examination room", ticket_url(ticket.id) %><br />
+              <p class="button"><%= link_to "Examination room", ticket_url(ticket.id) %></p><br />
               <%= "Your surgeon is en route!" %>
             <% end %>
           <% end %>
@@ -44,7 +44,7 @@
             <% if ticket.ticket_accepted == false || ticket.ticket_accepted == nil %>
               <%= "Date created: #{ticket.created_at}"%><br />
               <%= "Repair Type: #{ticket.repair_string}"%><br />
-              <%= link_to "Examination room", ticket_url(ticket.id)%><br />
+              <p><%= link_to "Examination room", ticket_url(ticket.id)%></p><br />
               <%= "Awaiting surgeon response..." %><br />
             <% end %>
           <% end %>
@@ -59,7 +59,7 @@
               <%= "Date created: #{pending.created_at}" %><br />
               <%= "Repair Type: #{pending.repair_string}" %><br />
               <div class="exam_room">
-                <%= link_to "Examination room", ticket_url(pending.id) %><br />
+                <p><%= link_to "Examination room", ticket_url(pending.id) %></p><br />
               </div>
               <%= "Awaiting surgeon" %>
             <% end %>
@@ -100,7 +100,7 @@
              <% if ticket.ticket_accepted == true %>
                <%= "Date created: #{ticket.created_at}"%><br />
                <%= "Repair Type: #{ticket.repair_string}"%><br />
-               <%= link_to "Examination room", accepted_url(ticket.id)%><br />
+               <p class="button"><%= link_to "Examination room", accepted_url(ticket.id)%></p><br />
              <% end %>
            <% end %>
         <% end %>
