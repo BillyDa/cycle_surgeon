@@ -105,3 +105,10 @@
  h2 {
    margin: 0;
  }
+
+ nav {
+   display: block;
+   width: 100%;
+   background-color: black;
+   text-align: center;
+ }
