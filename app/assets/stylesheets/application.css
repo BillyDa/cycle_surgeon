@@ -107,8 +107,10 @@
  }
 
  nav {
-   display: block;
+   display: flex;
+  
    width: 100%;
-   background-color: black;
+   background-color: white;
    text-align: center;
+   z-index: 1;
  }
