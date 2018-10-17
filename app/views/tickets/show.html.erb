@@ -7,6 +7,21 @@
    </head>
    <body>
      <div class="wrapper">
+<<<<<<< HEAD
+       <div class="content">
+         <% if current_user.surgeon %>
+           <p class="dashboard">
+             <%= link_to 'Return to your dashboard', user_path(current_user) %>
+           </p>
+           <div class="inside_wrapper">
+             <h1>Help Request #<%= @ticket.id %></h1>
+             <div class="map">
+               <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=[AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw]" )%>
+             </div>
+             <div class= "ticket">
+               <h3>
+                 Cyclist: <%= @cyclist_username %>
+=======
        <% if current_user.surgeon %>
          <p class="dashboard">
            <%= link_to 'Return to your dashboard', user_path(current_user) %>
@@ -22,133 +37,73 @@
              </h3>
              <h3>
                Address: <%= @ticket.address %>
+>>>>>>> e9cc2a4e7362b4e573213cb4820c5c9816937520
+               </h3>
+               <h3>
+                 Address: <%= @ticket.address %>
+                 </h3>
+
+               <h3>
+                 Type of repair: <%= @ticket.repair_string %>
                </h3>
 
-             <h3>
-               Type of repair: <%= @ticket.repair_string %>
-             </h3>
+             <div>
+               <%= form_for @ticket do |f| %>
+                 <%= f.label :accept_ticket? %>
+                 <%= f.check_box :ticket_accepted %>
 
-           <div>
-             <%= form_for @ticket do |f| %>
-               <%= f.label :accept_ticket? %>
-               <%= f.check_box :ticket_accepted %>
+                 <%= f.hidden_field :surgeon_id, value: current_user  %>
 
-               <%= f.hidden_field :surgeon_id, value: current_user  %>
-
-               <%= f.submit %>
-             <% end %>
+                 <%= f.submit %>
+               <% end %>
+             </div>
            </div>
-         </div>
 
 
 
-       <% else %>
+         <% else %>
 
-         <div class="dashboard">
-           <%= link_to 'Return to your dashboard', user_path(current_user) %>
-         </div>
-         <div class="map_and_clock">
-          <div class="inside_wrapper">
-            <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=800x500&maptype=terrain&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
-          </div>
-           <% if @ticket.ticket_accepted %>
-             <h1>Your surgeon is on the way!</h1>
-             <p>An email will be sent to <%= @user.email %></p>
-           <% else %>
-           <div>
-             <h1>Your request is awaiting a surgeon</h1>
-              <div class="clock">
-                <div class="clock-face">
-                  <div class="hand second-hand"></div>
+           <div class="dashboard">
+             <p class="button"><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
+           </div>
+           <div class="map_and_clock">
+            <div class="inside_wrapper">
+              <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=800x500&maptype=terrain&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
+            </div>
+             <% if @ticket.ticket_accepted %>
+               <h1>Your surgeon is on the way!</h1>
+               <p>An email will be sent to <%= @user.email %></p>
+             <% else %>
+             <div>
+               <h1>Your request is awaiting a surgeon</h1>
+                <div class="clock">
+                  <div class="clock-face">
+                    <div class="hand second-hand"></div>
+                  </div>
                 </div>
+                <p>An email will be sent to <%= @user.email %> when you are paired with a surgeon. </p>
               </div>
-              <p>An email will be sent to <%= @user.email %> when you are paired with a surgeon. </p>
+              </div>
+             <% end %>
+             <div class="bottom-margins"
+             <div class="ticketinfo">
+               <div class="inline">
+                 <h3>Type of repair:</h3><p><%= @ticket.repair_string %></p>
+               </div>
 
-            </div>
-            </div>
-           <% end %>
-           <div class="bottom-margins"
-           <div class="ticketinfo">
-             <div class="inline">
-               <h3>Type of repair:</h3><p><%= @ticket.repair_string %></p>
+               <div class="inline">
+                 <h3>Your address:</h3><p><%= @ticket.address %></p>
              </div>
 
-             <div class="inline">
-               <h3>Your address:</h3><p><%= @ticket.address %></p>
+            <div class="ticketinfo">
+             <p class="button"><%= link_to 'Cancel Ticket', ticket_url(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %></p>
+           <% end %>
            </div>
-
-          <div class="ticketinfo">
-           <%= link_to 'Cancel Ticket', ticket_url(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-         <% end %>
-         </div>
-
-
+       </div>
      </div>
-   </div>
+       </div>
    </div>
  </body>
- <style>
- .clock {
-    width: 10rem;
-    height: 10rem;
-    border: 20px solid white;
-    border-radius: 50%;
-    margin: 50px auto;
-    position: relative;
-    padding: 2rem;
-    box-shadow:
-      0 0 0 4px rgba(0,0,0,0.1),
-      inset 0 0 0 3px #EFEFEF,
-      inset 0 0 10px black,
-      0 0 10px rgba(0,0,0,0.2);
-  }
-
-  .clock-face {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-3px); /* account for the height of the clock hands */
-  }
-
-  .hand {
-    width: 50%;
-    height: 6px;
-    background: black;
-    position: absolute;
-    top: 50%;
-    transform-origin: 100%;
-    transform: rotate(90deg);
-    transition: all 0.05s;
-    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-  }
-
-  .map_and_clock {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: white 15px solid;
-  }
-
-  .ticketinfo {
-    text-align: center;
-    display: grid;
-    grid-auto-rows: 1fr 1fr 1fr;
-  }
-
-  .inline{
-    display: inline-flex;
-    padding-left: 10%;
-  }
-
-  .inline > p{
-    padding-top: 5px;
-    padding-left: 5px;
-  }
-
-  .bottom-margins{
-    margin-left: 20%;
-    margin-right: 20%;
-  }
- </style>
 <script>
   const secondHand = document.querySelector('.second-hand');
 

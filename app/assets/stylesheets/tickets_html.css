@@ -14,20 +14,12 @@ body {
    right: 0;
  }
 
-
 .ticket > a, p > a {
   text-decoration: none;
   color: black;
 }
 
-.link_back {
-  text-align: right;
-  margin-right: 50px;
-}
-
 .available_tickets {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   margin: 0 auto;
 }
 
@@ -38,5 +30,39 @@ body {
 
 .right {
   grid-column-start: 2;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.button {
+  display: inline-block;
+  text-align: right;
+  grid-column-start: 2;
+  margin-right: 25px;
+}
+
+.button a {
+  border: 3px black solid;
+  padding: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.button:hover a {
+  background-color: white;
+  border: 3px solid green;
+}
+
+.content {
+  width: 80%;
+  margin: 50px auto 0;
+  box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+}
+
+.ticket {
   text-align: center;
 }

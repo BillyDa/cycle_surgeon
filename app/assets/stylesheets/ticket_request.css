@@ -32,7 +32,6 @@ body {
  .clock {
     width: 30rem;
     height: 30rem;
-    border: 20px solid white;
     border-radius: 50%;
     margin: 50px auto;
     position: relative;
@@ -62,3 +61,83 @@ body {
     transition: all 0.05s;
     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
   }
+
+  .button {
+    border: 3px black solid;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  .button a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .button:hover {
+    background-color: white;
+    border: 3px solid green;
+  }
+
+  .content {
+    width: 80%;
+    margin: 50px auto 0;
+    box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+  }
+
+  .clock {
+     width: 10rem;
+     height: 10rem;
+     border-radius: 50%;
+     margin: 50px auto;
+     position: relative;
+     padding: 2rem;
+     box-shadow:
+       0 0 0 4px rgba(0,0,0,0.1),
+       inset 0 0 0 3px #EFEFEF,
+       inset 0 0 10px black,
+       0 0 10px rgba(0,0,0,0.2);
+   }
+
+   .clock-face {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     transform: translateY(-3px); /* account for the height of the clock hands */
+   }
+
+   .hand {
+     width: 50%;
+     height: 6px;
+     background: black;
+     position: absolute;
+     top: 50%;
+     transform-origin: 100%;
+     transform: rotate(90deg);
+     transition: all 0.05s;
+     transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+   }
+
+   .map_and_clock {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+   }
+
+   .ticketinfo {
+     text-align: center;     
+   }
+
+   .inline{
+     display: inline-flex;
+     padding-left: 10%;
+   }
+
+   .inline > p{
+     padding-top: 5px;
+     padding-left: 5px;
+   }
+
+   .bottom-margins{
+     margin-left: 20%;
+     margin-right: 20%;
+   }
