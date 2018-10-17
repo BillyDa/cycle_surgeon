@@ -100,3 +100,27 @@ div input {
   margin-top: 5%;
   border: 3px solid transparent;
 }
+
+
+.button {
+  border: 3px black solid;
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+
+.button:hover {
+  background-color: white;
+  border: 3px solid green;
+}
+
+.content {
+  width: 80%;
+  margin: 50px auto 0;
+  box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+}
