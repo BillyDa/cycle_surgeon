@@ -44,9 +44,8 @@
             <% if ticket.ticket_accepted == false || ticket.ticket_accepted == nil %>
               <%= "Date created: #{ticket.created_at}"%><br />
               <%= "Repair Type: #{ticket.repair_string}"%><br />
-              <p><%= link_to "Examination room", ticket_url(ticket.id)%></p><br />
-              <%= "Awaiting surgeon response..." %><br />
-            <% end %>
+              <p class="button"><%= link_to "Examination room", ticket_url(ticket.id)%></p><br />
+               <% end %>
           <% end %>
       </div>
 
@@ -61,7 +60,6 @@
               <div class="exam_room">
                 <p><%= link_to "Examination room", ticket_url(pending.id) %></p><br />
               </div>
-              <%= "Awaiting surgeon" %>
             <% end %>
       <% end %>
     </div>
