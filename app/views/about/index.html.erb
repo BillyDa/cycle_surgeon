@@ -1,8 +1,19 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 <!-- Necessary to grab the icons for the contact buttons -->
+<div class="nav">
+  <div class="logo">
+    <img src="../assets/cyclesurgeon_logo.png" width:50px height: 50px>
+  </div>
+  <div class="nav-generic">
+    <ul>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'About', about_url %></li>
+    </ul>
+  </div>
+</div>
 <div class="page">
 <div class="vid">
-<iframe width="720" height="480" src="https://www.youtube.com/embed/B2EbPJCgdHI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe width="650" height="480" src="https://www.youtube.com/embed/B2EbPJCgdHI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 <h3><a href="https://github.com/BillyDa/cycle_surgeon">Checkout the repo</a></h3>
 
@@ -62,7 +73,7 @@
     <li>Full-Stack Developer</li>
   </ul>
   Honestly, I just really love solving problems.<br>
-     That ranges from debugging a broken Ruby app (been there done that!) to building a website from scratch.<br>
+     That ranges from debugging a broken Rails app (been there done that!) to building a website from scratch.<br>
      Being a full-stack developer feels so empowering because there's so much you can do. But I always feel grounded because technology is always changing, as does the team around you.
      Because of that, I'm always open to new challenges and learning opportunities!<br><br>
   <b>Get in touch:</b>
@@ -71,6 +82,14 @@
   <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/tylerpalef/">LinkedIn</a></li>
 </ul>
 </div>
+</div>
+<div class="bottomnav">
+  <div class="nav-generic">
+    <ul>
+      <li><%= link_to 'Home', root_url %></li>
+      <li><%= link_to 'About', about_url %></li>
+    </ul>
+  </div>
 </div>
 <style>
   .vid {
@@ -82,6 +101,8 @@
     text-align: center;
     margin-left: 10rem;
     margin-right: 10rem;
+    box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+
   }
 
   p {
@@ -97,9 +118,60 @@
     display: inline-block;
   }
 
-  img {
+  #ty > img {
     width: 250px;
     border-radius: 50%;
   }
 
+  #bill > img {
+    width: 250px;
+    border-radius: 50%;
+  }
+
+
+  #rob > img {
+    width: 250px;
+    border-radius: 50%;
+  }
+
+  .nav, .logo {
+    height: 100px;
+    background-image: linear-gradient(white, grey);
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logo > img {
+    width: 250px;
+    height: 90px;
+    margin-bottom: 5px;
+    padding-left: 50px;
+  }
+
+  .nav-generic > ul > li > a{
+    color: white;
+    list-style-type: none;
+    font-size: 30px;
+    text-decoration: none;
+    padding-left: 20px;
+  }
+
+.nav-generic > ul > li > a:hover{
+  color: black;
+  text-shadow: 2px 2px 4px #000000;
+
+}
+  .nav-generic > ul{
+    display: flex;
+    padding-top: 15px;
+    padding-left: 450px;
+
+  }
+
+.bottomnav {
+  height: 75px;
+  background-image: linear-gradient(white, grey);
+}
 </style>
