@@ -89,7 +89,7 @@ h1 {
 
 .required {
   font-size: 12px;
-  color:
+/* This had an empty color decoration causing Heroku server to fail */
 }
 
 .content {
