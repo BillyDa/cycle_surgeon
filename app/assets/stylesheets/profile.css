@@ -17,6 +17,7 @@ body {
 .links > p {
   display: inline-block;
   padding-right: 25px;
+  
 }
 
 .links > p > a {
