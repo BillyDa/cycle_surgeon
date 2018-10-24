@@ -17,6 +17,7 @@ body {
 .links > p {
   display: inline-block;
   padding-right: 25px;
+  
 }
 
 .links > p > a {
@@ -68,7 +69,7 @@ h1, h2, .map {
 
 .surgeon_location > h3, .surgeon_location > p, .cycle_location > h3, .cycle_location > p {
   display: inline-block;
-} 
+}
 
 .cycle_location {
   text-align: center;
