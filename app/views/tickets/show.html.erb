@@ -7,7 +7,7 @@
    </head>
    <body>
      <div class="wrapper">
-<<<<<<< HEAD
+
        <div class="content">
          <% if current_user.surgeon %>
            <p class="dashboard">
@@ -21,31 +21,16 @@
              <div class= "ticket">
                <h3>
                  Cyclist: <%= @cyclist_username %>
-=======
-       <% if current_user.surgeon %>
-         <p class="dashboard">
-           <%= link_to 'Return to your dashboard', user_path(current_user) %>
-         </p>
-         <div class="inside_wrapper">
-           <h1>Help Request #<%= @ticket.id %></h1>
-           <div class="map">
-             <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
-           </div>
-           <div class= "ticket">
-             <h3>
-               Cyclist: <%= @cyclist_username %>
-             </h3>
-             <h3>
-               Address: <%= @ticket.address %>
->>>>>>> e9cc2a4e7362b4e573213cb4820c5c9816937520
                </h3>
                <h3>
                  Address: <%= @ticket.address %>
-                 </h3>
-
+               </h3>
                <h3>
                  Type of repair: <%= @ticket.repair_string %>
                </h3>
+
+
+
 
              <div>
                <%= form_for @ticket do |f| %>
@@ -103,7 +88,6 @@
      </div>
        </div>
    </div>
-   <% end %>
  </body>
 <script>
   const secondHand = document.querySelector('.second-hand');
