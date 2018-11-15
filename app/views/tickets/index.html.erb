@@ -7,35 +7,38 @@
   </head>
   <body>
     <div class="wrapper">
-      <p class="link_back">
-        <%= link_to 'Return to your dashboard', user_path(current_user) %>
-      </p>
-      <div class="available_tickets">
-        <div class="left">
-          <h1>Available Tickets</h1>
-          <div class="ticket">
-            <% @tickets.each do |i| %>
-              <%= 'Address: ' %><%= i.address%><br />
-              <%= 'Repair Type: '%><%= i.repair_string%><br />
-              <%= 'Description: '%><%= i.description%><br />
-              <%= link_to 'Review Ticket', ticket_url(i.id)%><br />
-              <br />
-            <% end %>
-          </div>
+      <div class="content">
+        <div class="grid">
+          <p class="button"><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
         </div>
-        <!-- <div class="right">
-          <h1>Accepted Tickets</h1>
+        <div class="available_tickets">
+          <div class="left">
+            <h1>Available Tickets</h1>
             <div class="ticket">
               <% @tickets.each do |i| %>
-                 <%= 'Address: ' %><%#= i.cyclist_location%><br />
-                 <%= 'Repair Type: '%><%= i.repair_string%><br />
-                 <%= 'Description: '%><%= i.description%><br />
-                 <%= link_to 'Examination Room', ticket_url(i.id)%><br />
-                 <br /> -->
+                <%= 'Address: ' %><%= i.address%><br />
+                <%= 'Repair Type: '%><%= i.repair_string%><br />
+                <%= 'Description: '%><%= i.description%><br />
+                <%= link_to 'Review Ticket', ticket_url(i.id)%><br />
+                <br />
               <% end %>
             </div>
+          </div>
+          <!-- <div class="right">
+            <h1>Accepted Tickets</h1>
+              <div class="ticket">
+                <% @tickets.each do |i| %>
+                   <%= 'Address: ' %><%#= i.cyclist_location%><br />
+                   <%= 'Repair Type: '%><%= i.repair_string%><br />
+                   <%= 'Description: '%><%= i.description%><br />
+                   <%= link_to 'Examination Room', ticket_url(i.id)%><br />
+                   <br /> -->
+                <% end %>
+              </div>
+          </div>
         </div>
       </div>
+
 
     </div>
   </body>

@@ -1,130 +1,139 @@
-<div class="dashboard">
-    <p><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
-</div>
-
-<%= form_for @ticket do |f| %>
-  <% if @ticket.errors.any? %>
-    <div class="errors-block">
-      There are
-      <%= pluralize(@ticket.errors.count, "error") %>.
-      <ul>
-        <% @ticket.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
-
-    <div>
-      <% f.label :user_id %>
-      <% f.hidden_field :user_id %>
-    </div>
-
-    <p>Provide your location, so we can pair you with nearby surgeon!</p>
-        <div id="user_name">
-          <p>
-            <%= f.label :street %>
-            <%= f.text_field :street, placeholder: '220 King Street West' %>
-          </p>
-          <p>
-            <%= f.label :city %>
-            <%= f.text_field :city, placeholder: 'Toronto' %>
-          </p>
-          <p>
-            <%= f.label :state %>
-            <%= f.text_field :state, placeholder: 'Ontario' %>
-          </p>
-          <p>
-            <%= f.label :country %>
-            <%= f.text_field :country, placeholder: 'Canada' %>
-          </p>
-        </div>
-
-
-    <div id="title">
-      <%= f.label :repair_type %> <%=':  Please choose the most applicable option' %><br />
-    </div>
-    <div id="radio_tag">
-      <div id="hydraulic_disc">
-        <%= f.label :hydraulic_disc %>
-        <%= f.radio_button :repair, 0 %>
-        <div class="buttons">
-          <%= image_tag('hydraulic_disc.png') %><br />
-        </div>
-      </div>
-      <div id="handle_bar">
-        <%= f.label :handle_bar %>
-        <%= f.radio_button :repair, 1 %>
-        <div class="buttons">
-          <%= image_tag('handle_bar.png') %><br />
-        </div>
-      </div>
-      <div id="brake">
-        <%= f.label :brake %>
-        <%= f.radio_button :repair, 2 %>
-        <div class="buttons">
-          <%= image_tag('brake.png') %><br />
-        </div>
-      </div>
-      <div class="saddle">
-        <%= f.label :saddle %>
-        <%= f.radio_button :repair, 3 %>
-        <div class="buttons">
-          <%= image_tag('saddle.png') %><br />
-        </div>
-      </div>
-      <div id="lever">
-        <%= f.label :lever %>
-        <%= f.radio_button :repair, 4 %>
-        <div class="buttons">
-          <%= image_tag('lever.png') %><br />
-        </div>
-      </div>
-      <div id="v_brake">
-        <%= f.label :v_brake %>
-        <%= f.radio_button :repair, 5 %>
-        <div class="buttons">
-          <%= image_tag('v_brake.png') %><br />
-        </div>
-      </div>
-      <div id="flat_tire">
-        <%= f.label :flat_tire %>
-        <%= f.radio_button :repair, 6 %>
-        <div class="buttons">
-          <%= image_tag('flat_tire.png') %><br />
-        </div>
-      </div>
-      <div id="tune_up">
-        <%= f.label :tune_up %>
-        <%= f.radio_button :repair, 7 %>
-        <div class="buttons">
-          <%= image_tag('tune_up.png') %><br />
-        </div>
-      </div>
-      <div id="other">
-        <%= f.label :other %>
-        <%= f.radio_button :repair, 8 %>
-        <div class="buttons">
-          <%= image_tag('other.png') %><br />
-        </div>
-      </div>
-    </div>
-
-    <!-- <div id="radio_images">
-      <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
-        <div class="button_image">
-          <%= b.label { image_tag(b.text+'.png') } %>
-          <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
-        </div>
-      <% end %>
-    </div> -->
-    <div class="description">
-      <%= f.label :description %>
-      <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
-    </div>
-
-  <div class="submit">
-    <%= f.submit %>
+<div class="">
+  <div class="dashboard">
+    <p class="button"><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
   </div>
 
-<% end %>
+  <%= form_for @ticket do |f| %>
+    <% if @ticket.errors.any? %>
+      <div class="errors-block">
+        There are
+        <%= pluralize(@ticket.errors.count, "error") %>.
+        <ul>
+          <% @ticket.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+
+      <div>
+        <% f.label :user_id %>
+        <% f.hidden_field :user_id %>
+      </div>
+
+      <div class="titles">
+        <p>Provide your location, so we can pair you with nearby surgeon!</p>
+        <p><%= f.label :repair_type %> <%=':  Please choose the most applicable option' %><br /></p>
+      </div>
+        <div class="ticket_container">
+          <div id="user_name">
+            <p>
+              <span class="required">*</span><%= f.label :street %>
+              <%= f.text_field :street, placeholder: '220 King Street West' %>
+            </p>
+            <p>
+              <span class="required">*</span><%= f.label :city %>
+              <%= f.text_field :city, placeholder: 'Toronto' %>
+            </p>
+            <p>
+              <%= f.label :state %>
+              <%= f.text_field :state, placeholder: 'Ontario' %>
+            </p>
+            <p>
+              <%= f.label :country %>
+              <%= f.text_field :country, placeholder: 'Canada' %>
+            </p>
+            <p>* indicates required field</p>
+          </div>
+
+          <div id="radio_tag">
+            <div id="hydraulic_disc">
+              <%= f.label :hydraulic_disc %>
+              <%= f.radio_button :repair, 0 %>
+              <div class="buttons">
+                <%= image_tag('hydraulic_disc.png') %><br />
+              </div>
+            </div>
+            <div id="handle_bar">
+              <%= f.label :handle_bar %>
+              <%= f.radio_button :repair, 1 %>
+              <div class="buttons">
+                <%= image_tag('handle_bar.png') %><br />
+              </div>
+            </div>
+            <div id="brake">
+              <%= f.label :brake %>
+              <%= f.radio_button :repair, 2 %>
+              <div class="buttons">
+                <%= image_tag('brake.png') %><br />
+              </div>
+            </div>
+            <div class="saddle">
+              <%= f.label :saddle %>
+              <%= f.radio_button :repair, 3 %>
+              <div class="buttons">
+                <%= image_tag('saddle.png') %><br />
+              </div>
+            </div>
+            <div id="lever">
+              <%= f.label :lever %>
+              <%= f.radio_button :repair, 4 %>
+              <div class="buttons">
+                <%= image_tag('lever.png') %><br />
+              </div>
+            </div>
+            <div id="v_brake">
+              <%= f.label :v_brake %>
+              <%= f.radio_button :repair, 5 %>
+              <div class="buttons">
+                <%= image_tag('v_brake.png') %><br />
+              </div>
+            </div>
+            <div id="flat_tire">
+              <%= f.label :flat_tire %>
+              <%= f.radio_button :repair, 6 %>
+              <div class="buttons">
+                <%= image_tag('flat_tire.png') %><br />
+              </div>
+            </div>
+            <div id="tune_up">
+              <%= f.label :tune_up %>
+              <%= f.radio_button :repair, 7 %>
+              <div class="buttons">
+                <%= image_tag('tune_up.png') %><br />
+              </div>
+            </div>
+            <div id="other">
+              <%= f.label :other %>
+              <%= f.radio_button :repair, 8 %>
+              <div class="buttons">
+                <%= image_tag('other.png') %><br />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+      <!-- <div id="radio_images">
+        <%= f.collection_radio_buttons(:repair, [[0, 'hydraulic_disc'] ,[1, 'handle_bar'], [2, 'brake'], [3, 'saddle'], [4, 'lever'], [5, 'v_brake'], [6, 'flat_tire'], [7, 'tune_up'], [8, 'other']], :first, :last) do |b| %>
+          <div class="button_image">
+            <%= b.label { image_tag(b.text+'.png') } %>
+            <p><%= b.text.split('_').map(&:capitalize).join(' ') %></p>
+          </div>
+        <% end %>
+      </div> -->
+      <div class="description">
+        <%= f.label :description %>
+        <%= f.text_field :description, placeholder: 'If other, please specify the operation' %><br />
+      </div>
+
+    <div class="submit">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+</div>

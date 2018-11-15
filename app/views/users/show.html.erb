@@ -7,11 +7,12 @@
  </head>
  <body>
    <div class="wrapper">
+     <div class="content">
      <div class="links">
        <% if @user.surgeon && @user.id == session[:user_id]%>
-        <p><%= link_to 'See All Active Tickets', tickets_url%></p> <p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
+        <p class="button"><%= link_to 'See All Active Tickets', tickets_url%></p> <p class="button"><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% elsif @user.surgeon == nil && @user.id == session[:user_id]  %>
-         <%= link_to 'Submit a Ticket', new_ticket_url %><p><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
+         <p class="button"><%= link_to 'Submit a Ticket', new_ticket_url %><p class="button"><%= link_to "Logout", user_session_path, method: 'delete' %></p><br />
        <% end %>
      </div>
 
@@ -31,10 +32,12 @@
             <% if ticket.ticket_accepted %>
               <%= "Date created: #{ticket.created_at}" %><br />
               <%= "Repair type: #{ticket.repair_string}" %><br />
-              <%= link_to "Examination room", ticket_url(ticket.id) %><br />
+              <p class="button"><%= link_to "Examination room", ticket_url(ticket.id) %></p><br />
               <%= "Your surgeon is en route!" %>
             <% end %>
           <% end %>
+    </div><br /><br /><br /><br />
+      <div class="awaiting_surgery">
 
         <h2>Awaiting Surgeon</h2>
           <% @ticket_in_progress_cyc.each do |ticket|%>
@@ -45,6 +48,7 @@
               <%= "Awaiting surgeon response..." %><br />
             <% end %>
           <% end %>
+      </div>
 
 
 
@@ -63,6 +67,10 @@
     </div>
 
       <% if @user.surgeon == true && @user.id == session[:user_id]%>
+        <%# if flash.now[:notice] %>
+          <%#= flash.now[:notice] %>
+        <%# end %>
+
         <p>Provide your location, so we can pair you with nearby cyclist in need!</p>
             <div id="user_name">
               <%= form_for @user do |f| %>
@@ -88,7 +96,7 @@
             </div>
 
          <h2>Surgery in Progress</h2>
-           <% @ticket_in_progress.each do |ticket|%>
+           <% @user_tickets.each do |ticket|%>
              <% if ticket.ticket_accepted == true %>
                <%= "Date created: #{ticket.created_at}"%><br />
                <%= "Repair Type: #{ticket.repair_string}"%><br />
@@ -96,5 +104,6 @@
              <% end %>
            <% end %>
         <% end %>
+      </div>
  </body>
 </html>

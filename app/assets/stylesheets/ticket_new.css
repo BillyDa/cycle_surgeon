@@ -2,6 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Exo 2', sans-serif;
+}
+
+.wrapper {
   background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("background.jpg");
   background-size: cover;
   position: absolute;
@@ -53,7 +56,7 @@ h1 {
 }
 
 .dashboard > p > a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -81,5 +84,47 @@ h1 {
 }
 
 .s {
+  text-align: center;
+}
+
+.required {
+  font-size: 12px;
+/* This had an empty color decoration causing Heroku server to fail */
+}
+
+.content {
+  width: 80%;
+  margin: 50px auto 0;
+  box-shadow: 2px 1px 35px 8px rgba(0,0,0,0.53);
+}
+
+.button {
+  border: 3px black solid;
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+.button a {
+  text-decoration: none;
+  color: black;
+}
+
+.button:hover {
+  background-color: white;
+  border: 3px solid green;
+}
+
+.ticket_container, .titles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#ticket_description {
+  width: 250px;
+  height: 50px;
+}
+
+#user_name, .titles > p {
   text-align: center;
 }

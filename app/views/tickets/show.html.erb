@@ -7,71 +7,102 @@
    </head>
    <body>
      <div class="wrapper">
-       <% if current_user.surgeon %>
-         <p class="dashboard">
-           <%= link_to 'Return to your dashboard', user_path(current_user) %>
-         </p>
-         <div class="inside_wrapper">
-           <h1>Help Request #<%= @ticket.id %></h1>
-           <div class="map">
-             <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
-           </div>
-           <div class= "ticket">
-             <h3>
-               Cyclist: <%= @cyclist_username %>
-             </h3>
-             <h3>
-               Address: <%= @ticket.address %>
+
+       <div class="content">
+         <% if current_user.surgeon %>
+           <p class="dashboard">
+             <%= link_to 'Return to your dashboard', user_path(current_user) %>
+           </p>
+           <div class="inside_wrapper">
+             <h1>Help Request #<%= @ticket.id %></h1>
+             <div class="map">
+               <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
+             </div>
+             <div class= "ticket">
+               <h3>
+                 Cyclist: <%= @cyclist_username %>
+               </h3>
+               <h3>
+                 Address: <%= @ticket.address %>
+               </h3>
+               <h3>
+                 Type of repair: <%= @ticket.repair_string %>
                </h3>
 
-             <h3>
-               Type of repair: <%= @ticket.repair_string %>
-             </h3>
 
-           <div>
-             <%= form_for @ticket do |f| %>
-               <%= f.label :accept_ticket? %>
-               <%= f.check_box :ticket_accepted %>
 
-               <%= f.hidden_field :surgeon_id, value: current_user  %>
 
-               <%= f.submit %>
+             <div>
+               <%= form_for @ticket do |f| %>
+                 <%= f.label :accept_ticket? %>
+                 <%= f.check_box :ticket_accepted %>
+
+                 <%= f.hidden_field :surgeon_id, value: current_user  %>
+
+                 <%= f.submit %>
+               <% end %>
+             </div>
+           </div>
+
+
+
+         <% else %>
+
+           <div class="dashboard">
+             <p class="button"><%= link_to 'Return to your dashboard', user_path(current_user) %></p>
+           </div>
+           <div class="map_and_clock">
+            <div class="inside_wrapper">
+              <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=800x500&maptype=terrain&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCEOraBh2M12OcDunUbon4VYmRGd7_l7hw" )%>
+            </div>
+             <% if @ticket.ticket_accepted %>
+               <h1>Your surgeon is on the way!</h1>
+               <p>An email will be sent to <%= @user.email %></p>
+             <% else %>
+             <div>
+               <h1>Your request is awaiting a surgeon</h1>
+                <div class="clock">
+                  <div class="clock-face">
+                    <div class="hand second-hand"></div>
+                  </div>
+                </div>
+                <p>An email will be sent to <%= @user.email %> when you are paired with a surgeon. </p>
+              </div>
+              </div>
              <% end %>
-           </div>
-         </div>
+             <div class="bottom-margins"
+             <div class="ticketinfo">
+               <div class="inline">
+                 <h3>Type of repair:</h3><p><%= @ticket.repair_string %></p>
+               </div>
 
+               <div class="inline">
+                 <h3>Your address:</h3><p><%= @ticket.address %></p>
+             </div>
 
-
-       <% else %>
-
-         <div class="dashboard">
-           <%= link_to 'Return to your dashboard', user_path(current_user) %>
-         </div>
-          <div class="inside_wrapper">
-            <%=image_tag( "http://maps.googleapis.com/maps/api/staticmap?zoom=14&size=600x300&markers=color:red%7Clabel:C%7C""#{@ticket.latitude}, #{@ticket.longitude}""&key=AIzaSyCkKzATU2kEC4ksnb43ghD13drzd4LQlgE" )%>
-
-           <% if @ticket.ticket_accepted %>
-             <h1>Your surgeon is on the way!</h1>
-             <!-- <p>An email has been sent to <%= @user.email %></p> -->
-           <% else %>
-             <h1>Your request is awaiting a surgeon</h1>
-             <!-- <p>An email will be sent to <%= @user.email %> when your surgeon is on the way! </p> -->
+            <div class="ticketinfo">
+             <p class="button"><%= link_to 'Cancel Ticket', ticket_url(@ticket), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %></p>
            <% end %>
-           <div>
-             <h3>
-               Type of repair: <%= @ticket.repair_string %>
-             </h3>
-             <h3>
-               Your address: <%= @ticket.address %>
-             </h3>
            </div>
-
-
-         <% end %>
-         <%= link_to 'Cancel Ticket', ticket_path(@ticket.id), method: :delete, data: {confirm: "Are you sure you want to cancel your ticket?"} %>
-
-
+       </div>
      </div>
+       </div>
    </div>
  </body>
+<script>
+  const secondHand = document.querySelector('.second-hand');
+
+  function setDate() {
+    const now = new Date();
+
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+  }
+
+  setInterval(setDate, 1000);
+
+  setDate();
+</script>
 </html>

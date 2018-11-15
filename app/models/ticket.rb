@@ -1,10 +1,10 @@
 class Ticket < ApplicationRecord
 
 validates :user_id, presence: true
-validates :user_id, presence: true
 validates :description, presence: true
 validates :repair, presence: true
 validates :street, presence: true
+validates :city, presence: true
 
 geocoded_by :address
 
